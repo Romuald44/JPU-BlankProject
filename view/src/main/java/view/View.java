@@ -39,7 +39,7 @@ public class View implements IView, Runnable {
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
-			case KeyEvent.VK_G:
+			case KeyEvent.VK_E:
 				return ControllerOrder.English;
 			case KeyEvent.VK_F:
 				return ControllerOrder.Francais;

@@ -8,13 +8,12 @@ public abstract class MotionlessElements {
 	public static final MotionlessElement BONEPAT = new BonePat();
 	public static final MotionlessElement BONEHORIZ = new BoneHoriz();
 	public static final MotionlessElement BONEVERT = new BoneVert();
-	public static final MotionlessElement	ESCAPE								= new Escape();
 
-	private static MotionlessElement			motionlessElements[]	= { CAMP, FOREST, LAND, MONASTERY, STONE, TOWN, WATER, DOOR, WALL, FLOOR, EXIT, ESCAPE };
+	private static MotionlessElement motionlessElements[] = { PURSE, CRYSTALBALL, LAND, GATE, BONEPAT, BONEHORIZ, BONEVERT };
 
 	public static MotionlessElement getFromFileSymbol(final char fileSymbol) {
 		for (final MotionlessElement motionlessElement : motionlessElements) {
-			if (motionlessElement.getFileSymbol() == fileSymbol) {
+			if (motionlessElement.getSymbol() == fileSymbol) {
 				return motionlessElement;
 			}
 		}

@@ -109,7 +109,7 @@ class ViewFrame extends JFrame implements KeyListener {
 		return this.model;
 	}
 
-	/**
+	/**bui
 	 * Sets the model.
 	 *
 	 * @param model

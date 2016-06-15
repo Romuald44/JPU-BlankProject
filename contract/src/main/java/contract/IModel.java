@@ -10,19 +10,12 @@ import java.util.Observable;
 public interface IModel {
 
 	/**
-	 * Gets the message.
-	 *
-	 * @return the message
-	 */
-	String getMessage();
-
-	/**
 	 * Load the message.
 	 *
 	 * @param key
 	 *          the key
 	 */
-	void loadMessage(int id);
+	void loadMap(int id);
 
 	/**
 	 * Gets the observable.

@@ -21,31 +21,21 @@ public class Model extends Observable implements IModel {
 	public final ArrayList<Mobile> mobiles;
 	private int width;
 	private int	height;
-	//private Lorann lorann;
-
-	/** The message. */
-	private String message;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.message = "";
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage()
-	 */
-	public String getMessage() {
-		return this.message;
+		this.mobiles = new ArrayList<Mobile>();
 	}
 	
-	private void setMessage(final String message) {
-		this.message = message;
-		this.setChanged();
-		this.notifyObservers();
+	public Lorann getLorann() {
+		for(int i=0; i < this.mobiles.size(); i++) {
+			if(this.mobiles.get(i) instanceof Lorann) {
+				return (Lorann) this.mobiles.get(i);
+			}
+		}
+		return null;
 	}
 	
 	private void addElement(final MotionlessElement element, final int x, final int y) {
@@ -94,7 +84,7 @@ public class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadMessage(final int id) {
+	public void loadMap(final int id) {
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());
 			String Maptostring = Map.find(id).getMap();

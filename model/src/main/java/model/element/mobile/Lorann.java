@@ -9,7 +9,7 @@ public class Lorann extends Mobile {
 	private Point lastPosition;
 	private Fireball fireball;
 
-	public Lorann() {
+	public Lorann() {//ojoj
 		super(new Sprite("lorann_b"));
 		this.fireball = new Fireball(this);
 	}

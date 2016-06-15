@@ -11,9 +11,9 @@ public class Fireball extends Mobile {
 	private Lorann lorann;
 
 	public Fireball(Lorann lorann) {
-		super(new Sprite("fireball_1"));
+		super(new Sprite("fireball_1.png"));
 		this.lorann = lorann;
-		this.reactivate();
+		this.active = false;
 	}
 
 	public boolean getActive() {

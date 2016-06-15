@@ -10,7 +10,7 @@ public class Lorann extends Mobile {
 	private Fireball fireball;
 
 	public Lorann(int x, int y) {
-		super(new Sprite("lorann_b"));
+		super(new Sprite("lorann_b.png"));
 		this.fireball = new Fireball(this);
 		this.setX(x);
 		this.setY(y);

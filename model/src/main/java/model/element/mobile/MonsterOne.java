@@ -7,7 +7,7 @@ public class MonsterOne implements IBehavior {
 	private Sprite sprite;
 
 	public MonsterOne() {
-		this.sprite = new Sprite("monster_1");
+		this.sprite = new Sprite("monster_1.png");
 	}
 
 	public void movement() {

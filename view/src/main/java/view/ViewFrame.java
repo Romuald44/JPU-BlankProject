@@ -23,14 +23,11 @@ import contract.IModel;
 class ViewFrame extends JFrame implements KeyListener {
 
 	/** The model. */
-	private IModel						model;
+	private IModel model;
 
 	/** The controller. */
-	private IController				controller;
-	/** The Constant serialVersionUID. */
-	private static final long	serialVersionUID	= -697358409737458175L;
-
-	private final HashSet<KeyEvent> pressed = new HashSet<KeyEvent>();
+	private IController controller;
+	
 	/**
 	 * Instantiates a new view frame.
 	 *
@@ -165,18 +162,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public synchronized void keyPressed(final KeyEvent e) {
-		/*pressed.add(e);
-		Iterator it = pressed.iterator();
-		
-		if (pressed.size() >= 2) {
-			while(it.hasNext()) {
-				it.next()
-			}
-			this.getController().orderPerform(View.keyCodeToControllerOrder( ((KeyEvent) it.next()).getKeyCode(), ((KeyEvent) it.next()).getKeyCode() ));
-        }
-		else {*/
-			this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
-		//}
+		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
 
 	/*
@@ -185,6 +171,5 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(final KeyEvent e) {
-		pressed.remove(e);
 	}
 }

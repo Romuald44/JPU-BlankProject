@@ -26,6 +26,7 @@ public class Model extends Observable implements IModel {
 	public final ArrayList<Mobile> mobiles;
 	private int width;
 	private int	height;
+	private Map map;
 
 	/**
 	 * Instantiates a new model.
@@ -85,6 +86,10 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	public Map getMap() {
+		return this.map;
+	}
+	
 	private void addElement(final MotionlessElement element, final int x, final int y) {
 		this.elements[x][y] = element;
 		if (element != null) {
@@ -108,6 +113,10 @@ public class Model extends Observable implements IModel {
 		return this.elements[x][y];
 	}
 	
+	public ArrayList<Mobile> getMobiles() {
+		return this.mobiles;
+	}
+	
 	public void addMobile(final Mobile mobile) {
 		this.mobiles.add(mobile);
 		this.setChanged();
@@ -117,7 +126,7 @@ public class Model extends Observable implements IModel {
 	public void loadMap(final int id) {
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());
-			Map map = Map.find(id);
+			map = Map.find(id);
 			String Maptostring = map.getMap();
 			this.width = map.getWidth();
 			this.height = map.getHeight();

@@ -70,15 +70,7 @@ class ViewPanel extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(final Graphics graphics) {
 		graphics.setColor(Color.black);
-		graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
-		Image img = null;
-		try {
-			img = ImageIO.read(new File("images.jpg"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		graphics.drawImage(img, 0, 0, this);
-		//graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+		
 	}
 }

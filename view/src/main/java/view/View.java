@@ -51,22 +51,6 @@ public class View implements IView, Runnable {
 				return ControllerOrder.NOP;
 		}
 	}
-	
-	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode, final int keycode2) {
-		if(keyCode == KeyEvent.VK_UP && keycode2 == KeyEvent.VK_LEFT) {
-			return ControllerOrder.UPLEFT;
-		}
-		else if(keyCode == KeyEvent.VK_UP && keycode2 == KeyEvent.VK_RIGHT) {
-			return ControllerOrder.UPRIGHT;
-		}
-		else if(keyCode == KeyEvent.VK_DOWN && keycode2 == KeyEvent.VK_LEFT) {
-			return ControllerOrder.DOWNLEFT;
-		}
-		else if(keyCode == KeyEvent.VK_DOWN && keycode2 == KeyEvent.VK_RIGHT) {
-			return ControllerOrder.DOWNRIGHT;
-		}
-		return null;
-	}
 
 	/*
 	 * (non-Javadoc)

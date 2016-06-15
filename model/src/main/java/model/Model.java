@@ -82,7 +82,7 @@ public class Model extends Observable implements IModel {
 		}
 		else {
 			this.getLorann().deviateFireball();
-		}//
+		}
 	}
 	
 	private void addElement(final MotionlessElement element, final int x, final int y) {

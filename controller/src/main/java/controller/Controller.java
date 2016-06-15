@@ -78,6 +78,9 @@ public class Controller implements IController {
 			case RIGHT:
 				this.model.moveRight();
 				break;
+			case SPACE:
+				this.model.launchFireball();
+				break;
 
 			default:
 				break;

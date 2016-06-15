@@ -35,7 +35,7 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public Lorann getLorann() {
-		for(int i =0; i < this.mobiles.size(); i++) {
+		for(int i = 0; i < this.mobiles.size(); i++) {
 			if(this.mobiles.get(i) instanceof Lorann) {
 				return (Lorann)this.mobiles.get(i);
 			}
@@ -57,6 +57,22 @@ public class Model extends Observable implements IModel {
 	
 	public void moveRight() {
 		this.getLorann().moveRight();
+	}
+	
+	public void moveUpLeft() {
+		this.getLorann().moveUpLeft();
+	}
+	
+	public void moveUpRight() {
+		this.getLorann().moveUpRight();
+	}
+	
+	public void moveDownLeft() {
+		this.getLorann().moveDownLeft();
+	}
+	
+	public void moveDownRight() {
+		this.getLorann().moveDownRight();
 	}
 	
 	private void addElement(final MotionlessElement element, final int x, final int y) {
@@ -91,9 +107,7 @@ public class Model extends Observable implements IModel {
 	public void loadMap(final int id) {
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());
-			
 			Map map = Map.find(id);
-			
 			String Maptostring = map.getMap();
 			this.width = map.getWidth();
 			this.height = map.getHeight();

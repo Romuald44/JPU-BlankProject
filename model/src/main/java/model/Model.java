@@ -60,6 +60,7 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void moveUpLeft() {
+		System.out.println("UPLEFT");
 		this.getLorann().moveUpLeft();
 	}
 	

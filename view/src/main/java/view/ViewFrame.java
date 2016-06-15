@@ -4,6 +4,10 @@ import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -26,6 +30,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
 
+	private final HashSet<KeyEvent> pressed = new HashSet<KeyEvent>();
 	/**
 	 * Instantiates a new view frame.
 	 *
@@ -131,7 +136,7 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		//this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
 		this.setLocationRelativeTo(null);
 	}
 
@@ -159,8 +164,19 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
-	public void keyPressed(final KeyEvent e) {
-		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+	public synchronized void keyPressed(final KeyEvent e) {
+		/*pressed.add(e);
+		Iterator it = pressed.iterator();
+		
+		if (pressed.size() >= 2) {
+			while(it.hasNext()) {
+				it.next()
+			}
+			this.getController().orderPerform(View.keyCodeToControllerOrder( ((KeyEvent) it.next()).getKeyCode(), ((KeyEvent) it.next()).getKeyCode() ));
+        }
+		else {*/
+			this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+		//}
 	}
 
 	/*
@@ -169,6 +185,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(final KeyEvent e) {
-
+		pressed.remove(e);
 	}
 }

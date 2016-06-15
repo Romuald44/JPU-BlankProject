@@ -1,9 +1,14 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -14,7 +19,7 @@ import javax.swing.JPanel;
 class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
-	private ViewFrame					viewFrame;
+	private ViewFrame viewFrame;
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
 
@@ -64,7 +69,16 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+		graphics.setColor(Color.black);
+		graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
+		Image img = null;
+		try {
+			img = ImageIO.read(new File("images.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		graphics.drawImage(img, 0, 0, this);
 		//graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
 	}
 }

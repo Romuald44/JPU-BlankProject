@@ -21,6 +21,11 @@ public interface IModel {
 	public void moveDown();
 	public void moveLeft();
 	public void moveRight();
+	public void moveUpLeft();
+	public void moveUpRight();
+	public void moveDownLeft();
+	public void moveDownRight();
+	
 	public void launchFireball();
 	
 	public void setMobileHasChanged();

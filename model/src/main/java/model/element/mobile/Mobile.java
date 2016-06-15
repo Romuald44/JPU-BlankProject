@@ -2,6 +2,7 @@ package model.element.mobile;
 
 import java.awt.Point;
 
+import model.Model;
 import model.element.Element;
 import model.element.Permeability;
 import model.element.Sprite;
@@ -45,6 +46,7 @@ public abstract class Mobile extends Element {
 	}
 
 	public boolean moveUp() {
+		System.out.println("moveUp");
 		boolean bool = false;
 		if (this.isMovePossible(this.getX(), this.getY() - 1)) {
 			this.setY(this.getY() - 1);

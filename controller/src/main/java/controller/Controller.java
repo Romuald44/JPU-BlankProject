@@ -16,7 +16,6 @@ public class Controller implements IController {
 
 	/** The model. */
 	private IModel	model;
-
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -28,6 +27,7 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
+		model.loadMap(1);
 	}
 
 	/*
@@ -67,16 +67,16 @@ public class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case UP:
-				this.model.getLorann().moveUp();
+				this.model.moveUp();
 				break;
 			case DOWN:
-				this.model.getLorann().moveDown();
+				this.model.moveDown();
 				break;
 			case LEFT:
-				this.model.getLorann().moveLeft();
+				this.model.moveLeft();
 				break;
 			case RIGHT:
-				this.model.getLorann().moveRight();
+				this.model.moveRight();
 				break;
 
 			default:

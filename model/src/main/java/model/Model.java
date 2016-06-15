@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import contract.IModel;
+import model.element.mobile.Demons;
 import model.element.mobile.Lorann;
 import model.element.mobile.Mobile;
+import model.element.mobile.MonsterFour;
+import model.element.mobile.MonsterOne;
+import model.element.mobile.MonsterThree;
+import model.element.mobile.MonsterTwo;
 import model.element.motionless.MotionlessElement;
 import model.element.motionless.MotionlessElements;
 
@@ -30,12 +35,28 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public Lorann getLorann() {
-		for(int i=0; i < this.mobiles.size(); i++) {
+		for(int i =0; i < this.mobiles.size(); i++) {
 			if(this.mobiles.get(i) instanceof Lorann) {
-				return (Lorann) this.mobiles.get(i);
+				return (Lorann)this.mobiles.get(i);
 			}
 		}
 		return null;
+	}
+	
+	public void moveUp() {
+		this.getLorann().moveUp();
+	}
+	
+	public void moveDown() {
+		this.getLorann().moveDown();
+	}
+	
+	public void moveLeft() {
+		this.getLorann().moveLeft();
+	}
+	
+	public void moveRight() {
+		this.getLorann().moveRight();
 	}
 	
 	private void addElement(final MotionlessElement element, final int x, final int y) {
@@ -45,74 +66,67 @@ public class Model extends Observable implements IModel {
 		}
 		this.setChanged();
 	}
-	/*
-	@Override
-	public void addMobile(final Mobile mobile, final int x, final int y) {
+	
+	public int getWidth() {
+		return this.width;
+	}
+	
+	public int getHeight() {
+		return this.height;
+	}
+	
+	public MotionlessElement getElements(final int x, final int y) {
+		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
+			return null;
+		}
+		return this.elements[x][y];
+	}
+	
+	public void addMobile(final Mobile mobile) {
 		this.mobiles.add(mobile);
-		mobile.setModel(this, x, y);
 		this.setChanged();
 		this.notifyObservers();
 	}
-
-	@Override
-	public void addMobile(final Lorann lorann, final int x, final int y) {
-		this.setHero(lorann);
-		this.addMobile((Mobile) lorann, x, y);
-	}
-
-	private void loadMap(final Map map) throws IOException {
-		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-		String line;
-		int numLine = 0;
-		line = buffer.readLine();
-		this.width = Integer.parseInt(line);
-		line = buffer.readLine();
-		this.height = Integer.parseInt(line);
-		this.elements = new MotionlessElement[this.getWidth()][this.getHeight()];
-		while ((line = buffer.readLine()) != null) {
-			for (int x = 0; x < line.toCharArray().length; x++) {
-				this.addElement(MotionlessElements.getFromFileSymbol(line.toCharArray()[x]), x, numLine);
-			}
-			numLine++;
-		}
-		buffer.close();
-		this.setChanged();
-	}*/
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage(java.lang.String)
-	 */
+	
 	public void loadMap(final int id) {
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());
-			String Maptostring = Map.find(id).getMap();
-			this.width = Map.find(id).getWidth();
-			this.height = Map.find(id).getHeight();
+			
+			Map map = Map.find(id);
+			
+			String Maptostring = map.getMap();
+			this.width = map.getWidth();
+			this.height = map.getHeight();
 			int numLine = 0;
 			this.elements = new MotionlessElement[width][height];
+			
 			for (int y = 0; y < height; y++) {
 				for(int x = 0; x < width; x++) {
 					System.out.print(Maptostring.charAt(numLine+x));
 					switch(Maptostring.charAt(numLine+x)) {
 					case 'l':
-						this.mobiles.add(new Lorann(x, y));
+						this.mobiles.add(new Lorann(x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
+						break;
 					case '1':
-						this.mobiles.add(new Demons(new MonsterOne(), x, y));
+						this.addMobile(new Demons(new MonsterOne(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
+						break;
 					case '2':
-						this.mobiles.add(new Demons(new MonsterTwo(), x, y));
+						this.mobiles.add(new Demons(new MonsterTwo(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
+						break;
 					case '3':
-						this.mobiles.add(new Demons(new MonsterThree(), x, y));
+						this.mobiles.add(new Demons(new MonsterThree(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
+						break;
 					case '4':
-						this.mobiles.add(new Demons(new MonsterFour(), x, y));
+						this.mobiles.add(new Demons(new MonsterFour(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
+						break;
 					default:
 						this.addElement(MotionlessElements.getFromSymbol(Maptostring.charAt(numLine+x)), x, y);
+						break;
 					}
 				}
 				numLine+=20;
@@ -124,6 +138,11 @@ public class Model extends Observable implements IModel {
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void setMobileHasChanged() {
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	/*

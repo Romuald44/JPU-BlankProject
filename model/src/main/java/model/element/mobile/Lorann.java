@@ -2,6 +2,7 @@ package model.element.mobile;
 
 import java.awt.Point;
 
+import model.Model;
 import model.element.Sprite;
 
 public class Lorann extends Mobile {
@@ -9,8 +10,9 @@ public class Lorann extends Mobile {
 	private Point lastPosition;
 	private Fireball fireball;
 
-	public Lorann(int x, int y) {
+	public Lorann(int x, int y, Model model) {
 		super(new Sprite("lorann_b.png"));
+		this.setModel(model);
 		this.fireball = new Fireball(this);
 		this.setX(x);
 		this.setY(y);

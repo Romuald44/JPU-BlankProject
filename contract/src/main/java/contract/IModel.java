@@ -16,6 +16,13 @@ public interface IModel {
 	 *          the key
 	 */
 	void loadMap(int id);
+	
+	public void moveUp();
+	public void moveDown();
+	public void moveLeft();
+	public void moveRight();
+	
+	public void setMobileHasChanged();
 
 	/**
 	 * Gets the observable.

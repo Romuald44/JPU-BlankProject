@@ -1,5 +1,8 @@
 package model.element.motionless;
 
+import model.element.Permeability;
+import model.element.Sprite;
+
 public class Gate extends MotionlessElement {
 
 	private boolean open = false;
@@ -9,8 +12,8 @@ public class Gate extends MotionlessElement {
 	}
 
 	@Override
-	public ActionOnHeroes getActionOnHeroes() {
-		return ActionOnHeroes.KILL;
+	public ActionOnLorann getActionOnLorann() {
+		return ActionOnLorann.KILL;
 	}
 	
 	public void open() {

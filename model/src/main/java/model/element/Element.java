@@ -11,6 +11,10 @@ public abstract class Element {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}
+	
+	public Element(final Permeability permeability) {
+		this.setPermeability(permeability);
+	}
 
 	public Sprite getSprite() {
 		return this.sprite;

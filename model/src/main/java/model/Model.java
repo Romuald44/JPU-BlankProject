@@ -1,15 +1,14 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
 
 import contract.IModel;
-import jpu2016.nettle.world.element.motionless.MotionlessElements;
+import model.element.mobile.Lorann;
+import model.element.mobile.Mobile;
+import model.element.motionless.MotionlessElement;
+import model.element.motionless.MotionlessElements;
 
 /**
  * The Class Model.
@@ -18,11 +17,11 @@ import jpu2016.nettle.world.element.motionless.MotionlessElements;
  */
 public class Model extends Observable implements IModel {
 	
-	/*public MotionlessElement elements[][];
+	public MotionlessElement elements[][];
 	public final ArrayList<Mobile> mobiles;
 	private int width;
 	private int	height;
-	private Lorann lorann;*/
+	//private Lorann lorann;
 
 	/** The message. */
 	private String message;
@@ -48,15 +47,15 @@ public class Model extends Observable implements IModel {
 		this.setChanged();
 		this.notifyObservers();
 	}
-	/*
+	
 	private void addElement(final MotionlessElement element, final int x, final int y) {
 		this.elements[x][y] = element;
 		if (element != null) {
-			element.setNettleWorld(this);
+			element.setModel(this);
 		}
 		this.setChanged();
 	}
-
+	/*
 	@Override
 	public void addMobile(final Mobile mobile, final int x, final int y) {
 		this.mobiles.add(mobile);
@@ -98,12 +97,40 @@ public class Model extends Observable implements IModel {
 	public void loadMessage(final int id) {
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());
-			String test = Map.find(id).getMap();
-			for (int i = 0; i < test.length(); i++) {
-				this.addElement(MotionlessElements.getFromFileSymbol(line.toCharArray()[x]), x, numLine);
-			    System.out.println(test.charAt(i));
+			String Maptostring = Map.find(id).getMap();
+			this.width = Map.find(id).getWidth();
+			this.height = Map.find(id).getHeight();
+			int numLine = 0;
+			this.elements = new MotionlessElement[width][height];
+			for (int y = 0; y < height; y++) {
+				for(int x = 0; x < width; x++) {
+					System.out.print(Maptostring.charAt(numLine+x));
+					switch(Maptostring.charAt(numLine+x)) {
+					case 'l':
+						this.mobiles.add(new Lorann(x, y));
+						this.addElement(MotionlessElements.LAND, x, y);
+					case '1':
+						this.mobiles.add(new Demons(new MonsterOne(), x, y));
+						this.addElement(MotionlessElements.LAND, x, y);
+					case '2':
+						this.mobiles.add(new Demons(new MonsterTwo(), x, y));
+						this.addElement(MotionlessElements.LAND, x, y);
+					case '3':
+						this.mobiles.add(new Demons(new MonsterThree(), x, y));
+						this.addElement(MotionlessElements.LAND, x, y);
+					case '4':
+						this.mobiles.add(new Demons(new MonsterFour(), x, y));
+						this.addElement(MotionlessElements.LAND, x, y);
+					default:
+						this.addElement(MotionlessElements.getFromSymbol(Maptostring.charAt(numLine+x)), x, y);
+					}
+				}
+				numLine+=20;
+				System.out.println("");
+			    //System.out.println(numLine);
 			}
 			this.setChanged();
+			
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}

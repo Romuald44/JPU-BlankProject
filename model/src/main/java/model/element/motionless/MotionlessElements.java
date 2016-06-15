@@ -11,9 +11,9 @@ public abstract class MotionlessElements {
 
 	private static MotionlessElement motionlessElements[] = { PURSE, CRYSTALBALL, LAND, GATE, BONEPAT, BONEHORIZ, BONEVERT };
 
-	public static MotionlessElement getFromFileSymbol(final char fileSymbol) {
+	public static MotionlessElement getFromSymbol(final char symbol) {
 		for (final MotionlessElement motionlessElement : motionlessElements) {
-			if (motionlessElement.getSymbol() == fileSymbol) {
+			if (motionlessElement.getSymbol() == symbol) {
 				return motionlessElement;
 			}
 		}

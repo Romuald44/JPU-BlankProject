@@ -1,5 +1,8 @@
 package model.element.motionless;
 
+import model.element.Permeability;
+import model.element.Sprite;
+
 public class CrystalBall extends MotionlessElement {
 
 	public CrystalBall() {
@@ -7,8 +10,8 @@ public class CrystalBall extends MotionlessElement {
 	}
 
 	@Override
-	public ActionOnHeroes getActionOnHeroes() {
-		return ActionOnHeroes.OPEN_GATE;
+	public ActionOnLorann getActionOnLorann() {
+		return ActionOnLorann.OPEN_GATE;
 	}
 
 }

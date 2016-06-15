@@ -1,5 +1,8 @@
 package model.element.motionless;
 
+import model.element.Permeability;
+import model.element.Sprite;
+
 public class Purse extends MotionlessElement {
 
 	public Purse() {
@@ -7,8 +10,8 @@ public class Purse extends MotionlessElement {
 	}
 
 	@Override
-	public ActionOnHeroes getActionOnHeroes() {
-		return ActionOnHeroes.RECOVERABLE;
+	public ActionOnLorann getActionOnLorann() {
+		return ActionOnLorann.RECOVERABLE;
 	}
 
 }

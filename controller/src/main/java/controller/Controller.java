@@ -70,13 +70,13 @@ public class Controller implements IController {
 				this.model.loadMessage(1);
 				break;
 			case Francais:
-				this.model.loadMessage(1);
+				this.model.loadMessage(2);
 				break;
 			case Deutsch:
-				this.model.loadMessage(1);
+				this.model.loadMessage(3);
 				break;
 			case Indonesia:
-				this.model.loadMessage(1);
+				this.model.loadMessage(4);
 				break;
 
 			default:

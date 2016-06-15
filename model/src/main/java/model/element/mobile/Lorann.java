@@ -9,9 +9,11 @@ public class Lorann extends Mobile {
 	private Point lastPosition;
 	private Fireball fireball;
 
-	public Lorann() {
-		super(new Sprite("lorann_b"));
+	public Lorann(int x, int y) {
+		super(new Sprite("lorann_b.png"));
 		this.fireball = new Fireball(this);
+		this.setX(x);
+		this.setY(y);
 	}
 
 	public Point getLastPosition() {
@@ -36,6 +38,10 @@ public class Lorann extends Mobile {
 	
 	public void disableFireball() {
 		this.fireball.deactivate();
+	}
+	
+	public void deviateFireball() {
+		this.fireball.deviate();
 	}
 	
 	public void moveFireball() {

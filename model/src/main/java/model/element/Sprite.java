@@ -11,7 +11,7 @@ public class Sprite {
 
 	public Sprite(final String picture) {
 		try {
-			this.picture = ImageIO.read(new File("images/" + picture));
+			this.picture = ImageIO.read(new File("view/src/main/resources/" + picture));
 		} catch (final IOException e) {
 			e.printStackTrace();
 		}

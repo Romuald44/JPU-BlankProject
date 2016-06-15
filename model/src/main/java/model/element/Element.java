@@ -3,8 +3,8 @@ package model.element;
 import model.Model;
 
 public abstract class Element {
-	private Sprite				sprite;
-	private Permeability	permeability;
+	private Sprite sprite;
+	private Permeability permeability;
 	private Model model;
 
 	public Element(final Sprite sprite, final Permeability permeability) {

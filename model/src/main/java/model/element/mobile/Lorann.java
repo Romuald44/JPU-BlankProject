@@ -38,6 +38,10 @@ public class Lorann extends Mobile {
 		this.fireball.deactivate();
 	}
 	
+	public void deviateFireball() {
+		this.fireball.deviate();
+	}
+	
 	public void moveFireball() {
 		this.fireball.move();
 	}

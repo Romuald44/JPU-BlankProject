@@ -23,14 +23,14 @@ public abstract class Mobile extends Element {
 	}
 
 	protected void setX(final int x) {
-		if ((x >= 0) && (x < this.getNettleWorld().getWidth())) {
+		if ((x >= 0) && (x < this.getModel().getWidth())) {
 			this.position.x = x;
 			this.getModel().setMobileHasChanged();
 		}
 	}
 
 	protected void setY(final int y) {
-		if ((y >= 0) && (y < this.getNettleWorld().getHeight())) {
+		if ((y >= 0) && (y < this.getModel().getHeight())) {
 			this.position.y = y;
 			this.getModel().setMobileHasChanged();
 		}
@@ -44,55 +44,79 @@ public abstract class Mobile extends Element {
 		return (this.getModel().getElements(x, y).getPermeability() != Permeability.BLOCKING);
 	}
 
-	public void moveUp() {
+	public boolean moveUp() {
+		boolean bool = false;
 		if (this.isMovePossible(this.getX(), this.getY() - 1)) {
 			this.setY(this.getY() - 1);
+			bool = true;
 		}
+		return bool;
 	}
 
-	public void moveLeft() {
+	public boolean moveLeft() {
+		boolean bool = false;
 		if (this.isMovePossible(this.getX() - 1, this.getY())) {
 			this.setX(this.getX() - 1);
+			bool = true;
 		}
+		return bool;
 	}
 
-	public void moveDown() {
+	public boolean moveDown() {
+		boolean bool = false;
 		if (this.isMovePossible(this.getX(), this.getY() + 1)) {
 			this.setY(this.getY() + 1);
+			bool = true;
 		}
+		return bool;
 	}
 
-	public void moveRight() {
+	public boolean moveRight() {
+		boolean bool = false;
 		if (this.isMovePossible(this.getX() + 1, this.getY())) {
 			this.setX(this.getX() + 1);
+			bool = true;
 		}
+		return bool;
 	}
 
-	public void moveUpLeft() {
+	public boolean moveUpLeft() {
+		boolean bool = false;
 		if (this.isMovePossible(this.getX() - 1, this.getY() - 1)) {
 			this.setX(this.getX() - 1);
 			this.setY(this.getY() - 1);
+			bool = true;
 		}
+		return bool;
 	}
 
-	public void moveUpRight() {
+	public boolean moveUpRight() {
+		boolean bool = false;
 		if (this.isMovePossible(this.getX() + 1, this.getY() - 1)) {
 			this.setX(this.getX() + 1);
 			this.setY(this.getY() - 1);
+			bool = true;
 		}
+		return bool;
 	}
 
-	public void moveDownLeft() {
+	public boolean moveDownLeft() {
+		boolean bool = false;
 		if (this.isMovePossible(this.getX() - 1, this.getY() + 1)) {
 			this.setX(this.getX() - 1);
 			this.setY(this.getY() + 1);
+			bool = true;
 		}
+		return bool;
 	}
 
-	public void moveDownRight() {
+	public boolean moveDownRight() {
+		boolean bool = false;
 		if (this.isMovePossible(this.getX() + 1, this.getY() + 1)) {
 			this.setX(this.getX() + 1);
 			this.setY(this.getY() + 1);
+			bool = true;
 		}
+		return bool;
 	}
 }

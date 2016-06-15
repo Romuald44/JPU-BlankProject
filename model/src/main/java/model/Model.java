@@ -59,6 +59,15 @@ public class Model extends Observable implements IModel {
 		this.getLorann().moveRight();
 	}
 	
+	public void launchFireball() {
+		if(!this.getLorann().getFireball().getActive()) {
+			this.getLorann().launchFireball();
+		}
+		else {
+			this.getLorann().deviateFireball();
+		}
+	}
+	
 	private void addElement(final MotionlessElement element, final int x, final int y) {
 		this.elements[x][y] = element;
 		if (element != null) {

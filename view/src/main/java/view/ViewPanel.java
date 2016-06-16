@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -25,6 +26,7 @@ class ViewPanel extends JPanel implements Observer {
 	private IMotionLess[][] element;
 	private ArrayList<IMobile> mobile = new ArrayList<IMobile>();
 
+	private Graphics graphics;
 	/**
 	 * Instantiates a new view panel.
 	 *
@@ -34,6 +36,7 @@ class ViewPanel extends JPanel implements Observer {
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
+		this.graphics = this.getGraphics();
 	}
 
 	/**
@@ -100,5 +103,10 @@ class ViewPanel extends JPanel implements Observer {
 				
 			}
 		}
+		
+		Font font = new Font("Courrier", Font.BOLD, 40);
+		graphics.setFont(font);
+		graphics.setColor(Color.YELLOW);
+		graphics.drawString("SCORE : ", 100, 750);
 	}
 }

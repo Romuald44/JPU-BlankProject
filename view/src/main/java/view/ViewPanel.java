@@ -107,6 +107,6 @@ class ViewPanel extends JPanel implements Observer {
 		Font font = new Font("Courrier", Font.BOLD, 40);
 		graphics.setFont(font);
 		graphics.setColor(Color.YELLOW);
-		graphics.drawString("SCORE : ", 100, 750);
+		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 100, 750);
 	}
 }

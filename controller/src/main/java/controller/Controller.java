@@ -2,12 +2,12 @@ package controller;
 
 import java.io.IOException;
 
+import contract.ActionOnLorann;
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
-import jpu2016.nettle.view.NettleView;
-import jpu2016.nettle.world.element.motionless.IDoActionOnHeroes;
+import contract.IActionOnLorann;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -89,32 +89,24 @@ public class Controller implements IController {
 			default:
 				break;
 		}
+		this.getWorldAnswer();
 	}
 	
-	private void getWorldAnswer() throws IOException {
-		final IDoActionOnHeroes element = this.getActuelNettleWorld().getElements(this.getActuelNettleWorld().getHero().getX(),
-				this.getActuelNettleWorld().getHero().getY());
+	private void getWorldAnswer() {
+		final IActionOnLorann element = (IActionOnLorann) this.model.getElements(this.model.getLorann().getX(), this.model.getLorann().getY());
 
-		switch (element.getActionOnHeroes()) {
-			case ENTER_CAMP:
-				NettleView.displayMessage("You enter a camp.");
-				this.resolveEnterCamp();
+		switch (element.getActionOnLorann()) {
+			case RECOVERABLE:
+				this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
+				System.out.println("Recuperer Purse");
 				break;
-			case ENTER_TOWN:
-				NettleView.displayMessage("You enter a town.");
-				this.resolveEnterTown();
+			case OPEN_GATE:
+				this.model.openTheDoor();
+				//this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
+				System.out.println("Open the door");
 				break;
-			case ENTER_MONASTERY:
-				NettleView.displayMessage("You enter a monastery.");
-				this.resolveEnterMonastery();
-				break;
-			case EXIT:
-				NettleView.displayMessage("You leave this place.");
-				this.exitMetting();
-				break;
-			case ESCAPE:
-				NettleView.displayMessage("You escape this place.");
-				this.escapeMetting();
+			case KILL:
+				System.out.println("You dead");
 				break;
 			case NOP:
 			default:

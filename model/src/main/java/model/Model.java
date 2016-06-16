@@ -7,6 +7,8 @@ import java.util.Observable;
 
 import contract.IMobile;
 import contract.IModel;
+import contract.IMotionLess;
+import model.element.Element;
 import model.element.mobile.Demons;
 import model.element.mobile.Fireball;
 import model.element.mobile.Lorann;
@@ -15,8 +17,12 @@ import model.element.mobile.MonsterFour;
 import model.element.mobile.MonsterOne;
 import model.element.mobile.MonsterThree;
 import model.element.mobile.MonsterTwo;
+import model.element.motionless.CrystalBall;
+import model.element.motionless.Gate;
+import model.element.motionless.Land;
 import model.element.motionless.MotionlessElement;
 import model.element.motionless.MotionlessElements;
+import model.element.motionless.Purse;
 
 /**
  * The Class Model.
@@ -125,15 +131,31 @@ public class Model extends Observable implements IModel {
 		return this.map;
 	}
 	
-	private void addElement(final MotionlessElement element, final int x, final int y) {
-		this.elements[x][y] = element;
+	public void addElement(final IMotionLess element, final int x, final int y) {
+		this.elements[x][y] = (MotionlessElement) element;
 		if (element != null) {
-			element.setModel(this);
+			((Element) element).setModel(this);
 		}
 		if(x == 19 && y == 11) {
 			this.setChanged();
 			this.notifyObservers(this.elements);
 		}
+	}
+	
+	public void replaceLand(final int x, final int y) {
+		if(this.elements[x][y] instanceof Purse) {
+			((Purse)this.elements[x][y]).setPoints(650);
+		}
+		else if(this.elements[x][y] instanceof CrystalBall) {
+			this.getGate().open();
+		}
+		this.elements[x][y] = new Land();
+		this.setChanged();
+		this.notifyObservers(this.elements);
+	}
+	
+	public int getScore() {
+		return this.getPurse().getPoints();
 	}
 	
 	public int getWidth() {
@@ -159,6 +181,10 @@ public class Model extends Observable implements IModel {
 		return this.mobiles;
 	}
 	
+	public void openTheDoor() {
+		this.getGate().open();	
+	}
+	
 	public Lorann getLorann() {
 		for(IMobile lorann : mobiles) {
 			if(lorann instanceof Lorann) {
@@ -168,10 +194,30 @@ public class Model extends Observable implements IModel {
 		return null;
 	}
 	
+	public Purse getPurse() {
+		for(int x = 0; x < this.getWidth(); x++) {
+			for(int y = 0; y < this.getHeight(); y++) {
+				if(this.elements[x][y] instanceof Purse) {
+					return (Purse) this.elements[x][y];
+				}
+			}
+		}
+		return null;
+	}
+	
+	private Gate getGate() {
+		for(int x = 0; x < this.getWidth(); x++) {
+			for(int y = 0; y < this.getHeight(); y++) {
+				if(this.elements[x][y] instanceof Gate) {
+					return (Gate) this.elements[x][y];
+				}
+			}
+		}
+		return null;
+	}
+	
 	public void addMobile(final Mobile mobile) {
 		this.mobiles.add(mobile);
-		/*this.setChanged();
-		this.notifyObservers();*/
 	}
 	
 	public void loadMap(final int id) {

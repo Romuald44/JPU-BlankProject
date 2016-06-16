@@ -7,7 +7,7 @@ import model.element.Sprite;
 
 public class Purse extends MotionlessElement implements IPurse {
 
-	private int points = 650;
+	private int points = 0;
 	
 	public Purse() {
 		super(new Sprite("purse.png"), Permeability.PENETRABLE, 'p');
@@ -23,6 +23,6 @@ public class Purse extends MotionlessElement implements IPurse {
 	}
 
 	public void setPoints(int points) {
-		this.points = points;
+		this.points += points;
 	}
 }

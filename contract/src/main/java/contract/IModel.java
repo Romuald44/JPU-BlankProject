@@ -34,6 +34,12 @@ public interface IModel {
 	public IMotionLess[][] getArrayElement();
 	public ArrayList<IMobile> getMobiles();
 	
+	public void replaceLand(final int x, final int y);
+	public int getScore();
+	public void openTheDoor();
+	public IMotionLess getElements(final int x, final int y);
+	public ILorann getLorann();
+	
 	public int getWidth();
 	public int getHeight();
 	/**

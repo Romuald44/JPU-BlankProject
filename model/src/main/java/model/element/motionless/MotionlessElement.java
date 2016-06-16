@@ -25,7 +25,7 @@ public abstract class MotionlessElement extends Element implements IActionOnLora
 		return this.getSprite().getImage();
 	}
 
-	public IActionOnLorann getActionOnLorann() {
-		return (IActionOnLorann)ActionOnLorann.NOP;
+	public ActionOnLorann getActionOnLorann() {
+		return ActionOnLorann.NOP;
 	}
 }

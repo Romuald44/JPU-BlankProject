@@ -1,5 +1,6 @@
 package model.element.motionless;
 
+import contract.ActionOnLorann;
 import model.element.Permeability;
 import model.element.Sprite;
 

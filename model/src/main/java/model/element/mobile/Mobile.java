@@ -23,7 +23,7 @@ public abstract class Mobile extends Element implements IMobile {
 	public int getY() {
 		return this.position.y;
 	}
-	
+
 	public Image getImage() {
 		return this.getSprite().getImage();
 	}

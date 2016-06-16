@@ -1,6 +1,5 @@
 package model.element;
 
-import contract.IPermeability;
 import model.Model;
 
 public abstract class Element {//implements IPermeability
@@ -12,7 +11,7 @@ public abstract class Element {//implements IPermeability
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}
-	
+
 	public Element(final Permeability permeability) {
 		this.setPermeability(permeability);
 	}

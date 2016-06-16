@@ -36,7 +36,7 @@ public class Fireball extends Mobile implements IFireball {
 	public void deactivate() {
 		this.active = false;
 	}
-	
+
 	public void deviate() {
 		if(this.active == true) {
 			if(this.lorann.getPosition().x < this.getPosition().x) {

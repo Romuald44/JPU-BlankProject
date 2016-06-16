@@ -29,6 +29,8 @@ class ViewFrame extends JFrame implements KeyListener {
 	/** The controller. */
 	private IController controller;
 	
+	private final HashSet<KeyEvent> pressed = new HashSet<KeyEvent>();
+	
 	/**
 	 * Instantiates a new view frame.
 	 *
@@ -173,5 +175,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(final KeyEvent e) {
+		pressed.remove(e);
 	}
 }

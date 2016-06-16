@@ -1,8 +1,10 @@
 package model.element.mobile;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import contract.ILorann;
+import contract.ControllerOrder;
 import model.Model;
 import model.element.Sprite;
 
@@ -10,6 +12,7 @@ public class Lorann extends Mobile implements ILorann {
 
 	private Point lastPosition;
 	private Fireball fireball;
+	private ArrayList<ControllerOrder> orders;
 
 	public Lorann(int x, int y, Model model) {
 		super(new Sprite("lorann_b.png"));
@@ -17,6 +20,21 @@ public class Lorann extends Mobile implements ILorann {
 		this.fireball = new Fireball(this, model);
 		this.setX(x);
 		this.setY(y);
+	}
+	
+	public ArrayList<ControllerOrder> getOrders() {
+		return orders;
+	}
+	
+	public void addOrder(ControllerOrder order) {
+		this.orders.add(order);
+	}
+
+	public void removeOrder(ControllerOrder order) {
+		this.orders.remove(order);
+	}
+	public boolean isOrder(ControllerOrder order) {
+		return this.orders.contains(order);
 	}
 
 	public Point getLastPosition() {

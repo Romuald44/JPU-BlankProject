@@ -12,10 +12,10 @@ import contract.IView;
 public class Controller implements IController {
 
 	/** The view. */
-	private IView		view;
+	private IView view;
 
 	/** The model. */
-	private IModel	model;
+	private IModel model;
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -27,7 +27,7 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		model.loadMap(4);
+		model.loadMap(1);
 		this.view.Swing();
 	}
 
@@ -81,18 +81,6 @@ public class Controller implements IController {
 				break;
 			case SPACE:
 				this.model.launchFireball();
-				break;
-			case UPLEFT:
-				this.model.moveUpLeft();
-				break;
-			case UPRIGHT:
-				this.model.moveUpRight();
-				break;
-			case DOWNLEFT:
-				this.model.moveDownLeft();
-				break;
-			case DOWNRIGHT:
-				this.model.moveDownRight();
 				break;
 			default:
 				break;

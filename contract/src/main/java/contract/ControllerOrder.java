@@ -12,9 +12,5 @@ public enum ControllerOrder {
 	DOWN, /** Touch DOWN */
 	LEFT, /** Touch LEFT */
 	RIGHT, /** Touch RIGHT */
-	UPLEFT,
-	UPRIGHT,
-	DOWNLEFT,
-	DOWNRIGHT,
 	SPACE
 }

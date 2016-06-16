@@ -22,6 +22,8 @@ public class Fireball extends Mobile {
 
 	public void reactivate() {
 		this.active = true;
+		this.setX(this.lorann.getLastPosition().x);
+		this.setY(this.lorann.getLastPosition().y);
 		this.direction.x = lorann.getLastPosition().x - lorann.getPosition().x;
 		this.direction.y = lorann.getLastPosition().y - lorann.getPosition().y;
 	}

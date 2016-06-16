@@ -22,7 +22,7 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/** The controller. */
 	private IController controller;
-	
+
 	private final HashSet<KeyEvent> pressed = new HashSet<KeyEvent>();
 	
 	/**

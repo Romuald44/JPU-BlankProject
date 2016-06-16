@@ -28,7 +28,7 @@ public class View implements IView, Runnable {
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
 	}
-	
+
 	public void Swing() {
 		SwingUtilities.invokeLater(this);
 	}

@@ -11,7 +11,7 @@ public abstract class Element {//implements IPermeability
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}
-	
+
 	public Element(final Permeability permeability) {
 		this.setPermeability(permeability);
 	}

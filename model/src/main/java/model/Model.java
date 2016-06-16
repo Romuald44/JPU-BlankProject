@@ -213,7 +213,6 @@ public class Model extends Observable implements IModel {
 			    //System.out.println(numLine);
 			}
 			
-			
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}

@@ -22,11 +22,11 @@ public class Lorann extends Mobile implements ILorann {
 		this.setX(x);
 		this.setY(y);
 	}
-	
+
 	public ArrayList<ControllerOrder> getOrders() {
 		return orders;
 	}
-	
+
 	public void addOrder(ControllerOrder order) {
 		this.orders.add(order);
 	}
@@ -34,6 +34,7 @@ public class Lorann extends Mobile implements ILorann {
 	public void removeOrder(ControllerOrder order) {
 		this.orders.remove(order);
 	}
+
 	public boolean isOrder(ControllerOrder order) {
 		return this.orders.contains(order);
 	}
@@ -45,7 +46,7 @@ public class Lorann extends Mobile implements ILorann {
 	public void setLastPosition(Point lastPosition) {
 		this.lastPosition = lastPosition;
 	}
-	
+
 	public void setLastPosition(final int x, final int y) {
 		this.lastPosition.x = x;
 		this.lastPosition.y = y;
@@ -62,15 +63,15 @@ public class Lorann extends Mobile implements ILorann {
 	public void launchFireball() {
 		this.fireball.reactivate();
 	}
-	
+
 	public void disableFireball() {
 		this.fireball.deactivate();
 	}
-	
+
 	public void deviateFireball() {
 		this.fireball.deviate();
 	}
-	
+
 	public void moveFireball() {
 		this.fireball.move();
 	}

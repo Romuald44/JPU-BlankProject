@@ -68,7 +68,6 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if(this.active) {

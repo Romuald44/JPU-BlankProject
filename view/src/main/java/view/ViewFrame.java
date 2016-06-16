@@ -1,15 +1,9 @@
 package view;
 
-import java.awt.Color;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Iterator;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 

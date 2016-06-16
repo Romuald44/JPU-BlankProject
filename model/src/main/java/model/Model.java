@@ -7,7 +7,6 @@ import java.util.Observable;
 
 import contract.IMobile;
 import contract.IModel;
-import contract.IMotionLess;
 import model.element.mobile.Demons;
 import model.element.mobile.Lorann;
 import model.element.mobile.Mobile;
@@ -39,30 +38,42 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void moveUp() {
-		Point lastPosition = this.getLorann().getPosition();
+		int x = this.getLorann().getX();
+		int y = this.getLorann().getY();
+		System.out.println(x + " " + y);
 		if(this.getLorann().moveUp()) {
-			this.getLorann().setLastPosition(lastPosition);
+			this.getLorann().setLastPosition(x, y);
+			System.out.println(x + " " + y);
 		}
 	}
 	
 	public void moveDown() {
-		Point lastPosition = this.getLorann().getPosition();
+		int x = this.getLorann().getX();
+		int y = this.getLorann().getY();
+		System.out.println(x + " " + y);
 		if(this.getLorann().moveDown()) {
-			this.getLorann().setLastPosition(lastPosition);
+			this.getLorann().setLastPosition(x, y);
+			System.out.println(x + " " + y);
 		}
 	}
 	
 	public void moveLeft() {
-		Point lastPosition = this.getLorann().getPosition();
+		int x = this.getLorann().getX();
+		int y = this.getLorann().getY();
+		System.out.println(x + " " + y);
 		if(this.getLorann().moveLeft()) {
-			this.getLorann().setLastPosition(lastPosition);
+			this.getLorann().setLastPosition(x, y);
+			System.out.println(x + " " + y);
 		}
 	}
 	
 	public void moveRight() {
-		Point lastPosition = this.getLorann().getPosition();
+		int x = this.getLorann().getX();
+		int y = this.getLorann().getY();
+		System.out.println(x + " " + y);
 		if(this.getLorann().moveRight()) {
-			this.getLorann().setLastPosition(lastPosition);
+			this.getLorann().setLastPosition(x, y);
+			System.out.println(x + " " + y);
 		}
 	}
 	

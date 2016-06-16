@@ -14,6 +14,7 @@ public class Lorann extends Mobile implements ILorann {
 	public Lorann(int x, int y, Model model) {
 		super(new Sprite("lorann_b.png"));
 		this.setModel(model);
+		this.lastPosition = new Point();
 		this.fireball = new Fireball(this, model);
 		this.setX(x);
 		this.setY(y);
@@ -25,6 +26,11 @@ public class Lorann extends Mobile implements ILorann {
 
 	public void setLastPosition(Point lastPosition) {
 		this.lastPosition = lastPosition;
+	}
+	
+	public void setLastPosition(final int x, final int y) {
+		this.lastPosition.x = x;
+		this.lastPosition.y = y;
 	}
 
 	public Fireball getFireball() {

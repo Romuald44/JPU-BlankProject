@@ -1,6 +1,5 @@
 package model.element;
 
-import contract.IPermeability;
 import model.Model;
 
 public abstract class Element {//implements IPermeability

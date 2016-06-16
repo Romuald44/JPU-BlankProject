@@ -3,13 +3,12 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+import contract.IMotionLess;
 
 /**
  * The Class ViewPanel.
@@ -59,6 +58,7 @@ class ViewPanel extends JPanel implements Observer {
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(final Observable arg0, final Object arg1) {
+		System.out.println("element + mobile");
 		this.repaint();
 	}
 
@@ -69,6 +69,7 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
+		IMotionLess elements[][];
 		graphics.setColor(Color.black);
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		

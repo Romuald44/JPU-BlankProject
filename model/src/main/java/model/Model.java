@@ -96,6 +96,7 @@ public class Model extends Observable implements IModel {
 			element.setModel(this);
 		}
 		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public int getWidth() {
@@ -166,7 +167,7 @@ public class Model extends Observable implements IModel {
 				System.out.println("");
 			    //System.out.println(numLine);
 			}
-			this.setChanged();
+			
 			
 		} catch (final SQLException e) {
 			e.printStackTrace();

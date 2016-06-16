@@ -1,10 +1,13 @@
 package model.element.motionless;
 
+import java.awt.Image;
+
+import contract.IMotionLess;
 import model.element.Element;
 import model.element.Permeability;
 import model.element.Sprite;
 
-public abstract class MotionlessElement extends Element implements IActionOnLorann {
+public abstract class MotionlessElement extends Element implements IActionOnLorann, IMotionLess {
 	private final char symbol;
 
 	public MotionlessElement(final Sprite sprite, final Permeability permeability, final char symbol) {
@@ -19,6 +22,10 @@ public abstract class MotionlessElement extends Element implements IActionOnLora
 
 	public char getSymbol() {
 		return this.symbol;
+	}
+	
+	public Image getImage() {
+		return this.getImage();
 	}
 
 	public ActionOnLorann getActionOnLorann() {

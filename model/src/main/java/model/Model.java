@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import contract.IMobile;
 import contract.IModel;
 import contract.IMotionLess;
 import model.element.mobile.Demons;
@@ -25,7 +26,7 @@ import model.element.motionless.MotionlessElements;
 public class Model extends Observable implements IModel {
 	
 	public MotionlessElement elements[][];
-	public final ArrayList<Mobile> mobiles;
+	public final ArrayList<IMobile> mobiles;
 	private int width;
 	private int	height;
 	private Map map;
@@ -34,16 +35,7 @@ public class Model extends Observable implements IModel {
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.mobiles = new ArrayList<Mobile>();
-	}
-	
-	public Lorann getLorann() {
-		for(int i = 0; i < this.mobiles.size(); i++) {
-			if(this.mobiles.get(i) instanceof Lorann) {
-				return (Lorann)this.mobiles.get(i);
-			}
-		}
-		return null;
+		this.mobiles = new ArrayList<IMobile>();
 	}
 	
 	public void moveUp() {
@@ -145,8 +137,17 @@ public class Model extends Observable implements IModel {
 		return this.elements;
 	}
 	
-	public ArrayList<Mobile> getMobiles() {
+	public ArrayList<IMobile> getMobiles() {
 		return this.mobiles;
+	}
+	
+	public Lorann getLorann() {
+		for(IMobile lorann : mobiles) {
+			if(lorann instanceof Lorann) {
+				return (Lorann) lorann;
+			}
+		}
+		return null;
 	}
 	
 	public void addMobile(final Mobile mobile) {

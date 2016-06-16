@@ -1,5 +1,6 @@
 package model.element.mobile;
 
+import java.awt.Image;
 import java.awt.Point;
 
 import contract.IMobile;
@@ -21,6 +22,10 @@ public abstract class Mobile extends Element implements IMobile {
 
 	public int getY() {
 		return this.position.y;
+	}
+	
+	public Image getImage() {
+		return this.getSprite().getImage();
 	}
 
 	protected void setX(final int x) {

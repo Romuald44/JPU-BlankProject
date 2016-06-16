@@ -3,11 +3,13 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import contract.IMobile;
 import contract.IMotionLess;
 
 /**
@@ -21,6 +23,7 @@ class ViewPanel extends JPanel implements Observer {
 	private ViewFrame viewFrame;
 	
 	private IMotionLess[][] element;
+	private ArrayList<IMobile> mobile = new ArrayList<IMobile>();
 
 	/**
 	 * Instantiates a new view panel.
@@ -58,7 +61,7 @@ class ViewPanel extends JPanel implements Observer {
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(final Observable arg0, final Object element) {
-		this.element = viewFrame.getModel().getArrayElement();
+		//this.element = viewFrame.getModel().getArrayElement();
 		this.repaint();
 	}
 
@@ -72,6 +75,8 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.setColor(Color.black);
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		this.setBackground(Color.black);
+		this.element = viewFrame.getModel().getArrayElement();
+		this.mobile = viewFrame.getModel().getMobiles();
 		
 		/*int i=0;
 		for(IMotionLess[] test : element) {
@@ -82,8 +87,12 @@ class ViewPanel extends JPanel implements Observer {
 		
 		for(int y = 0; y < viewFrame.getModel().getHeight(); y++) {
 			for(int x = 0; x < viewFrame.getModel().getWidth(); x++) {
-				graphics.drawImage(this.element[x][y].getImage(), x*60, y*60, 60, 60, this);
+				graphics.drawImage(this.element[x][y].getImage(), x*64, y*64, 64, 64, this);
 			}
+		}
+		
+		for(IMobile test : mobile) {
+			graphics.drawImage(test.getImage(), test.getX()*64, test.getY()*64, 64, 64, this);
 		}
 	}
 }

@@ -19,8 +19,8 @@ class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
 	private ViewFrame viewFrame;
-	/** The Constant serialVersionUID. */
-	private static final long	serialVersionUID	= -998294702363713521L;
+	
+	private IMotionLess[][] element;
 
 	/**
 	 * Instantiates a new view panel.
@@ -57,8 +57,8 @@ class ViewPanel extends JPanel implements Observer {
 	 *
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
-	public void update(final Observable arg0, final Object arg1) {
-		System.out.println("element + mobile");
+	public void update(final Observable arg0, final Object element) {
+		this.element = viewFrame.getModel().getArrayElement();
 		this.repaint();
 	}
 
@@ -69,9 +69,20 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-		IMotionLess elements[][];
 		graphics.setColor(Color.black);
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		
+		/*int i=0;
+		for(IMotionLess[] test : element) {
+			System.out.println(test[i].getSymbol());
+			graphics.drawImage(test[i].getImage(), 0, 0, this);
+			i++;
+		}*/
+		
+		for(int y = 0; y < viewFrame.getModel().getHeight(); y++) {
+			for(int x = 0; x < viewFrame.getModel().getWidth(); x++) {
+				graphics.drawImage(this.element[x][y].getImage(), x*32, y*32, this);
+			}
+		}
 	}
 }

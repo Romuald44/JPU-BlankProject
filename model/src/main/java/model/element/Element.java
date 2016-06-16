@@ -1,8 +1,9 @@
 package model.element;
 
+import contract.IPermeability;
 import model.Model;
 
-public abstract class Element {
+public abstract class Element {//implements IPermeability
 	private Sprite sprite;
 	private Permeability permeability;
 	private Model model;

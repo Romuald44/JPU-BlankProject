@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import contract.IModel;
+import contract.IMotionLess;
 import model.element.mobile.Demons;
 import model.element.mobile.Lorann;
 import model.element.mobile.Mobile;
@@ -119,8 +120,10 @@ public class Model extends Observable implements IModel {
 		if (element != null) {
 			element.setModel(this);
 		}
-		this.setChanged();
-		this.notifyObservers();
+		if(x == 19 && y == 11) {
+			this.setChanged();
+			this.notifyObservers(this.elements);
+		}
 	}
 	
 	public int getWidth() {
@@ -138,14 +141,18 @@ public class Model extends Observable implements IModel {
 		return this.elements[x][y];
 	}
 	
+	public MotionlessElement[][] getArrayElement() {
+		return this.elements;
+	}
+	
 	public ArrayList<Mobile> getMobiles() {
 		return this.mobiles;
 	}
 	
 	public void addMobile(final Mobile mobile) {
 		this.mobiles.add(mobile);
-		this.setChanged();
-		this.notifyObservers();
+		/*this.setChanged();
+		this.notifyObservers();*/
 	}
 	
 	public void loadMap(final int id) {
@@ -163,23 +170,23 @@ public class Model extends Observable implements IModel {
 					System.out.print(Maptostring.charAt(numLine+x));
 					switch(Maptostring.charAt(numLine+x)) {
 					case 'l':
-						this.mobiles.add(new Lorann(x, y, this));
+						//this.addMobile(new Lorann(x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					case '1':
-						this.addMobile(new Demons(new MonsterOne(), x, y, this));
+						//this.addMobile(new Demons(new MonsterOne(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					case '2':
-						this.mobiles.add(new Demons(new MonsterTwo(), x, y, this));
+						//this.addMobile(new Demons(new MonsterTwo(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					case '3':
-						this.mobiles.add(new Demons(new MonsterThree(), x, y, this));
+						//this.addMobile(new Demons(new MonsterThree(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					case '4':
-						this.mobiles.add(new Demons(new MonsterFour(), x, y, this));
+						//this.addMobile(new Demons(new MonsterFour(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					default:

@@ -29,7 +29,10 @@ public interface IModel {
 	public void launchFireball();
 	
 	public void setMobileHasChanged();
-
+	
+	public IMotionLess[][] getArrayElement();
+	public int getWidth();
+	public int getHeight();
 	/**
 	 * Gets the observable.
 	 *

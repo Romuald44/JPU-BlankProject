@@ -3,5 +3,7 @@ package contract;
 import java.awt.Image;
 
 public interface IMotionLess {
-    Image getImage();
+	public char getSymbol();
+	//IPermeability getPermeability();
+    public Image getImage();
 }

@@ -22,7 +22,7 @@ public class Lorann extends Mobile {
 		return this.lastPosition;
 	}
 
-	private void setLastPosition(Point lastPosition) {
+	public void setLastPosition(Point lastPosition) {
 		this.lastPosition = lastPosition;
 	}
 

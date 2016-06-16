@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Point;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -45,36 +46,59 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void moveUp() {
-		this.getLorann().moveUp();
+		Point lastPosition = this.getLorann().getPosition();
+		if(this.getLorann().moveUp()) {
+			this.getLorann().setLastPosition(lastPosition);
+		}
 	}
 	
 	public void moveDown() {
-		this.getLorann().moveDown();
+		Point lastPosition = this.getLorann().getPosition();
+		if(this.getLorann().moveDown()) {
+			this.getLorann().setLastPosition(lastPosition);
+		}
 	}
 	
 	public void moveLeft() {
-		this.getLorann().moveLeft();
+		Point lastPosition = this.getLorann().getPosition();
+		if(this.getLorann().moveLeft()) {
+			this.getLorann().setLastPosition(lastPosition);
+		}
 	}
 	
 	public void moveRight() {
-		this.getLorann().moveRight();
+		Point lastPosition = this.getLorann().getPosition();
+		if(this.getLorann().moveRight()) {
+			this.getLorann().setLastPosition(lastPosition);
+		}
 	}
 	
 	public void moveUpLeft() {
-		System.out.println("UPLEFT");
-		this.getLorann().moveUpLeft();
+		Point lastPosition = this.getLorann().getPosition();
+		if(this.getLorann().moveUpLeft()) {
+			this.getLorann().setLastPosition(lastPosition);
+		}
 	}
 	
 	public void moveUpRight() {
-		this.getLorann().moveUpRight();
+		Point lastPosition = this.getLorann().getPosition();
+		if(this.getLorann().moveUpRight()) {
+			this.getLorann().setLastPosition(lastPosition);
+		}
 	}
 	
 	public void moveDownLeft() {
-		this.getLorann().moveDownLeft();
+		Point lastPosition = this.getLorann().getPosition();
+		if(this.getLorann().moveDownLeft()) {
+			this.getLorann().setLastPosition(lastPosition);
+		}
 	}
 	
 	public void moveDownRight() {
-		this.getLorann().moveDownRight();
+		Point lastPosition = this.getLorann().getPosition();
+		if(this.getLorann().moveDownRight()) {
+			this.getLorann().setLastPosition(lastPosition);
+		}
 	}
 	
 	public void launchFireball() {

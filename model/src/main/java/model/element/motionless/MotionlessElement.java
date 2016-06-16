@@ -2,6 +2,8 @@ package model.element.motionless;
 
 import java.awt.Image;
 
+import contract.ActionOnLorann;
+import contract.IActionOnLorann;
 import contract.IMotionLess;
 import model.element.Element;
 import model.element.Permeability;
@@ -23,7 +25,7 @@ public abstract class MotionlessElement extends Element implements IActionOnLora
 		return this.getSprite().getImage();
 	}
 
-	public ActionOnLorann getActionOnLorann() {
-		return ActionOnLorann.NOP;
+	public IActionOnLorann getActionOnLorann() {
+		return (IActionOnLorann)ActionOnLorann.NOP;
 	}
 }

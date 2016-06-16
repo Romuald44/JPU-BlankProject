@@ -64,14 +64,13 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 	}
 
 	public void run() {
-		try {
-			this.getModel().getThreadFireball().sleep(500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		while(true) {
-			System.out.println("Thread");
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(this.active) {
 				boolean bool = false;
 				if(this.direction.x != 0 && this.direction.y == 0) {

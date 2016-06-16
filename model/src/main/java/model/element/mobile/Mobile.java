@@ -51,7 +51,6 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public boolean moveUp() {
-		//System.out.println("moveUp");
 		boolean bool = false;
 		if (this.isMovePossible(this.getX(), this.getY() - 1)) {
 			this.setY(this.getY() - 1);

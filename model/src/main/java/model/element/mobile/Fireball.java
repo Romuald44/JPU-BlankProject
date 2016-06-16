@@ -2,16 +2,19 @@ package model.element.mobile;
 
 import java.awt.Point;
 
+import contract.IFireball;
+import model.Model;
 import model.element.Sprite;
 
-public class Fireball extends Mobile {
+public class Fireball extends Mobile implements IFireball {
 
 	private Point direction;
 	private boolean active;
 	private Lorann lorann;
 
-	public Fireball(Lorann lorann) {
+	public Fireball(Lorann lorann, Model model) {
 		super(new Sprite("fireball_1.png"));
+		this.setModel(model);
 		this.lorann = lorann;
 		this.active = false;
 	}
@@ -22,8 +25,10 @@ public class Fireball extends Mobile {
 
 	public void reactivate() {
 		this.active = true;
+		System.out.println("X : "+this.lorann.getLastPosition().x+" Y : "+this.lorann.getLastPosition().y);
 		this.setX(this.lorann.getLastPosition().x);
 		this.setY(this.lorann.getLastPosition().y);
+		System.out.println("X : "+this.getX()+" Y : "+this.getY());
 		this.direction.x = lorann.getLastPosition().x - lorann.getPosition().x;
 		this.direction.y = lorann.getLastPosition().y - lorann.getPosition().y;
 	}

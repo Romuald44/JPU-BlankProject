@@ -9,6 +9,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import contract.ILorann;
 import contract.IMobile;
 import contract.IMotionLess;
 
@@ -93,6 +94,12 @@ class ViewPanel extends JPanel implements Observer {
 		
 		for(IMobile test : mobile) {
 			graphics.drawImage(test.getImage(), test.getX()*64, test.getY()*64, 64, 64, this);
+			if(test instanceof ILorann && ((ILorann) test).getFireball().getActive()) {
+				graphics.drawImage(((ILorann) test).getFireball().getImage(), 
+						((ILorann) test).getFireball().getX()*64, 
+						((ILorann) test).getFireball().getY()*64, 64, 64, this);
+				
+			}
 		}
 	}
 }

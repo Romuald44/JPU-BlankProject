@@ -101,6 +101,8 @@ public class Model extends Observable implements IModel {
 		else {
 			this.getLorann().deviateFireball();
 		}
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public Map getMap() {

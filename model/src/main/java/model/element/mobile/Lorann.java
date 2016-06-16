@@ -2,10 +2,11 @@ package model.element.mobile;
 
 import java.awt.Point;
 
+import contract.ILorann;
 import model.Model;
 import model.element.Sprite;
 
-public class Lorann extends Mobile {
+public class Lorann extends Mobile implements ILorann {
 
 	private Point lastPosition;
 	private Fireball fireball;
@@ -13,7 +14,7 @@ public class Lorann extends Mobile {
 	public Lorann(int x, int y, Model model) {
 		super(new Sprite("lorann_b.png"));
 		this.setModel(model);
-		this.fireball = new Fireball(this);
+		this.fireball = new Fireball(this, model);
 		this.setX(x);
 		this.setY(y);
 	}

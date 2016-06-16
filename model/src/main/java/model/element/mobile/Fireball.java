@@ -1,6 +1,7 @@
 package model.element.mobile;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import contract.IFireball;
 import model.Model;
@@ -11,6 +12,7 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 	private Point direction;
 	private boolean active;
 	private Lorann lorann;
+	private ArrayList<String> sprites;
 
 	public Fireball(Lorann lorann, Model model) {
 		super(new Sprite("fireball_1.png"));
@@ -18,6 +20,12 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 		this.lorann = lorann;
 		this.active = false;
 		this.direction = new Point();
+		this.sprites = new ArrayList<String>();
+		this.sprites.add("fireball_1.png");
+		this.sprites.add("fireball_2.png");
+		this.sprites.add("fireball_3.png");
+		this.sprites.add("fireball_4.png");
+		this.sprites.add("fireball_5.png");
 		this.getModel().startThreadFireball(this);
 	}
 
@@ -27,10 +35,8 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 
 	public void reactivate() {
 		this.active = true;
-		System.out.println("X : "+this.lorann.getLastPosition().x+" Y : "+this.lorann.getLastPosition().y);
 		this.setX(this.lorann.getLastPosition().x);
 		this.setY(this.lorann.getLastPosition().y);
-		System.out.println("X : "+this.getX()+" Y : "+this.getY());
 		this.direction.x = lorann.getLastPosition().x - lorann.getPosition().x;
 		this.direction.y = lorann.getLastPosition().y - lorann.getPosition().y;
 	}
@@ -64,85 +70,89 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 	}
 
 	public void run() {
+		int indice = 0;
 		while(true) {
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			if(this.active) {
-				boolean bool = false;
-				if(this.direction.x != 0 && this.direction.y == 0) {
-					switch(this.direction.x) {
-					case -1:
-						bool = this.moveLeft();
-						if(!bool) {
-							this.direction.x = 1;
-						}
-						break;
-					case 1:
-						bool = this.moveRight();
-						if(!bool) {
-							this.direction.x = -1;
-						}
-						break;
+			this.setSprite(new Sprite(this.sprites.get(indice)));
+			indice++;
+			if(indice == 4) {
+				indice = 0;
+			}
+			boolean bool = false;
+			if(this.direction.x != 0 && this.direction.y == 0) {
+				switch(this.direction.x) {
+				case -1:
+					bool = this.moveLeft();
+					if(!bool) {
+						this.direction.x = 1;
 					}
+					break;
+				case 1:
+					bool = this.moveRight();
+					if(!bool) {
+						this.direction.x = -1;
+					}
+					break;
 				}
-				else if(this.direction.x == 0 && this.direction.y != 0) {
+			}
+			else if(this.direction.x == 0 && this.direction.y != 0) {
+				switch(this.direction.y) {
+				case -1:
+					bool = this.moveUp();
+					if(!bool) {
+						this.direction.y = 1;
+					}
+					break;
+				case 1:
+					bool = this.moveDown();
+					if(!bool) {
+						this.direction.y = -1;
+					}
+					break;
+				}
+			}
+			else if(this.direction.x != 0 && this.direction.y != 0){
+				switch(this.direction.x) {
+				case -1:
 					switch(this.direction.y) {
 					case -1:
-						bool = this.moveUp();
+						bool = this.moveUpLeft();
 						if(!bool) {
+							this.direction.x = 1;
 							this.direction.y = 1;
 						}
 						break;
 					case 1:
-						bool = this.moveDown();
+						bool = this.moveDownLeft();
 						if(!bool) {
+							this.direction.x = 1;
 							this.direction.y = -1;
 						}
 						break;
 					}
-				}
-				else if(this.direction.x != 0 && this.direction.y != 0){
-					switch(this.direction.x) {
+					break;
+				case 1:
+					switch(this.direction.y) {
 					case -1:
-						switch(this.direction.y) {
-						case -1:
-							bool = this.moveUpLeft();
-							if(!bool) {
-								this.direction.x = 1;
-								this.direction.y = 1;
-							}
-							break;
-						case 1:
-							bool = this.moveDownLeft();
-							if(!bool) {
-								this.direction.x = 1;
-								this.direction.y = -1;
-							}
-							break;
+						bool = this.moveUpRight();
+						if(!bool) {
+							this.direction.x = -1;
+							this.direction.y = 1;
 						}
 						break;
 					case 1:
-						switch(this.direction.y) {
-						case -1:
-							bool = this.moveUpRight();
-							if(!bool) {
-								this.direction.x = -1;
-								this.direction.y = 1;
-							}
-							break;
-						case 1:
-							bool = this.moveDownRight();
-							if(!bool) {
-								this.direction.x = -1;
-								this.direction.y = -1;
-							}
-							break;
+						bool = this.moveDownRight();
+						if(!bool) {
+							this.direction.x = -1;
+							this.direction.y = -1;
 						}
 						break;
 					}
+					break;
 				}
 			}
 		}

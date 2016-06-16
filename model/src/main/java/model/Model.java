@@ -31,6 +31,7 @@ public class Model extends Observable implements IModel {
 	private int	height;
 	private Map map;
 	private Thread threadFireball;
+	private Thread threadLorann;
 
 	/**
 	 * Instantiates a new model.
@@ -44,8 +45,9 @@ public class Model extends Observable implements IModel {
 		this.threadFireball.start();
 	}
 	
-	public Thread getThreadFireball() {
-		return this.threadFireball;
+	public void startThreadLorann(Lorann lorann) {
+		this.threadLorann = new Thread(lorann);
+		this.threadLorann.start();
 	}
 	
 	public void moveUp() {

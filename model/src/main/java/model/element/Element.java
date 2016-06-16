@@ -20,7 +20,7 @@ public abstract class Element {//implements IPermeability
 		return this.sprite;
 	}
 
-	private void setSprite(final Sprite sprite) {
+	protected void setSprite(final Sprite sprite) {
 		this.sprite = sprite;
 	}
 

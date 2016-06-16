@@ -1,5 +1,6 @@
 package contract;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -31,6 +32,8 @@ public interface IModel {
 	public void setMobileHasChanged();
 	
 	public IMotionLess[][] getArrayElement();
+	public ArrayList<IMobile> getMobiles();
+	
 	public int getWidth();
 	public int getHeight();
 	/**

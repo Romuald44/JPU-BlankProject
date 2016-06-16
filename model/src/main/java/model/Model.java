@@ -170,23 +170,23 @@ public class Model extends Observable implements IModel {
 					System.out.print(Maptostring.charAt(numLine+x));
 					switch(Maptostring.charAt(numLine+x)) {
 					case 'l':
-						//this.addMobile(new Lorann(x, y, this));
+						this.addMobile(new Lorann(x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					case '1':
-						//this.addMobile(new Demons(new MonsterOne(), x, y, this));
+						this.addMobile(new Demons(new MonsterOne(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					case '2':
-						//this.addMobile(new Demons(new MonsterTwo(), x, y, this));
+						this.addMobile(new Demons(new MonsterTwo(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					case '3':
-						//this.addMobile(new Demons(new MonsterThree(), x, y, this));
+						this.addMobile(new Demons(new MonsterThree(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					case '4':
-						//this.addMobile(new Demons(new MonsterFour(), x, y, this));
+						this.addMobile(new Demons(new MonsterFour(), x, y, this));
 						this.addElement(MotionlessElements.LAND, x, y);
 						break;
 					default:

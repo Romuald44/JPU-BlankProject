@@ -2,12 +2,12 @@ package model.element.mobile;
 
 import java.awt.Point;
 
-import model.Model;
+import contract.IMobile;
 import model.element.Element;
 import model.element.Permeability;
 import model.element.Sprite;
 
-public abstract class Mobile extends Element {
+public abstract class Mobile extends Element implements IMobile {
 	private Point position;
 
 	public Mobile(final Sprite sprite) {

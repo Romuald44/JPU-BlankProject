@@ -6,7 +6,7 @@ import contract.IFireball;
 import model.Model;
 import model.element.Sprite;
 
-public class Fireball extends Mobile implements IFireball {
+public class Fireball extends Mobile implements IFireball, Runnable {
 
 	private Point direction;
 	private boolean active;
@@ -17,6 +17,7 @@ public class Fireball extends Mobile implements IFireball {
 		this.setModel(model);
 		this.lorann = lorann;
 		this.active = false;
+		this.getModel().startThreadFireball(this);
 	}
 
 	public boolean getActive() {
@@ -61,9 +62,9 @@ public class Fireball extends Mobile implements IFireball {
 		}
 	}
 
-	public void move() {
-		boolean bool = false;
-		if(this.active == true) {
+	public void run() {
+		if(this.active) {
+			boolean bool = false;
 			if(this.direction.x != 0 && this.direction.y == 0) {
 				switch(this.direction.x) {
 				case -1:

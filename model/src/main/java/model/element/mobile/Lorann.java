@@ -72,10 +72,6 @@ public class Lorann extends Mobile implements ILorann {
 		this.fireball.deviate();
 	}
 
-	public void moveFireball() {
-		this.fireball.move();
-	}
-
 	public void death() {
 	}
 }

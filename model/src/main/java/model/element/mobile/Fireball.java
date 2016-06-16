@@ -17,6 +17,7 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 		this.setModel(model);
 		this.lorann = lorann;
 		this.active = false;
+		this.direction = new Point();
 		this.getModel().startThreadFireball(this);
 	}
 
@@ -63,78 +64,87 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 	}
 
 	public void run() {
-		if(this.active) {
-			boolean bool = false;
-			if(this.direction.x != 0 && this.direction.y == 0) {
-				switch(this.direction.x) {
-				case -1:
-					bool = this.moveLeft();
-					if(!bool) {
-						this.direction.x = 1;
-					}
-					break;
-				case 1:
-					bool = this.moveRight();
-					if(!bool) {
-						this.direction.x = -1;
-					}
-					break;
-				}
-			}
-			else if(this.direction.x == 0 && this.direction.y != 0) {
-				switch(this.direction.y) {
-				case -1:
-					bool = this.moveUp();
-					if(!bool) {
-						this.direction.y = 1;
-					}
-					break;
-				case 1:
-					bool = this.moveDown();
-					if(!bool) {
-						this.direction.y = -1;
-					}
-					break;
-				}
-			}
-			else if(this.direction.x != 0 && this.direction.y != 0){
-				switch(this.direction.x) {
-				case -1:
-					switch(this.direction.y) {
+		try {
+			this.getModel().getThreadFireball().sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		while(true) {
+			System.out.println("Thread");
+			if(this.active) {
+				boolean bool = false;
+				if(this.direction.x != 0 && this.direction.y == 0) {
+					switch(this.direction.x) {
 					case -1:
-						bool = this.moveUpLeft();
+						bool = this.moveLeft();
 						if(!bool) {
 							this.direction.x = 1;
+						}
+						break;
+					case 1:
+						bool = this.moveRight();
+						if(!bool) {
+							this.direction.x = -1;
+						}
+						break;
+					}
+				}
+				else if(this.direction.x == 0 && this.direction.y != 0) {
+					switch(this.direction.y) {
+					case -1:
+						bool = this.moveUp();
+						if(!bool) {
 							this.direction.y = 1;
 						}
 						break;
 					case 1:
-						bool = this.moveDownLeft();
+						bool = this.moveDown();
 						if(!bool) {
-							this.direction.x = 1;
 							this.direction.y = -1;
 						}
 						break;
 					}
-					break;
-				case 1:
-					switch(this.direction.y) {
+				}
+				else if(this.direction.x != 0 && this.direction.y != 0){
+					switch(this.direction.x) {
 					case -1:
-						bool = this.moveUpRight();
-						if(!bool) {
-							this.direction.x = -1;
-							this.direction.y = 1;
+						switch(this.direction.y) {
+						case -1:
+							bool = this.moveUpLeft();
+							if(!bool) {
+								this.direction.x = 1;
+								this.direction.y = 1;
+							}
+							break;
+						case 1:
+							bool = this.moveDownLeft();
+							if(!bool) {
+								this.direction.x = 1;
+								this.direction.y = -1;
+							}
+							break;
 						}
 						break;
 					case 1:
-						bool = this.moveDownRight();
-						if(!bool) {
-							this.direction.x = -1;
-							this.direction.y = -1;
+						switch(this.direction.y) {
+						case -1:
+							bool = this.moveUpRight();
+							if(!bool) {
+								this.direction.x = -1;
+								this.direction.y = 1;
+							}
+							break;
+						case 1:
+							bool = this.moveDownRight();
+							if(!bool) {
+								this.direction.x = -1;
+								this.direction.y = -1;
+							}
+							break;
 						}
 						break;
 					}
-					break;
 				}
 			}
 		}

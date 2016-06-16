@@ -44,43 +44,39 @@ public class Model extends Observable implements IModel {
 		this.threadFireball.start();
 	}
 	
+	public Thread getThreadFireball() {
+		return this.threadFireball;
+	}
+	
 	public void moveUp() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();
-		System.out.println(x + " " + y);
 		if(this.getLorann().moveUp()) {
 			this.getLorann().setLastPosition(x, y);
-			System.out.println(x + " " + y);
 		}
 	}
 	
 	public void moveDown() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();
-		System.out.println(x + " " + y);
 		if(this.getLorann().moveDown()) {
 			this.getLorann().setLastPosition(x, y);
-			System.out.println(x + " " + y);
 		}
 	}
 	
 	public void moveLeft() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();
-		System.out.println(x + " " + y);
 		if(this.getLorann().moveLeft()) {
 			this.getLorann().setLastPosition(x, y);
-			System.out.println(x + " " + y);
 		}
 	}
 	
 	public void moveRight() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();
-		System.out.println(x + " " + y);
 		if(this.getLorann().moveRight()) {
 			this.getLorann().setLastPosition(x, y);
-			System.out.println(x + " " + y);
 		}
 	}
 	

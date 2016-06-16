@@ -71,6 +71,7 @@ class ViewPanel extends JPanel implements Observer {
 	protected void paintComponent(final Graphics graphics) {
 		graphics.setColor(Color.black);
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+		this.setBackground(Color.black);
 		
 		/*int i=0;
 		for(IMotionLess[] test : element) {
@@ -81,7 +82,7 @@ class ViewPanel extends JPanel implements Observer {
 		
 		for(int y = 0; y < viewFrame.getModel().getHeight(); y++) {
 			for(int x = 0; x < viewFrame.getModel().getWidth(); x++) {
-				graphics.drawImage(this.element[x][y].getImage(), x*32, y*32, this);
+				graphics.drawImage(this.element[x][y].getImage(), x*60, y*60, 60, 60, this);
 			}
 		}
 	}

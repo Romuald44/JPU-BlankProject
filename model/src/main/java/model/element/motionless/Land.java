@@ -6,7 +6,7 @@ import model.element.Sprite;
 public class Land extends MotionlessElement {
 
 	public Land() {
-		super(Permeability.PENETRABLE, ' ');
+		super(new Sprite("land.png"), Permeability.PENETRABLE, ' ');
 	}
 
 }

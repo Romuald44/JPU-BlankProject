@@ -14,11 +14,6 @@ public abstract class MotionlessElement extends Element implements IActionOnLora
 		super(sprite, permeability);
 		this.symbol = symbol;
 	}
-	
-	public MotionlessElement(final Permeability permeability, final char symbol) {
-		super(permeability);
-		this.symbol = symbol;
-	}
 
 	public char getSymbol() {
 		return this.symbol;

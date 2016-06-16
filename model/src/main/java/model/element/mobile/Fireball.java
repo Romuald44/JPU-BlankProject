@@ -17,7 +17,7 @@ public class Fireball extends Mobile {
 	}
 
 	public boolean getActive() {
-		return active;
+		return this.active;
 	}
 
 	public void reactivate() {

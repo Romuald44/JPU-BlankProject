@@ -8,6 +8,7 @@ import java.util.Observable;
 import contract.IMobile;
 import contract.IModel;
 import model.element.mobile.Demons;
+import model.element.mobile.Fireball;
 import model.element.mobile.Lorann;
 import model.element.mobile.Mobile;
 import model.element.mobile.MonsterFour;
@@ -29,12 +30,18 @@ public class Model extends Observable implements IModel {
 	private int width;
 	private int	height;
 	private Map map;
+	private Thread threadFireball;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
 		this.mobiles = new ArrayList<IMobile>();
+	}
+	
+	public void startThreadFireball(Fireball fireball) {
+		this.threadFireball = new Thread(fireball);
+		this.threadFireball.start();
 	}
 	
 	public void moveUp() {

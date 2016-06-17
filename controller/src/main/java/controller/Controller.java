@@ -80,7 +80,8 @@ public class Controller implements IController {
 		if(this.model.getTheadFireball().getState() == Thread.State.NEW) {
 			this.model.startThreadsMobiles();
 		}
-		if(this.model.getTheadFireball().getState() == Thread.State.RUNNABLE) {
+		if((this.model.getTheadFireball().getState() == Thread.State.RUNNABLE) ||
+		(this.model.getTheadFireball().getState() == Thread.State.TIMED_WAITING)) {
 			switch (controllerOrder) {
 				case UP:
 					this.model.moveUp();

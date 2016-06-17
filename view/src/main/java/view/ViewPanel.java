@@ -109,8 +109,8 @@ class ViewPanel extends JPanel implements Observer {
 			}
 		}
 		
-		Font font;//new Font("Minecraft", Font.BOLD, 40);
-		try {
+		Font font = new Font("Courrier", Font.BOLD, 40);
+		/*try {
 		     GraphicsEnvironment ge = 
 		         GraphicsEnvironment.getLocalGraphicsEnvironment();
 		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("../view/src/main/resources/Minecraft.ttf")));
@@ -119,8 +119,8 @@ class ViewPanel extends JPanel implements Observer {
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		//graphics.setFont(font);
+		}*/
+		graphics.setFont(font);
 		graphics.setColor(Color.YELLOW);
 		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 50, 750);
 		

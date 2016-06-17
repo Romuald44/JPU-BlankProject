@@ -27,6 +27,7 @@ public class Fireball extends Mobile implements IFireball {
 		this.sprites.add("fireball_3.png");
 		this.sprites.add("fireball_4.png");
 		this.sprites.add("fireball_5.png");
+		this.setThreadActive(true);
 	}
 
 	public boolean getActive() {
@@ -72,7 +73,7 @@ public class Fireball extends Mobile implements IFireball {
 	public void run() {
 		int indice = 0;
 		boolean bool = false;
-		while(true) {
+		while(this.getThreadActive()) {
 			if(this.getActive()) {
 				this.setSprite(new Sprite(this.sprites.get(indice)));
 				indice++;

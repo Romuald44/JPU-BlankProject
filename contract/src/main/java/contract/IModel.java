@@ -31,6 +31,7 @@ public interface IModel {
 	
 	public void startThreadsMobiles();
 	public Thread getTheadFireball();
+	public void setStateThreadFinish();
 	
 	public void setMobileHasChanged();
 	

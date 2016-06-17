@@ -9,4 +9,5 @@ public interface IMobile {
 	public int getY();
 	public Image getImage();
 	public Point getPosition();
+	public void setThreadActive(boolean active);
 }

@@ -27,6 +27,7 @@ public class Lorann extends Mobile implements ILorann {
 		this.sprites.add("lorann_ur.png");
 		this.sprites.add("lorann_r.png");
 		this.sprites.add("lorann_br.png");
+		this.setThreadActive(true);
 		this.setX(x);
 		this.setY(y);
 	}
@@ -66,7 +67,7 @@ public class Lorann extends Mobile implements ILorann {
 
 	public void run() {
 		int indice = 0;
-		while(true) {
+		while(this.getThreadActive()) {
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {

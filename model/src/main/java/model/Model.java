@@ -62,6 +62,13 @@ public class Model extends Observable implements IModel {
 		return this.threadFireball;
 	}
 	
+	public void setStateThreadFinish() {
+		for(int i = 0; i < this.mobiles.size(); i++) {
+			this.mobiles.get(i).setThreadActive(false);
+		}
+		this.getLorann().getFireball().setThreadActive(false);
+	}
+	
 	public void moveUp() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();

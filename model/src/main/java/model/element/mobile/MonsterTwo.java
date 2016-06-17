@@ -6,6 +6,7 @@ public class MonsterTwo implements IBehavior {
 	
 	private Sprite sprite;
 
+	/* Monstre déplacement random */
 	public MonsterTwo() {
 		this.sprite = new Sprite("monster_2.png");
 	}

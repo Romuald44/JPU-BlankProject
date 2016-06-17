@@ -6,6 +6,7 @@ public class MonsterFour implements IBehavior {
 	
 	private Sprite sprite;
 
+	/* Monstre qui ne se déplace pas en diagonale */
 	public MonsterFour() {
 		this.sprite = new Sprite("monster_4.png");
 	}

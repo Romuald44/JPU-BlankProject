@@ -7,7 +7,7 @@ import contract.ILorann;
 import model.Model;
 import model.element.Sprite;
 
-public class Lorann extends Mobile implements ILorann, Runnable {
+public class Lorann extends Mobile implements ILorann {
 
 	private Point lastPosition;
 	private Fireball fireball;
@@ -29,7 +29,6 @@ public class Lorann extends Mobile implements ILorann, Runnable {
 		this.sprites.add("lorann_br.png");
 		this.setX(x);
 		this.setY(y);
-		this.getModel().startThreadLorann(this);
 	}
 
 	public Point getLastPosition() {

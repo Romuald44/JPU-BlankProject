@@ -1,8 +1,10 @@
 package model.element.mobile;
 
+import contract.ActionOnLorann;
+import contract.IActionOnLorann;
 import model.Model;
 
-public class Demons extends Mobile {
+public class Demons extends Mobile implements IActionOnLorann {
 
 	private IBehavior behavior;
 
@@ -16,5 +18,9 @@ public class Demons extends Mobile {
 
 	public void execMovement() {
 		this.behavior.movement();
+	}
+
+	public ActionOnLorann getActionOnLorann() {
+		return ActionOnLorann.KILL;
 	}
 }

@@ -38,6 +38,8 @@ public class Model extends Observable implements IModel {
 	private Map map;
 	private Thread threadFireball;
 	private Thread threadLorann;
+	
+	private boolean finish = false;
 
 	/**
 	 * Instantiates a new model.
@@ -160,6 +162,14 @@ public class Model extends Observable implements IModel {
 	
 	public void setPointsPurse() {
 		this.getPurse().setPoints(650);
+	}
+	
+	public void setTheEnd(boolean finish) {
+		this.finish = finish;
+	}
+	
+	public boolean getTheEnd() {
+		return this.finish;
 	}
 	
 	public int getWidth() {

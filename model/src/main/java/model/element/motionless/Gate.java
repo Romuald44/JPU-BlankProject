@@ -20,6 +20,7 @@ public class Gate extends MotionlessElement {
 	public void open() {
 		if(!open) {
 			this.setSprite(new Sprite("gate_open.png"));
+			this.setPermeability(Permeability.PENETRABLE);
 			this.open = true;
 		}
 	}

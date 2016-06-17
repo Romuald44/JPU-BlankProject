@@ -107,7 +107,7 @@ public class Controller implements IController {
 				System.out.println("Open the door");
 				break;
 			case KILL:
-				this.model.getLorann()
+				this.model.getLorann().death();
 				System.out.println("You dead");
 				break;
 			case NOP:

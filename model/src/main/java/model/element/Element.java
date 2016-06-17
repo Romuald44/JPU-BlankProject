@@ -28,7 +28,7 @@ public abstract class Element {//implements IPermeability
 		return this.permeability;
 	}
 
-	private void setPermeability(final Permeability permeability) {
+	public void setPermeability(final Permeability permeability) {
 		this.permeability = permeability;
 	}
 

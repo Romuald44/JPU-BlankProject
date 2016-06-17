@@ -66,6 +66,7 @@ public class Lorann extends Mobile implements ILorann, Runnable {
 	}
 
 	public void death() {
+		this.getModel().setTheEnd(true);
 	}
 
 	public void run() {

@@ -3,10 +3,10 @@ package model.element.mobile;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import contract.ActionOnLorann;
 import contract.IFireball;
 import model.Model;
 import model.element.Sprite;
+import model.element.motionless.Gate;
 
 public class Fireball extends Mobile implements IFireball {
 
@@ -84,8 +84,7 @@ public class Fireball extends Mobile implements IFireball {
 				if(this.direction.x != 0 && this.direction.y == 0) {
 					switch(this.direction.x) {
 					case -1:
-						if(this.getModel().getElements(this.getX()+direction.x,
-								this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+						if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
 							bool = this.moveLeft();
 							if(!bool) {
 								this.direction.x = 1;
@@ -96,8 +95,7 @@ public class Fireball extends Mobile implements IFireball {
 						}
 						break;
 					case 1:
-						if(this.getModel().getElements(this.getX()+direction.x,
-								this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+						if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
 							bool = this.moveRight();
 							if(!bool) {
 								this.direction.x = -1;
@@ -112,8 +110,7 @@ public class Fireball extends Mobile implements IFireball {
 				else if(this.direction.x == 0 && this.direction.y != 0) {
 					switch(this.direction.y) {
 					case -1:
-						if(this.getModel().getElements(this.getX()+direction.x,
-								this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+						if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
 							bool = this.moveUp();
 							if(!bool) {
 								this.direction.y = 1;
@@ -124,8 +121,7 @@ public class Fireball extends Mobile implements IFireball {
 						}
 						break;
 					case 1:
-						if(this.getModel().getElements(this.getX()+direction.x,
-								this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+						if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
 							bool = this.moveDown();
 							if(!bool) {
 								this.direction.y = -1;
@@ -142,8 +138,7 @@ public class Fireball extends Mobile implements IFireball {
 					case -1:
 						switch(this.direction.y) {
 						case -1:
-							if(this.getModel().getElements(this.getX()+direction.x,
-									this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
 								bool = this.moveUpLeft();
 								if(!bool) {
 									this.direction.x = 1;
@@ -156,8 +151,7 @@ public class Fireball extends Mobile implements IFireball {
 							}
 							break;
 						case 1:
-							if(this.getModel().getElements(this.getX()+direction.x,
-									this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
 								bool = this.moveDownLeft();
 								if(!bool) {
 									this.direction.x = 1;
@@ -174,8 +168,7 @@ public class Fireball extends Mobile implements IFireball {
 					case 1:
 						switch(this.direction.y) {
 						case -1:
-							if(this.getModel().getElements(this.getX()+direction.x,
-									this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
 								bool = this.moveUpRight();
 								if(!bool) {
 									this.direction.x = -1;
@@ -188,8 +181,7 @@ public class Fireball extends Mobile implements IFireball {
 							}
 							break;
 						case 1:
-							if(this.getModel().getElements(this.getX()+direction.x,
-									this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
 								bool = this.moveDownRight();
 								if(!bool) {
 									this.direction.x = -1;

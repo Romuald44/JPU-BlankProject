@@ -181,6 +181,12 @@ public class Model extends Observable implements IModel {
 	
 	public void setDeath(boolean dead) {
 		this.dead = dead;
+		for(int i = 0; i < this.mobiles.size(); i++) {
+			if(this.mobiles.get(i) instanceof Lorann) {
+				this.mobiles.remove(i);
+			}
+		}
+		
 	}
 	
 	public boolean getDeath() {

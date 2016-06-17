@@ -123,15 +123,13 @@ public class Controller implements IController {
 				System.out.println("Open the door");
 				break;
 			case KILL:
-				this.model.setDeath(true);
-				//this.view.printMessage("YOU DIED");
 				this.model.setStateThreadFinish();
+				this.model.setDeath(true);
 				System.out.println("You died");
 				break;
 			case FINISH:
-				this.model.setTheEnd(true);
-				//this.view.printMessage("FINISH");
 				this.model.setStateThreadFinish();
+				this.model.setTheEnd(true);
 				System.out.println("Finish");
 				break;
 			case NOP:
@@ -146,6 +144,7 @@ public class Controller implements IController {
 			if((mobiles.get(i).getPosition().getX() == this.model.getLorann().getX()) &&
 					(mobiles.get(i).getPosition().getY() == this.model.getLorann().getY()) &&
 					mobiles.get(i) instanceof IActionOnLorann) {
+				this.model.setStateThreadFinish();
 				this.model.setDeath(true);
 			}
 		}

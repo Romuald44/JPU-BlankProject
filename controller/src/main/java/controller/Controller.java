@@ -1,13 +1,9 @@
 package controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import contract.ActionOnLorann;
 import contract.ControllerOrder;
 import contract.IController;
-import contract.IMobile;
 import contract.IModel;
 import contract.IView;
 import contract.IActionOnLorann;
@@ -48,9 +44,10 @@ public class Controller implements IController {
 	}
 	
 	public void selectLevel() {
-		Scanner sc = new Scanner(System.in);
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Please select a level :");
-		int str = sc.nextInt();
+		int str = scanner.nextInt();
 		this.model.loadMap(str);
 	}
 
@@ -121,11 +118,11 @@ public class Controller implements IController {
 				break;
 			case KILL:
 				this.model.setDeath(true);
-				System.out.println("You dead");
+				System.out.println("You died");
 				break;
 			case FINISH:
 				this.model.setTheEnd(true);
-				System.out.println("You Finish");
+				System.out.println("Finish");
 				break;
 			case NOP:
 			default:

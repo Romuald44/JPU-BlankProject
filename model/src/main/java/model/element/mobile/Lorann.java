@@ -17,7 +17,6 @@ public class Lorann extends Mobile implements ILorann {
 		super(new Sprite("lorann_b.png"));
 		this.setModel(model);
 		this.lastPosition = new Point();
-		this.fireball = new Fireball(this, model);
 		this.sprites = new ArrayList<String>();
 		this.sprites.add("lorann_b.png");
 		this.sprites.add("lorann_bl.png");

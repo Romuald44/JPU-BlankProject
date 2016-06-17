@@ -110,42 +110,46 @@ public class Controller implements IController {
 	
 	private void getElementAnswer() {
 		final IActionOnLorann element = (IActionOnLorann) this.model.getElements(this.model.getLorann().getX(), this.model.getLorann().getY());
-
-		switch (element.getActionOnLorann()) {
-			case RECOVERABLE:
-				this.model.setPointsPurse();
-				this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
-				System.out.println("Recuperer Purse");
-				break;
-			case OPEN_GATE:
-				this.model.openTheDoor();
-				this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
-				System.out.println("Open the door");
-				break;
-			case KILL:
-				this.model.setStateThreadFinish();
-				this.model.setDeath(true);
-				System.out.println("You died");
-				break;
-			case FINISH:
-				this.model.setStateThreadFinish();
-				this.model.setTheEnd(true);
-				System.out.println("Finish");
-				break;
-			case NOP:
-			default:
-				break;
+		if(this.model.getLorann() != null) {
+			switch (element.getActionOnLorann()) {
+				case RECOVERABLE:
+					this.model.setPointsPurse();
+					this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
+					System.out.println("Recuperer Purse");
+					break;
+				case OPEN_GATE:
+					this.model.openTheDoor();
+					this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
+					System.out.println("Open the door");
+					break;
+				case KILL:
+					this.model.setStateThreadFinish();
+					this.model.setDeath(true);
+					System.out.println("You died");
+					break;
+				case FINISH:
+					this.model.setStateThreadFinish();
+					this.model.setTheEnd(true);
+					System.out.println("Finish");
+					break;
+				case NOP:
+				default:
+					break;
+			}
 		}
+		
 	}
 	
 	private void getMobilesAnswer() {
-		ArrayList<IMobile> mobiles = this.model.getMobiles();
-		for(int i = 0; i < mobiles.size(); i++) {
-			if((mobiles.get(i).getPosition().getX() == this.model.getLorann().getX()) &&
-					(mobiles.get(i).getPosition().getY() == this.model.getLorann().getY()) &&
-					mobiles.get(i) instanceof IActionOnLorann) {
-				this.model.setStateThreadFinish();
-				this.model.setDeath(true);
+		if(this.model.getLorann() != null) {
+			ArrayList<IMobile> mobiles = this.model.getMobiles();
+			for(int i = 0; i < mobiles.size(); i++) {
+				if((mobiles.get(i).getPosition().getX() == this.model.getLorann().getX()) &&
+						(mobiles.get(i).getPosition().getY() == this.model.getLorann().getY()) &&
+						mobiles.get(i) instanceof IActionOnLorann) {
+					this.model.setStateThreadFinish();
+					this.model.setDeath(true);
+				}
 			}
 		}
 	}

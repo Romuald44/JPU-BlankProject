@@ -23,7 +23,7 @@ public class Demons extends Mobile implements IActionOnLorann {
 
 	public void run() {
 		while(this.getThreadActive()) {
-			this.behavior.movement();
+			this.behavior.movement(this.getModel().getLorann(), this.getPosition());
 		}
 	}
 }

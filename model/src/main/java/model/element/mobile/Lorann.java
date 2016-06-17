@@ -3,7 +3,6 @@ package model.element.mobile;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import contract.ActionOnLorann;
 import contract.ILorann;
 import model.Model;
 import model.element.Sprite;

@@ -2,7 +2,12 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -104,10 +109,20 @@ class ViewPanel extends JPanel implements Observer {
 			}
 		}
 		
-		Font font = new Font("Courrier", Font.BOLD, 40);
-		graphics.setFont(font);
+		Font font;//new Font("Minecraft", Font.BOLD, 40);
+		try {
+		     GraphicsEnvironment ge = 
+		         GraphicsEnvironment.getLocalGraphicsEnvironment();
+		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("../view/src/main/resources/Minecraft.ttf")));
+		} catch (IOException e) {
+		     //Handle exception
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//graphics.setFont(font);
 		graphics.setColor(Color.YELLOW);
-		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 100, 750);
+		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 50, 750);
 		
 		if(this.viewFrame.getModel().getTheEnd()) {
 			this.closeWindow();

@@ -28,6 +28,7 @@ public interface IModel {
 	public void moveDownRight();
 	
 	public void launchFireball();
+	public Thread getTheadFireball();
 	
 	public void setMobileHasChanged();
 	

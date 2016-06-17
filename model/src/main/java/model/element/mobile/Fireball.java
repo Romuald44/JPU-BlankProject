@@ -3,6 +3,7 @@ package model.element.mobile;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import contract.ActionOnLorann;
 import contract.IFireball;
 import model.Model;
 import model.element.Sprite;
@@ -35,8 +36,8 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 
 	public void reactivate() {
 		this.active = true;
-		this.setX(this.lorann.getLastPosition().x);
-		this.setY(this.lorann.getLastPosition().y);
+		this.setX(this.lorann.getX());
+		this.setY(this.lorann.getY());
 		this.direction.x = lorann.getLastPosition().x - lorann.getPosition().x;
 		this.direction.y = lorann.getLastPosition().y - lorann.getPosition().y;
 	}
@@ -71,25 +72,38 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 
 	public void run() {
 		int indice = 0;
+		boolean bool = false;
 		while(true) {
-			//if(this.getActive()) {
+			if(this.getActive()) {
 				this.setSprite(new Sprite(this.sprites.get(indice)));
 				indice++;
 				if(indice == 4) {
 					indice = 0;
 				}
-				boolean bool = false;
+				bool = false;
 				if(this.direction.x != 0 && this.direction.y == 0) {
 					switch(this.direction.x) {
 					case -1:
-						bool = this.moveLeft();
-						if(!bool) {
+						if(this.getModel().getElements(this.getX()+direction.x,
+								this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+							bool = this.moveLeft();
+							if(!bool) {
+								this.direction.x = 1;
+							}
+						}
+						else {
 							this.direction.x = 1;
 						}
 						break;
 					case 1:
-						bool = this.moveRight();
-						if(!bool) {
+						if(this.getModel().getElements(this.getX()+direction.x,
+								this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+							bool = this.moveRight();
+							if(!bool) {
+								this.direction.x = -1;
+							}
+						}
+						else {
 							this.direction.x = -1;
 						}
 						break;
@@ -98,14 +112,26 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 				else if(this.direction.x == 0 && this.direction.y != 0) {
 					switch(this.direction.y) {
 					case -1:
-						bool = this.moveUp();
-						if(!bool) {
+						if(this.getModel().getElements(this.getX()+direction.x,
+								this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+							bool = this.moveUp();
+							if(!bool) {
+								this.direction.y = 1;
+							}
+						}
+						else {
 							this.direction.y = 1;
 						}
 						break;
 					case 1:
-						bool = this.moveDown();
-						if(!bool) {
+						if(this.getModel().getElements(this.getX()+direction.x,
+								this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+							bool = this.moveDown();
+							if(!bool) {
+								this.direction.y = -1;
+							}
+						}
+						else {
 							this.direction.y = -1;
 						}
 						break;
@@ -116,15 +142,29 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 					case -1:
 						switch(this.direction.y) {
 						case -1:
-							bool = this.moveUpLeft();
-							if(!bool) {
+							if(this.getModel().getElements(this.getX()+direction.x,
+									this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+								bool = this.moveUpLeft();
+								if(!bool) {
+									this.direction.x = 1;
+									this.direction.y = 1;
+								}
+							}
+							else {
 								this.direction.x = 1;
 								this.direction.y = 1;
 							}
 							break;
 						case 1:
-							bool = this.moveDownLeft();
-							if(!bool) {
+							if(this.getModel().getElements(this.getX()+direction.x,
+									this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+								bool = this.moveDownLeft();
+								if(!bool) {
+									this.direction.x = 1;
+									this.direction.y = -1;
+								}
+							}
+							else {
 								this.direction.x = 1;
 								this.direction.y = -1;
 							}
@@ -134,15 +174,29 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 					case 1:
 						switch(this.direction.y) {
 						case -1:
-							bool = this.moveUpRight();
-							if(!bool) {
+							if(this.getModel().getElements(this.getX()+direction.x,
+									this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+								bool = this.moveUpRight();
+								if(!bool) {
+									this.direction.x = -1;
+									this.direction.y = 1;
+								}
+							}
+							else {
 								this.direction.x = -1;
 								this.direction.y = 1;
 							}
 							break;
 						case 1:
-							bool = this.moveDownRight();
-							if(!bool) {
+							if(this.getModel().getElements(this.getX()+direction.x,
+									this.getY()+direction.y).getActionOnLorann() != ActionOnLorann.FINISH) {
+								bool = this.moveDownRight();
+								if(!bool) {
+									this.direction.x = -1;
+									this.direction.y = -1;
+								}
+							}
+							else {
 								this.direction.x = -1;
 								this.direction.y = -1;
 							}
@@ -151,7 +205,6 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 						break;
 					}
 				}
-				this.getModel().setMobileHasChanged();
 				for(int i = 0; i < this.getModel().getMobiles().size(); i++) {
 					if(this.getModel().getMobiles().get(i).getX() == this.getX() &&
 							this.getModel().getMobiles().get(i).getY() == this.getY() &&
@@ -172,6 +225,7 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 					e.printStackTrace();
 				}
 			}
-		//}
+			this.getModel().setMobileHasChanged();
+		}
 	}
 }

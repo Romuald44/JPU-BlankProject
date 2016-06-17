@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -7,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.util.HashSet;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import contract.IController;
@@ -144,7 +146,12 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *          the message
 	 */
 	public void printMessage(final String message) {
-		JOptionPane.showMessageDialog(null, message);
+		JLabel label = new JLabel(message);
+		this.add(label);
+		label.setForeground(Color.GREEN);
+		label.setVerticalTextPosition(JLabel.BOTTOM);
+		label.setHorizontalTextPosition(JLabel.CENTER);
+		label.setVisible(true);
 	}
 
 	/*

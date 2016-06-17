@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import contract.ILorann;
@@ -125,9 +126,11 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 50, 750);
 		
 		if(this.viewFrame.getModel().getTheEnd()) {
-			this.closeWindow();
+			this.viewFrame.printMessage("FINISH");
+			//this.closeWindow();
 		}
 		else if(this.viewFrame.getModel().getDeath()) {
+			this.viewFrame.printMessage("YOU DEAD");
 			this.closeWindow();
 		}
 	}

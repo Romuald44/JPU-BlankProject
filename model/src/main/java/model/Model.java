@@ -17,9 +17,7 @@ import model.element.mobile.MonsterFour;
 import model.element.mobile.MonsterOne;
 import model.element.mobile.MonsterThree;
 import model.element.mobile.MonsterTwo;
-import model.element.motionless.CrystalBall;
 import model.element.motionless.Gate;
-import model.element.motionless.Land;
 import model.element.motionless.MotionlessElement;
 import model.element.motionless.MotionlessElements;
 import model.element.motionless.Purse;
@@ -198,6 +196,10 @@ public class Model extends Observable implements IModel {
 	
 	public MotionlessElement[][] getArrayElement() {
 		return this.elements;
+	}
+	
+	public void removeMobile(int indice) {
+		this.mobiles.remove(indice);
 	}
 	
 	public ArrayList<IMobile> getMobiles() {

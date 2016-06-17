@@ -10,10 +10,12 @@ import model.element.Sprite;
 
 public abstract class Mobile extends Element implements IMobile, Runnable {
 	private Point position;
+	private boolean threadActive;
 
 	public Mobile(final Sprite sprite) {
 		super(sprite, Permeability.BLOCKING);
 		this.position = new Point();
+		this.threadActive = true;
 	}
 
 	public int getX() {
@@ -22,10 +24,6 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 
 	public int getY() {
 		return this.position.y;
-	}
-
-	public Image getImage() {
-		return this.getSprite().getImage();
 	}
 
 	protected void setX(final int x) {
@@ -40,6 +38,18 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 			this.position.y = y;
 			this.getModel().setMobileHasChanged();
 		}
+	}
+
+	public Image getImage() {
+		return this.getSprite().getImage();
+	}
+
+	public boolean getThreadActive() {
+		return this.threadActive;
+	}
+
+	public void setThreadActive(boolean active) {
+		this.threadActive = active;
 	}
 
 	public Point getPosition() {

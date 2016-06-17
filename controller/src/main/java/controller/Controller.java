@@ -80,6 +80,9 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
+		if(this.model.getTheadFireball().getState() == Thread.State.NEW) {
+			this.model.startThreadsMobiles();
+		}
 		switch (controllerOrder) {
 			case UP:
 				this.model.moveUp();

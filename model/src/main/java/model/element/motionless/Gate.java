@@ -10,7 +10,7 @@ public class Gate extends MotionlessElement {
 	private ActionOnLorann action = ActionOnLorann.KILL;
 	
 	public Gate() {
-		super(new Sprite("gate_closed.png"), Permeability.BLOCKING, 'g');
+		super(new Sprite("gate_closed.png"), Permeability.PENETRABLE, 'g');
 	}
 
 	@Override

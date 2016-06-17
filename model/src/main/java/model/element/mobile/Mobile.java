@@ -8,7 +8,7 @@ import model.element.Element;
 import model.element.Permeability;
 import model.element.Sprite;
 
-public abstract class Mobile extends Element implements IMobile {
+public abstract class Mobile extends Element implements IMobile, Runnable {
 	private Point position;
 
 	public Mobile(final Sprite sprite) {

@@ -16,11 +16,11 @@ public class Demons extends Mobile implements IActionOnLorann {
 		this.setY(y);
 	}
 
-	public void execMovement() {
-		this.behavior.movement();
-	}
-
 	public ActionOnLorann getActionOnLorann() {
 		return ActionOnLorann.KILL;
+	}
+
+	public void run() {
+		this.behavior.movement();
 	}
 }

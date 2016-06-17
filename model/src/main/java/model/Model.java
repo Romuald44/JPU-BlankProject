@@ -34,8 +34,9 @@ public class Model extends Observable implements IModel {
 	private int width;
 	private int	height;
 	private Map map;
+	
+	private ArrayList<Thread> threadsMobiles;
 	private Thread threadFireball;
-	private Thread threadLorann;
 	
 	private int sizeMaxMonsters = 0;
 	
@@ -47,16 +48,18 @@ public class Model extends Observable implements IModel {
 	 */
 	public Model() {
 		this.mobiles = new ArrayList<IMobile>();
+		this.threadsMobiles = new ArrayList<Thread>();
 	}
 	
-	public void startThreadFireball(Fireball fireball) {
-		this.threadFireball = new Thread(fireball);
+	public void startThreadsMobiles() {
+		for(int i = 0; i < this.threadsMobiles.size(); i++) {
+			this.threadsMobiles.get(i).start();
+		}
 		this.threadFireball.start();
 	}
 	
-	public void startThreadLorann(Lorann lorann) {
-		this.threadLorann = new Thread(lorann);
-		this.threadLorann.start();
+	public Thread getTheadFireball() {
+		return this.threadFireball;
 	}
 	
 	public void moveUp() {
@@ -249,6 +252,13 @@ public class Model extends Observable implements IModel {
 	
 	public void addMobile(final Mobile mobile) {
 		this.mobiles.add(mobile);
+		this.threadsMobiles.add(new Thread(mobile));
+		if(mobile instanceof Lorann) {
+			Fireball fireball = new Fireball((Lorann)mobile, this);
+			this.threadFireball = new Thread(fireball);
+			((Lorann)mobile).setFireball(fireball);
+			
+		}
 	}
 	
 	public void loadMap(final int id) {

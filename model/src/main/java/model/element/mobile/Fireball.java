@@ -8,7 +8,7 @@ import contract.IFireball;
 import model.Model;
 import model.element.Sprite;
 
-public class Fireball extends Mobile implements IFireball, Runnable {
+public class Fireball extends Mobile implements IFireball {
 
 	private Point direction;
 	private boolean active;
@@ -27,7 +27,6 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 		this.sprites.add("fireball_3.png");
 		this.sprites.add("fireball_4.png");
 		this.sprites.add("fireball_5.png");
-		this.getModel().startThreadFireball(this);
 	}
 
 	public boolean getActive() {

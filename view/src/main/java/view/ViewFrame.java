@@ -10,8 +10,6 @@ import java.util.HashSet;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import contract.IController;
 import contract.IModel;
 

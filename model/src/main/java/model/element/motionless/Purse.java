@@ -21,19 +21,19 @@ public class Purse extends MotionlessElement implements IPurse {
 	public void setPoints() {
 		switch(this.getModel().getSizeMaxMonsters()-this.getModel().mobiles.size()) {
 			case 0:
-				this.points += 650;
+				Purse.points += 650;
 				break;
 			case 1:
-				this.points += 620;
+				Purse.points += 620;
 				break;
 			case 2 :
-				this.points += 590;
+				Purse.points += 590;
 				break;
 			case 3 :
-				this.points += 560;
+				Purse.points += 560;
 				break;
 			case 4 :
-				this.points += 530;
+				Purse.points += 530;
 				break;
 		}
 	}

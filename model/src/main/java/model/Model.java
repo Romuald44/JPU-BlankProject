@@ -172,7 +172,7 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public int getScore() {
-		return this.getPurse().points;
+		return Purse.points;
 	}
 	
 	public void setPointsPurse() {

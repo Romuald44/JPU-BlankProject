@@ -1,9 +1,11 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import contract.ControllerOrder;
 import contract.IController;
+import contract.IMobile;
 import contract.IModel;
 import contract.IView;
 import contract.IActionOnLorann;
@@ -130,6 +132,15 @@ public class Controller implements IController {
 			case NOP:
 			default:
 				break;
+		}
+		
+		ArrayList<IMobile> mobiles = this.model.getMobiles();
+		for(int i = 0; i < mobiles.size(); i++) {
+			if((mobiles.get(i).getPosition().getX() == this.model.getLorann().getX()) &&
+					(mobiles.get(i).getPosition().getY() == this.model.getLorann().getY()) &&
+					mobiles.get(i) instanceof IActionOnLorann) {
+				this.model.setDeath(true);
+			}
 		}
 	}
 }

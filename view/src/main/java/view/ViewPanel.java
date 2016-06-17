@@ -128,7 +128,8 @@ class ViewPanel extends JPanel implements Observer {
 		
 		if(this.viewFrame.getModel().getTheEnd()) {
 			this.viewFrame.printMessage("FINISH");
-			this.closeWindow();
+			this.viewFrame.getModel().setStateThread(Thread.State.TERMINATED);
+			//this.closeWindow();
 		}
 		else if(this.viewFrame.getModel().getDeath()) {
 			this.viewFrame.printMessage("YOU DEAD");

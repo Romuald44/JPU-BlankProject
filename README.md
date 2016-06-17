@@ -1,2 +1,9 @@
 # JPU-BlankProject
-Base de démarrage pour le projet Jave/POO/UML des 1ières années Exia-Cesi
+Base de dÃ©marrage pour le projet Jave/POO/UML des 1iÃ¨res annÃ©es Exia-Cesi
+
+## Connection to database
+```
+url=jdbc:mysql://localhost/projetjava?autoReconnect=true&useSSL=false
+login=root
+password=
+```

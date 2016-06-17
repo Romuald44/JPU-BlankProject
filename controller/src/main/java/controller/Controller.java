@@ -1,10 +1,12 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import contract.ActionOnLorann;
 import contract.ControllerOrder;
 import contract.IController;
+import contract.IMobile;
 import contract.IModel;
 import contract.IView;
 import contract.IActionOnLorann;
@@ -107,8 +109,12 @@ public class Controller implements IController {
 				System.out.println("Open the door");
 				break;
 			case KILL:
-				this.model.getLorann().death();
+				this.model.setDeath(true);
 				System.out.println("You dead");
+				break;
+			case FINISH:
+				this.model.setTheEnd(true);
+				System.out.println("You Finish");
 				break;
 			case NOP:
 			default:

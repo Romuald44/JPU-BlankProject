@@ -40,7 +40,8 @@ public class Model extends Observable implements IModel {
 	private Thread threadLorann;
 	
 	private boolean finish = false;
-
+	private boolean dead = false;
+	
 	/**
 	 * Instantiates a new model.
 	 */
@@ -162,6 +163,14 @@ public class Model extends Observable implements IModel {
 	
 	public void setPointsPurse() {
 		this.getPurse().setPoints(650);
+	}
+	
+	public void setDeath(boolean dead) {
+		this.dead = dead;
+	}
+	
+	public boolean getDeath() {
+		return this.dead;
 	}
 	
 	public void setTheEnd(boolean finish) {

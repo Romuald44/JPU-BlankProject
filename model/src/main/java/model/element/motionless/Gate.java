@@ -7,6 +7,7 @@ import model.element.Sprite;
 public class Gate extends MotionlessElement {
 
 	private boolean open = false;
+	private ActionOnLorann action = ActionOnLorann.KILL;
 	
 	public Gate() {
 		super(new Sprite("gate_closed.png"), Permeability.BLOCKING, 'g');
@@ -14,13 +15,14 @@ public class Gate extends MotionlessElement {
 
 	@Override
 	public ActionOnLorann getActionOnLorann() {
-		return ActionOnLorann.KILL;
+		return action;
 	}
 	
 	public void open() {
 		if(!open) {
 			this.setSprite(new Sprite("gate_open.png"));
 			this.setPermeability(Permeability.PENETRABLE);
+			this.action = ActionOnLorann.FINISH;
 			this.open = true;
 		}
 	}

@@ -3,6 +3,7 @@ package model.element.mobile;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import contract.ActionOnLorann;
 import contract.ILorann;
 import model.Model;
 import model.element.Sprite;
@@ -63,10 +64,6 @@ public class Lorann extends Mobile implements ILorann, Runnable {
 
 	public void deviateFireball() {
 		this.fireball.deviate();
-	}
-
-	public void death() {
-		this.getModel().setTheEnd(true);
 	}
 
 	public void run() {

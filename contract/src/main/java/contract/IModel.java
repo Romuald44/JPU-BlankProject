@@ -38,6 +38,9 @@ public interface IModel {
 	public int getScore();
 	public void setPointsPurse();
 	
+	public void setDeath(boolean dead);
+	public boolean getDeath();
+	
 	public void setTheEnd(boolean finish);
 	public boolean getTheEnd();
 	

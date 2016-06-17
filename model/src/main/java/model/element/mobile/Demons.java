@@ -12,6 +12,7 @@ public class Demons extends Mobile implements IActionOnLorann {
 		super(behavior.getSprite());
 		this.setModel(model);
 		this.behavior = behavior;
+		this.setThreadActive(true);
 		this.setX(x);
 		this.setY(y);
 	}
@@ -21,6 +22,8 @@ public class Demons extends Mobile implements IActionOnLorann {
 	}
 
 	public void run() {
-		this.behavior.movement();
+		while(this.getThreadActive()) {
+			this.behavior.movement();
+		}
 	}
 }

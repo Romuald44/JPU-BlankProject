@@ -80,26 +80,28 @@ public class Controller implements IController {
 		if(this.model.getTheadFireball().getState() == Thread.State.NEW) {
 			this.model.startThreadsMobiles();
 		}
-		switch (controllerOrder) {
-			case UP:
-				this.model.moveUp();
-				break;
-			case DOWN:
-				this.model.moveDown();
-				break;
-			case LEFT:
-				this.model.moveLeft();
-				break;
-			case RIGHT:
-				this.model.moveRight();
-				break;
-			case SPACE:
-				this.model.launchFireball();
-				break;
-			default:
-				break;
+		if(this.model.getTheadFireball().getState() == Thread.State.RUNNABLE) {
+			switch (controllerOrder) {
+				case UP:
+					this.model.moveUp();
+					break;
+				case DOWN:
+					this.model.moveDown();
+					break;
+				case LEFT:
+					this.model.moveLeft();
+					break;
+				case RIGHT:
+					this.model.moveRight();
+					break;
+				case SPACE:
+					this.model.launchFireball();
+					break;
+				default:
+					break;
+			}
+			this.getWorldAnswer();
 		}
-		this.getWorldAnswer();
 	}
 	
 	private void getWorldAnswer() {

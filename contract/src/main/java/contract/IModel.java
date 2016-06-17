@@ -36,6 +36,7 @@ public interface IModel {
 	
 	public void replaceLand(final int x, final int y);
 	public int getScore();
+	public void setPointsPurse();
 	public void openTheDoor();
 	public IMotionLess getElements(final int x, final int y);
 	public ILorann getLorann();

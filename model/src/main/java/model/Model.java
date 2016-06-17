@@ -143,19 +143,23 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void replaceLand(final int x, final int y) {
-		if(this.elements[x][y] instanceof Purse) {
+		/*if(this.elements[x][y] instanceof Purse) {
 			((Purse)this.elements[x][y]).setPoints(650);
 		}
 		else if(this.elements[x][y] instanceof CrystalBall) {
 			this.getGate().open();
-		}
-		this.elements[x][y] = new Land();
+		}*/
+		this.elements[x][y] = MotionlessElements.LAND;
 		this.setChanged();
 		this.notifyObservers(this.elements);
 	}
 	
 	public int getScore() {
-		return this.getPurse().getPoints();
+		return this.getPurse().points;
+	}
+	
+	public void setPointsPurse() {
+		this.getPurse().setPoints(650);
 	}
 	
 	public int getWidth() {

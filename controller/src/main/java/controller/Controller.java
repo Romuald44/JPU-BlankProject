@@ -97,15 +97,17 @@ public class Controller implements IController {
 
 		switch (element.getActionOnLorann()) {
 			case RECOVERABLE:
+				this.model.setPointsPurse();
 				this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
 				System.out.println("Recuperer Purse");
 				break;
 			case OPEN_GATE:
 				this.model.openTheDoor();
-				//this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
+				this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
 				System.out.println("Open the door");
 				break;
 			case KILL:
+				this.model.getLorann()
 				System.out.println("You dead");
 				break;
 			case NOP:

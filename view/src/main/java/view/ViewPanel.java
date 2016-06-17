@@ -83,17 +83,11 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-		graphics.setColor(Color.black);
+		this.viewFrame.setBackground(Color.BLACK);
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+		graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
 		this.element = this.getViewFrame().getModel().getArrayElement();
 		this.mobile = this.getViewFrame().getModel().getMobiles();
-		
-		/*int i=0;
-		for(IMotionLess[] test : element) {
-			System.out.println(test[i].getSymbol());
-			graphics.drawImage(test[i].getImage(), 0, 0, this);
-			i++;
-		}*/
 
 		for(int y = 0; y < this.getViewFrame().getModel().getHeight(); y++) {
 			for(int x = 0; x < this.getViewFrame().getModel().getWidth(); x++) {
@@ -112,28 +106,18 @@ class ViewPanel extends JPanel implements Observer {
 		}
 		
 		Font font = new Font("Courrier", Font.BOLD, 40);
-		/*try {
-		     GraphicsEnvironment ge = 
-		         GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("../view/src/main/resources/Minecraft.ttf")));
-		} catch (IOException e) {
-		     //Handle exception
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		graphics.setFont(font);
 		graphics.setColor(Color.YELLOW);
 		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 50, 600);
 		
 		if(this.viewFrame.getModel().getTheEnd()) {
 			this.viewFrame.printMessage("FINISH");
-			this.viewFrame.getModel().setStateThread(Thread.State.TERMINATED);
+			//this.viewFrame.getModel().setStateThreadFinish();
 			//this.closeWindow();
 		}
 		else if(this.viewFrame.getModel().getDeath()) {
-			this.viewFrame.printMessage("YOU DEAD");
-			this.viewFrame.getModel().setStateThread(Thread.State.TERMINATED);
+			this.viewFrame.printMessage("YOU DIED");
+			//this.viewFrame.getModel().setStateThreadFinish();
 			//this.closeWindow();
 		}
 	}

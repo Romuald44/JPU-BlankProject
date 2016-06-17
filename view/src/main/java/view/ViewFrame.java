@@ -137,22 +137,6 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setLocationRelativeTo(null);
 	}
 
-	/**
-	 * Prints the message.
-	 *
-	 * @param message
-	 *          the message
-	 */
-	public void printMessage(final String message) {
-		JLabel label = new JLabel(message);
-		this.add(label);
-		label.setFont(new Font("Courrier", Font.PLAIN, 20));
-		label.setForeground(Color.GREEN);
-		label.setVerticalTextPosition(JLabel.BOTTOM);
-		label.setHorizontalTextPosition(JLabel.CENTER);
-		label.setVisible(true);
-	}
-
 	/*
 	 * (non-Javadoc)
 	 *

@@ -102,13 +102,13 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 50, 600);
 		
 		if(this.viewFrame.getModel().getTheEnd()) {
-			this.viewFrame.printMessage("FINISH");
-			this.viewFrame.getModel().setStateThreadFinish();
+			graphics.setColor(Color.WHITE);
+			graphics.drawString("FINISH !", 600, 600);
 			//this.closeWindow();
 		}
 		else if(this.viewFrame.getModel().getDeath()) {
-			this.viewFrame.printMessage("YOU DIED");
-			this.viewFrame.getModel().setStateThreadFinish();
+			graphics.setColor(Color.RED);
+			graphics.drawString("YOU DIED", 600, 600);
 			//this.closeWindow();
 		}
 	}

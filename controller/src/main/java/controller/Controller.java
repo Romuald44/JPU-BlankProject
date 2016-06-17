@@ -103,11 +103,12 @@ public class Controller implements IController {
 				default:
 					break;
 			}
-			this.getWorldAnswer();
+			this.getElementAnswer();
+			this.getMobilesAnswer();
 		}
 	}
 	
-	private void getWorldAnswer() {
+	private void getElementAnswer() {
 		final IActionOnLorann element = (IActionOnLorann) this.model.getElements(this.model.getLorann().getX(), this.model.getLorann().getY());
 
 		switch (element.getActionOnLorann()) {
@@ -123,17 +124,23 @@ public class Controller implements IController {
 				break;
 			case KILL:
 				this.model.setDeath(true);
+				//this.view.printMessage("YOU DIED");
+				this.model.setStateThreadFinish();
 				System.out.println("You died");
 				break;
 			case FINISH:
 				this.model.setTheEnd(true);
+				//this.view.printMessage("FINISH");
+				this.model.setStateThreadFinish();
 				System.out.println("Finish");
 				break;
 			case NOP:
 			default:
 				break;
 		}
-		
+	}
+	
+	private void getMobilesAnswer() {
 		ArrayList<IMobile> mobiles = this.model.getMobiles();
 		for(int i = 0; i < mobiles.size(); i++) {
 			if((mobiles.get(i).getPosition().getX() == this.model.getLorann().getX()) &&

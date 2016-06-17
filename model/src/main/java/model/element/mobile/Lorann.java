@@ -68,7 +68,7 @@ public class Lorann extends Mobile implements ILorann {
 		int indice = 0;
 		while(this.getThreadActive()) {
 			try {
-				Thread.sleep(200);
+				Thread.sleep(150);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

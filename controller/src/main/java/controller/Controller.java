@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import contract.ActionOnLorann;
 import contract.ControllerOrder;
@@ -33,7 +34,7 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		model.loadMap(3);
+		this.selectLevel();
 		this.view.Swing();
 	}
 
@@ -44,6 +45,13 @@ public class Controller implements IController {
 	 */
 	public void control() {
 		//this.view.printMessage("Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue de votre choix.");
+	}
+	
+	public void selectLevel() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please select a level :");
+		int str = sc.nextInt();
+		this.model.loadMap(str);
 	}
 
 	/**
@@ -72,6 +80,9 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
+		if(this.model.getTheadFireball().getState() == Thread.State.NEW) {
+			this.model.startThreadsMobiles();
+		}
 		switch (controllerOrder) {
 			case UP:
 				this.model.moveUp();

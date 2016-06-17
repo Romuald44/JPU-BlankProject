@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +15,7 @@ import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import contract.ILorann;
 import contract.IMobile;
@@ -83,7 +85,6 @@ class ViewPanel extends JPanel implements Observer {
 	protected void paintComponent(final Graphics graphics) {
 		graphics.setColor(Color.black);
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		this.setBackground(Color.black);
 		this.element = this.getViewFrame().getModel().getArrayElement();
 		this.mobile = this.getViewFrame().getModel().getMobiles();
 		
@@ -96,16 +97,16 @@ class ViewPanel extends JPanel implements Observer {
 
 		for(int y = 0; y < this.getViewFrame().getModel().getHeight(); y++) {
 			for(int x = 0; x < this.getViewFrame().getModel().getWidth(); x++) {
-				graphics.drawImage(this.element[x][y].getImage(), x*64, y*64, 64, 64, this);
+				graphics.drawImage(this.element[x][y].getImage(), x*46, y*46, 46, 46, this);
 			}
 		}
 
 		for(IMobile test : mobile) {
-			graphics.drawImage(test.getImage(), test.getX()*64, test.getY()*64, 64, 64, this);
+			graphics.drawImage(test.getImage(), test.getX()*46, test.getY()*46, 46, 46, this);
 			if(test instanceof ILorann && ((ILorann) test).getFireball().getActive()) {
 				graphics.drawImage(((ILorann) test).getFireball().getImage(), 
-						((ILorann) test).getFireball().getX()*64, 
-						((ILorann) test).getFireball().getY()*64, 64, 64, this);
+						((ILorann) test).getFireball().getX()*46, 
+						((ILorann) test).getFireball().getY()*46, 46, 46, this);
 				
 			}
 		}
@@ -123,15 +124,16 @@ class ViewPanel extends JPanel implements Observer {
 		}*/
 		graphics.setFont(font);
 		graphics.setColor(Color.YELLOW);
-		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 50, 750);
+		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 50, 600);
 		
 		if(this.viewFrame.getModel().getTheEnd()) {
 			this.viewFrame.printMessage("FINISH");
-			//this.closeWindow();
+			this.closeWindow();
 		}
 		else if(this.viewFrame.getModel().getDeath()) {
 			this.viewFrame.printMessage("YOU DEAD");
-			this.closeWindow();
+			this.viewFrame.getModel().setStateThread(Thread.State.TERMINATED);
+			//this.closeWindow();
 		}
 	}
 	

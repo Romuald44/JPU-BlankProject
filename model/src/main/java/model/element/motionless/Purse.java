@@ -18,7 +18,23 @@ public class Purse extends MotionlessElement implements IPurse {
 		return ActionOnLorann.RECOVERABLE;
 	}
 
-	public void setPoints(int points) {
-		this.points += points;
+	public void setPoints() {
+		switch(this.getModel().getSizeMaxMonsters()-this.getModel().mobiles.size()) {
+			case 0:
+				this.points += 650;
+				break;
+			case 1:
+				this.points += 620;
+				break;
+			case 2 :
+				this.points += 590;
+				break;
+			case 3 :
+				this.points += 560;
+				break;
+			case 4 :
+				this.points += 530;
+				break;
+		}
 	}
 }

@@ -37,6 +37,8 @@ public class Model extends Observable implements IModel {
 	private Thread threadFireball;
 	private Thread threadLorann;
 	
+	private int sizeMaxMonsters = 0;
+	
 	private boolean finish = false;
 	private boolean dead = false;
 	
@@ -155,12 +157,16 @@ public class Model extends Observable implements IModel {
 		this.notifyObservers(this.elements);
 	}
 	
+	public int getSizeMaxMonsters() {
+		return this.sizeMaxMonsters;
+	}
+	
 	public int getScore() {
 		return this.getPurse().points;
 	}
 	
 	public void setPointsPurse() {
-		this.getPurse().setPoints(650);
+		this.getPurse().setPoints();
 	}
 	
 	public void setDeath(boolean dead) {
@@ -286,8 +292,8 @@ public class Model extends Observable implements IModel {
 				}
 				numLine+=20;
 				System.out.println("");
-			    //System.out.println(numLine);
 			}
+			this.sizeMaxMonsters = this.mobiles.size();
 			
 		} catch (final SQLException e) {
 			e.printStackTrace();

@@ -208,14 +208,15 @@ public class Fireball extends Mobile implements IFireball, Runnable {
 				for(int i = 0; i < this.getModel().getMobiles().size(); i++) {
 					if(this.getModel().getMobiles().get(i).getX() == this.getX() &&
 							this.getModel().getMobiles().get(i).getY() == this.getY() &&
-							this.getModel().getMobiles().get(i) instanceof Demons) {
-						this.getModel().removeMobile(i);
+							this.getModel().getMobiles().get(i) instanceof Lorann) {
+						this.deactivate();
 						this.getModel().setMobileHasChanged();
 					}
 					if(this.getModel().getMobiles().get(i).getX() == this.getX() &&
 							this.getModel().getMobiles().get(i).getY() == this.getY() &&
-							this.getModel().getMobiles().get(i) instanceof Lorann) {
+							this.getModel().getMobiles().get(i) instanceof Demons) {
 						this.deactivate();
+						this.getModel().removeMobile(i);
 						this.getModel().setMobileHasChanged();
 					}
 				}

@@ -33,7 +33,7 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		model.loadMap(1);
+		model.loadMap(3);
 		this.view.Swing();
 	}
 

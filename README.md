@@ -9,6 +9,7 @@ password=
 ```
 
 ## Map Level 1
+```
       o-o---------o 
    o--o |         oo
    |    |          |
@@ -20,8 +21,10 @@ o--o    |   p      |
    |    |          |
    o--o |         oo
       o-o---------o 
+```
 
 ## Map Level 2
+```
   oo---------------o
  oo                |
 oo               l |
@@ -34,8 +37,10 @@ o g o-------opo o--o
 |   | o------oo--o |
 |c  |    1  p|p    |
 o---o--------o-----o
+```
 
 ## Map Level 3
+```
 o-----o--------o--o 
 |     o p p p oo  |o
 | l   oo     oo   |o
@@ -48,8 +53,10 @@ ooo   2  c  3  oop|o
 |p  oo        oo   o
 o---o----------oo go
  ooooooooooooooooooo
+```
  
 ## Map Level 4
+```
   o--o-----------o  
  oo  o           oo 
 oo     opopopopo  oo
@@ -62,8 +69,10 @@ oo     opopopopo  oo
 oo  opopopopopoo1coo
  oo      4  3  2 oo 
   o--------------o  
-  
+```
+
 ## Map Level 5
+```
  o-----oo           
 o      co--o        
 | o---o   po--o     
@@ -75,6 +84,7 @@ o      co--o
 | o---o   po--o     
 og      o--o        
  o-----oo           
+```
 
 ## Map Specifications 
 - o : bone.png

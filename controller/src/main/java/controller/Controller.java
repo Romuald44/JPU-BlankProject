@@ -46,11 +46,24 @@ public class Controller implements IController {
 	}
 	
 	public void selectLevel() {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please select a level :");
-		int str = scanner.nextInt();
-		this.model.loadMap(str);
+		int level = 0;
+		do
+		{
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Please select a level (1-5) :");
+			int str = scanner.nextInt();
+			
+			if(str >= 1 && str <= 5) {
+				System.out.println("Loading level " + str);
+				this.model.loadMap(str);
+				level = 1;
+			}
+			else {
+				System.out.println("Error loading");
+			}
+			scanner.close();
+			
+		}while (level == 0);
 	}
 
 	/**

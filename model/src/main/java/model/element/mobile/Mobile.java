@@ -56,7 +56,7 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 		return this.position;
 	}
 
-	private boolean isMovePossible(final int x, final int y) {
+	protected boolean isMovePossible(final int x, final int y) {
 		return (this.getModel().getElements(x, y).getPermeability() == Permeability.PENETRABLE);
 	}
 

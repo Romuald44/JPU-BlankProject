@@ -30,8 +30,6 @@ class ViewPanel extends JPanel implements Observer {
 	
 	private IMotionLess[][] element;
 	private ArrayList<IMobile> mobile = new ArrayList<IMobile>();
-
-	private Graphics graphics;
 	/**
 	 * Instantiates a new view panel.
 	 *
@@ -41,7 +39,6 @@ class ViewPanel extends JPanel implements Observer {
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
-		this.setGraphics(this.getGraphics());
 	}
 
 	/**
@@ -121,13 +118,5 @@ class ViewPanel extends JPanel implements Observer {
 	
 	public void closeWindow() {
 		this.viewFrame.dispose();
-	}
-
-	public Graphics getGraphics() {
-		return graphics;
-	}
-
-	public void setGraphics(Graphics graphics) {
-		this.graphics = graphics;
 	}
 }

@@ -1,4 +1,6 @@
 package model.element.mobile;
+import java.awt.Point;
+
 import model.Model;
 import model.element.Sprite;
 
@@ -11,7 +13,9 @@ public class MonsterOne implements IBehavior {
 		this.sprite = new Sprite("monster_1.png");
 	}
 
-	public void movement(Lorann lorann, Demons demons, Model model) {
+	public Point movement(Lorann lorann, Point demons, Model model) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public Sprite getSprite() {

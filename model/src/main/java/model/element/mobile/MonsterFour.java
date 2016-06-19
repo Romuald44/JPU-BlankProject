@@ -12,51 +12,28 @@ import model.element.motionless.Purse;
 public class MonsterFour implements IBehavior {
 	
 	private Sprite sprite;
-	private Point direction = new Point(1,1);
 
-	/* Monstre qui ne se déplace pas en diagonale */
 	public MonsterFour() {
 		this.sprite = new Sprite("monster_4.png");
 	}
 	
-	public void movement(Lorann lorann, Demons demons, Model model) {
-		Random rand = new Random();
-		int nombreAleatoire = rand.nextInt(4);
-		System.out.println(nombreAleatoire);
-		
-		if(nombreAleatoire == 1) {
-			direction.x *= 1;
-		}
-		else if(nombreAleatoire == 2) {
-			direction.x *= -1;
-		}
-		else if(nombreAleatoire == 3) {
-			direction.y *= 1;
-		}
-		else if(nombreAleatoire == 4) {
-			direction.y *= -1;
-		}
-		if(demons.isMovePossible((int) demons.getPosition().getX(), (int) demons.getPosition().getY())) {
-			if(direction.x == 1) {
-				demons.getPosition().x++;
-			}
-			else if(direction.x == -1) {
-				demons.getPosition().x--;
-			}
-			else if(direction.y == 1) {
-				demons.getPosition().y++;
-			}
-			else if(direction.y == -1) {
-				demons.getPosition().y--;
-			}
-			/*if((model.getElements((int) demons.getPosition().getX()+1, (int) demons.getPosition().getY()) instanceof Land) ||
-			(model.getElements((int) demons.getPosition().getX()+1, (int) demons.getPosition().getY()) instanceof Gate)	) {
-				demons.getPosition().x += direction.x;
-				demons.getPosition().y += direction.y;
-			}
-			else {
-				demons.getPosition().x++;
-			}*/
+	public Point movement(Lorann lorann, Point demons, Model model) {
+		int rand = (int)(Math.random() * 4) + 1; 
+		switch(rand){
+		case 1:
+			demons.x = demons.x + 1;
+			return demons;
+		case 2:
+			demons.x = demons.x - 1;
+			return demons;
+		case 3:
+			demons.y = demons.y + 1;
+			return demons;
+		case 4:
+			demons.y = demons.y - 1;
+			return demons;
+		default :
+			return demons;
 		}
 	}
 

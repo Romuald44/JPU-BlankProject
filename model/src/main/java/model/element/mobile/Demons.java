@@ -1,5 +1,7 @@
 package model.element.mobile;
 
+import java.awt.Point;
+
 import contract.ActionOnLorann;
 import contract.IActionOnLorann;
 import model.Model;
@@ -28,12 +30,19 @@ public class Demons extends Mobile implements IActionOnLorann {
 
 	public void run() {
 		while(this.getThreadActive()) {
+			Point PositionDemons = this.behavior.movement(this.getModel().getLorann(), new Point(this.getPosition()), this.getModel());
+			if(this.isMovePossible(PositionDemons.x, PositionDemons.y)){
+				this.setPosition(PositionDemons);
+			} else if(this.isMovePossible(PositionDemons.x, getPosition().y)) {
+				this.position.x = PositionDemons.x;
+			} else if(this.isMovePossible(getPosition().x, PositionDemons.y)) {
+				this.position.y = PositionDemons.y;
+			}
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			this.behavior.movement(this.getModel().getLorann(), this, this.getModel());
 		}
 	}
 }

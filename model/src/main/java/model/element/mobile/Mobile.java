@@ -9,7 +9,7 @@ import model.element.Permeability;
 import model.element.Sprite;
 
 public abstract class Mobile extends Element implements IMobile, Runnable {
-	private Point position;
+	protected Point position;
 	private boolean threadActive;
 
 	public Mobile(final Sprite sprite) {
@@ -54,6 +54,10 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 
 	public Point getPosition() {
 		return this.position;
+	}
+	
+	public void setPosition(Point position) {
+		this.position = position;
 	}
 
 	protected boolean isMovePossible(final int x, final int y) {

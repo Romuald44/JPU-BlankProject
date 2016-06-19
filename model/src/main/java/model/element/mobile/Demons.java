@@ -30,7 +30,7 @@ public class Demons extends Mobile implements IActionOnLorann {
 
 	public void run() {
 		while(this.getThreadActive()) {
-			Point PositionDemons = this.behavior.movement(this.getModel().getLorann(), new Point(this.getPosition()), this.getModel());
+			Point PositionDemons = this.behavior.movement(this.getModel().getLorann(), new Point(this.getPosition()));
 			if(this.isMovePossible(PositionDemons.x, PositionDemons.y)){
 				this.setPosition(PositionDemons);
 			} else if(this.isMovePossible(PositionDemons.x, getPosition().y)) {

@@ -7,7 +7,7 @@ import model.element.Sprite;
 
 public interface IBehavior {
 
-	public Point movement(Lorann lorann, Point demons, Model model);
+	public Point movement(Lorann lorann, Point demons);
 
 	public Sprite getSprite();
 }

@@ -14,7 +14,7 @@ public class MonsterThree implements IBehavior {
 		this.sprite = new Sprite("monster_3.png");
 	}
 
-	public Point movement(Lorann lorann, Point demons, Model model) {
+	public Point movement(Lorann lorann, Point demons) {
 		// TODO Auto-generated method stub
 		return null;
 	}

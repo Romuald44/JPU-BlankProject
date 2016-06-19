@@ -14,7 +14,7 @@ public class MonsterTwo implements IBehavior {
 		this.sprite = new Sprite("monster_2.png");
 	}
 
-	public Point movement(Lorann lorann, Point demons, Model model) {
+	public Point movement(Lorann lorann, Point demons) {
 		int rand = (int)(Math.random() * 8) + 1; 
 		switch(rand){
 		case 1:

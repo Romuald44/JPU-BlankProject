@@ -10,6 +10,7 @@ public interface IMobile {
 	public Image getImage();
 	public Point getPosition();
 	public Thread getThread();
+	public boolean getThreadActive();
 	public void setThread(Runnable mobile);
 	public void startThread();
 	public void setThreadActive(boolean active);

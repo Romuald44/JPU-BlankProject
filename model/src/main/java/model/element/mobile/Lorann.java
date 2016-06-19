@@ -67,17 +67,17 @@ public class Lorann extends Mobile implements ILorann {
 	public void run() {
 		int indice = 0;
 		while(this.getThreadActive()) {
-			try {
-				Thread.sleep(150);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			this.setSprite(new Sprite(this.sprites.get(indice)));
 			indice++;
 			if(indice == 7) {
 				indice = 0;
 			}
 			this.getModel().setMobileHasChanged();
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

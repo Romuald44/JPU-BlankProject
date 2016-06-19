@@ -171,12 +171,6 @@ public class Model extends Observable implements IModel {
 	
 	public void setDeath(boolean dead) {
 		this.dead = dead;
-		for(int i = 0; i < this.mobiles.size(); i++) {
-			if(this.mobiles.get(i) instanceof Lorann) {
-				this.mobiles.remove(i);
-			}
-		}
-		
 	}
 	
 	public boolean getDeath() {
@@ -208,10 +202,6 @@ public class Model extends Observable implements IModel {
 	
 	public MotionlessElement[][] getArrayElement() {
 		return this.elements;
-	}
-	
-	public void removeMobile(int indice) {
-		this.mobiles.remove(indice);
 	}
 	
 	public ArrayList<IMobile> getMobiles() {

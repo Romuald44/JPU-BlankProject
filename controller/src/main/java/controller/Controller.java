@@ -159,7 +159,7 @@ public class Controller implements IController {
 			for(int i = 0; i < mobiles.size(); i++) {
 				if((mobiles.get(i).getPosition().getX() == this.model.getLorann().getX()) &&
 						(mobiles.get(i).getPosition().getY() == this.model.getLorann().getY()) &&
-						mobiles.get(i) instanceof IActionOnLorann) {
+						(mobiles.get(i) instanceof IActionOnLorann) && mobiles.get(i).getThreadActive()) {
 					this.model.setStateThreadFinish();
 					this.model.setDeath(true);
 				}

@@ -90,7 +90,9 @@ class ViewPanel extends JPanel implements Observer {
 		}
 
 		for(IMobile test : mobile) {
-			graphics.drawImage(test.getImage(), test.getX()*46, test.getY()*46, 46, 46, this);
+			if(test.getThreadActive() || test instanceof ILorann) {
+				graphics.drawImage(test.getImage(), test.getX()*46, test.getY()*46, 46, 46, this);
+			}
 			if(test instanceof ILorann && ((ILorann) test).getFireball().getActive()) {
 				graphics.drawImage(((ILorann) test).getFireball().getImage(), 
 						((ILorann) test).getFireball().getX()*46, 

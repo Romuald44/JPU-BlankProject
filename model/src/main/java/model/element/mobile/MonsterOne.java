@@ -8,7 +8,7 @@ public class MonsterOne implements IBehavior {
 	
 	private Sprite sprite;
 
-	/* Monstre déplacement vers Lorann*/
+	/* Move towards Lorann */
 	public MonsterOne() {
 		this.sprite = new Sprite("monster_1.png");
 	}

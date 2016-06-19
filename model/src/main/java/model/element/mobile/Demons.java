@@ -1,11 +1,8 @@
 package model.element.mobile;
 
 import java.awt.Point;
-import java.util.ArrayList;
-
 import contract.ActionOnLorann;
 import contract.IActionOnLorann;
-import contract.IMobile;
 import model.Model;
 import model.element.motionless.Land;
 
@@ -28,14 +25,10 @@ public class Demons extends Mobile implements IActionOnLorann {
 	
 	private void getMobilesAnswer() {
 		if(this.getModel().getLorann() != null) {
-			ArrayList<IMobile> mobiles = this.getModel().getMobiles();
-			for(int i = 0; i < mobiles.size(); i++) {
-				if((mobiles.get(i).getPosition().getX() == this.getModel().getLorann().getX()) &&
-						(mobiles.get(i).getPosition().getY() == this.getModel().getLorann().getY()) &&
-						mobiles.get(i) instanceof IActionOnLorann) {
-					this.getModel().setStateThreadFinish();
-					this.getModel().setDeath(true);
-				}
+			if((this.getX() == this.getModel().getLorann().getX()) &&
+					(this.getY() == this.getModel().getLorann().getY())) {
+				this.getModel().setStateThreadFinish();
+				this.getModel().setDeath(true);
 			}
 		}
 	}
@@ -57,16 +50,12 @@ public class Demons extends Mobile implements IActionOnLorann {
 					temp = true;
 				}
 			}
-			getMobilesAnswer();
+			this.getMobilesAnswer();
+			this.getModel().setMobileHasChanged();
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-		}
-		for(int i = 0; i < this.getModel().getMobiles().size(); i++) {
-			if(this.getModel().getMobiles().get(i) == this) {
-				this.getModel().removeMobile(i);
 			}
 		}
 	}

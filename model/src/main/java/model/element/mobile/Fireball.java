@@ -33,6 +33,10 @@ public class Fireball extends Mobile implements IFireball {
 	public boolean getActive() {
 		return this.active;
 	}
+	
+	public Point getDirection() {
+		return this.direction;
+	}
 
 	public void reactivate() {
 		this.active = true;
@@ -208,7 +212,7 @@ public class Fireball extends Mobile implements IFireball {
 							this.getModel().getMobiles().get(i).getY() == this.getY() &&
 							this.getModel().getMobiles().get(i) instanceof Demons) {
 						this.deactivate();
-						this.getModel().removeMobile(i);
+						this.getModel().getMobiles().get(i).setThreadActive(false);
 						this.getModel().setMobileHasChanged();
 					}
 				}

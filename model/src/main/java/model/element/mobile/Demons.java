@@ -7,7 +7,7 @@ import contract.ActionOnLorann;
 import contract.IActionOnLorann;
 import contract.IMobile;
 import model.Model;
-import model.element.Permeability;
+import model.element.motionless.Land;
 
 public class Demons extends Mobile implements IActionOnLorann {
 
@@ -26,10 +26,6 @@ public class Demons extends Mobile implements IActionOnLorann {
 		return ActionOnLorann.KILL;
 	}
 	
-	protected boolean isMovePossible(final int x, final int y) {
-		return (this.getModel().getElements(x, y).getPermeability() == Permeability.PENETRABLE);
-	}
-	
 	private void getMobilesAnswer() {
 		if(this.getModel().getLorann() != null) {
 			ArrayList<IMobile> mobiles = this.getModel().getMobiles();
@@ -45,20 +41,32 @@ public class Demons extends Mobile implements IActionOnLorann {
 	}
 
 	public void run() {
+		boolean temp;
 		while(this.getThreadActive()) {
-			Point PositionDemons = this.behavior.movement(this.getModel().getLorann(), new Point(this.getPosition()));
-			if(this.isMovePossible(PositionDemons.x, PositionDemons.y)){
-				this.setPosition(PositionDemons);
-			} else if(this.isMovePossible(PositionDemons.x, getPosition().y)) {
-				this.position.x = PositionDemons.x;
-			} else if(this.isMovePossible(getPosition().x, PositionDemons.y)) {
-				this.position.y = PositionDemons.y;
+			temp = false;
+			while(!temp) {
+				Point positionDemons = this.behavior.movement(this.getModel().getLorann(), new Point(this.getPosition()));
+				if(this.getModel().getElements(positionDemons.x, positionDemons.y) instanceof Land) {
+					this.setPosition(positionDemons);
+					temp = true;
+				} else if(this.getModel().getElements(positionDemons.x, this.getPosition().y) instanceof Land) {
+					this.position.x = positionDemons.x;
+					temp = true;
+				} else if(this.getModel().getElements(this.getPosition().x, positionDemons.y) instanceof Land) {
+					this.position.y = positionDemons.y;
+					temp = true;
+				}
 			}
 			getMobilesAnswer();
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			}
+		}
+		for(int i = 0; i < this.getModel().getMobiles().size(); i++) {
+			if(this.getModel().getMobiles().get(i) == this) {
+				this.getModel().removeMobile(i);
 			}
 		}
 	}

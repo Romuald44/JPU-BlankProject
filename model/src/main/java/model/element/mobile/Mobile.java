@@ -10,6 +10,7 @@ import model.element.Sprite;
 
 public abstract class Mobile extends Element implements IMobile, Runnable {
 	protected Point position;
+	private Thread thread;
 	private boolean threadActive;
 
 	public Mobile(final Sprite sprite) {
@@ -38,6 +39,18 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 			this.position.y = y;
 			this.getModel().setMobileHasChanged();
 		}
+	}
+	
+	public Thread getThread() {
+		return this.thread;
+	}
+	
+	public void setThread(Runnable mobile) {
+		this.thread = new Thread(mobile);
+	}
+	
+	public void startThread() {
+		this.thread.start();
 	}
 
 	public Image getImage() {

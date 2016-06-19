@@ -2,7 +2,6 @@ package model.element.mobile;
 
 import java.awt.Point;
 
-import model.Model;
 import model.element.Sprite;
 
 public interface IBehavior {

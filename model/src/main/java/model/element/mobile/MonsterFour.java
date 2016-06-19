@@ -1,18 +1,13 @@
 package model.element.mobile;
 
 import java.awt.Point;
-import java.util.Random;
-
-import model.Model;
 import model.element.Sprite;
-import model.element.motionless.Gate;
-import model.element.motionless.Land;
-import model.element.motionless.Purse;
 
 public class MonsterFour implements IBehavior {
 	
 	private Sprite sprite;
 
+	/* Monstre pas de diagonale */
 	public MonsterFour() {
 		this.sprite = new Sprite("monster_4.png");
 	}

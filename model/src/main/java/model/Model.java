@@ -35,9 +35,6 @@ public class Model extends Observable implements IModel {
 	private int	height;
 	private Map map;
 	
-	private ArrayList<Thread> threadsMobiles;
-	private Thread threadFireball;
-	
 	private int sizeMaxMonsters = 0;
 	
 	private boolean finish = false;
@@ -48,18 +45,17 @@ public class Model extends Observable implements IModel {
 	 */
 	public Model() {
 		this.mobiles = new ArrayList<IMobile>();
-		this.threadsMobiles = new ArrayList<Thread>();
 	}
 	
 	public void startThreadsMobiles() {
-		for(int i = 0; i < this.threadsMobiles.size(); i++) {
-			this.threadsMobiles.get(i).start();
+		for(int i = 0; i < this.mobiles.size(); i++) {
+			this.mobiles.get(i).startThread();
 		}
-		this.threadFireball.start();
+		this.getLorann().getFireball().startThread();
 	}
 	
-	public Thread getTheadFireball() {
-		return this.threadFireball;
+	public Thread getThreadFireball() {
+		return this.getLorann().getFireball().getThread();
 	}
 	
 	public void setStateThreadFinish() {
@@ -156,12 +152,6 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void replaceLand(final int x, final int y) {
-		/*if(this.elements[x][y] instanceof Purse) {
-			((Purse)this.elements[x][y]).setPoints(650);
-		}
-		else if(this.elements[x][y] instanceof CrystalBall) {
-			this.getGate().open();
-		}*/
 		this.elements[x][y] = MotionlessElements.LAND;
 		this.setChanged();
 		this.notifyObservers(this.elements);
@@ -264,13 +254,12 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void addMobile(final Mobile mobile) {
+		mobile.setThread(mobile);
 		this.mobiles.add(mobile);
-		this.threadsMobiles.add(new Thread(mobile));
 		if(mobile instanceof Lorann) {
 			Fireball fireball = new Fireball((Lorann)mobile, this);
-			this.threadFireball = new Thread(fireball);
 			((Lorann)mobile).setFireball(fireball);
-			
+			fireball.setThread(fireball);
 		}
 	}
 	

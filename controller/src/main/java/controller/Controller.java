@@ -46,11 +46,24 @@ public class Controller implements IController {
 	}
 	
 	public void selectLevel() {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please select a level :");
-		int str = scanner.nextInt();
-		this.model.loadMap(str);
+		int level = 0;
+		do
+		{
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Please select a level (1-5) :");
+			int str = scanner.nextInt();
+			
+			if(str >= 1 && str <= 5) {
+				System.out.println("Loading level " + str);
+				this.model.loadMap(str);
+				level = 1;
+			}
+			else {
+				System.out.println("Error loading");
+			}
+			scanner.close();
+			
+		}while (level == 0);
 	}
 
 	/**
@@ -103,43 +116,53 @@ public class Controller implements IController {
 				default:
 					break;
 			}
-			this.getWorldAnswer();
+			this.getElementAnswer();
+			this.getMobilesAnswer();
 		}
 	}
 	
-	private void getWorldAnswer() {
+	private void getElementAnswer() {
 		final IActionOnLorann element = (IActionOnLorann) this.model.getElements(this.model.getLorann().getX(), this.model.getLorann().getY());
-
-		switch (element.getActionOnLorann()) {
-			case RECOVERABLE:
-				this.model.setPointsPurse();
-				this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
-				System.out.println("Recuperer Purse");
-				break;
-			case OPEN_GATE:
-				this.model.openTheDoor();
-				this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
-				System.out.println("Open the door");
-				break;
-			case KILL:
-				this.model.setDeath(true);
-				System.out.println("You died");
-				break;
-			case FINISH:
-				this.model.setTheEnd(true);
-				System.out.println("Finish");
-				break;
-			case NOP:
-			default:
-				break;
+		if(this.model.getLorann() != null) {
+			switch (element.getActionOnLorann()) {
+				case RECOVERABLE:
+					this.model.setPointsPurse();
+					this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
+					System.out.println("Recuperer Purse");
+					break;
+				case OPEN_GATE:
+					this.model.openTheDoor();
+					this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
+					System.out.println("Open the door");
+					break;
+				case KILL:
+					this.model.setStateThreadFinish();
+					this.model.setDeath(true);
+					System.out.println("You died");
+					break;
+				case FINISH:
+					this.model.setStateThreadFinish();
+					this.model.setTheEnd(true);
+					System.out.println("Finish");
+					break;
+				case NOP:
+				default:
+					break;
+			}
 		}
 		
-		ArrayList<IMobile> mobiles = this.model.getMobiles();
-		for(int i = 0; i < mobiles.size(); i++) {
-			if((mobiles.get(i).getPosition().getX() == this.model.getLorann().getX()) &&
-					(mobiles.get(i).getPosition().getY() == this.model.getLorann().getY()) &&
-					mobiles.get(i) instanceof IActionOnLorann) {
-				this.model.setDeath(true);
+	}
+	
+	private void getMobilesAnswer() {
+		if(this.model.getLorann() != null) {
+			ArrayList<IMobile> mobiles = this.model.getMobiles();
+			for(int i = 0; i < mobiles.size(); i++) {
+				if((mobiles.get(i).getPosition().getX() == this.model.getLorann().getX()) &&
+						(mobiles.get(i).getPosition().getY() == this.model.getLorann().getY()) &&
+						mobiles.get(i) instanceof IActionOnLorann) {
+					this.model.setStateThreadFinish();
+					this.model.setDeath(true);
+				}
 			}
 		}
 	}

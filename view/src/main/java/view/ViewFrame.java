@@ -1,15 +1,9 @@
 package view;
-
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.HashSet;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import contract.IController;
 import contract.IModel;
 
@@ -20,14 +14,17 @@ import contract.IModel;
  */
 class ViewFrame extends JFrame implements KeyListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3517599904808967841L;
+
 	/** The model. */
 	private IModel model;
 
 	/** The controller. */
 	private IController controller;
 
-	private final HashSet<KeyEvent> pressed = new HashSet<KeyEvent>();
-	
 	/**
 	 * Instantiates a new view frame.
 	 *
@@ -135,22 +132,6 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setSize(925, 644);
 		this.setContentPane(new ViewPanel(this));
 		this.setLocationRelativeTo(null);
-	}
-
-	/**
-	 * Prints the message.
-	 *
-	 * @param message
-	 *          the message
-	 */
-	public void printMessage(final String message) {
-		JLabel label = new JLabel(message);
-		this.add(label);
-		label.setFont(new Font("Courrier", Font.PLAIN, 20));
-		label.setForeground(Color.GREEN);
-		label.setVerticalTextPosition(JLabel.BOTTOM);
-		label.setHorizontalTextPosition(JLabel.CENTER);
-		label.setVisible(true);
 	}
 
 	/*

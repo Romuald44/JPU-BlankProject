@@ -32,6 +32,10 @@ public class View implements IView, Runnable {
 	public void Swing() {
 		SwingUtilities.invokeLater(this);
 	}
+	
+	public ViewFrame getViewFrame() {
+		return this.viewFrame;
+	}
 
 	/**
 	 * Key code to controller order.
@@ -55,15 +59,6 @@ public class View implements IView, Runnable {
 			default:
 				return ControllerOrder.NOP;
 		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IView#printMessage(java.lang.String)
-	 */
-	public void printMessage(final String message) {
-		this.viewFrame.printMessage(message);
 	}
 
 	/*

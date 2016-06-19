@@ -19,13 +19,17 @@ import contract.IMotionLess;
  */
 class ViewPanel extends JPanel implements Observer {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7138488664502639606L;
+
 	/** The view frame. */
 	private ViewFrame viewFrame;
 	
 	private IMotionLess[][] element;
 	private ArrayList<IMobile> mobile = new ArrayList<IMobile>();
-
-	private Graphics graphics;
 	/**
 	 * Instantiates a new view panel.
 	 *
@@ -35,7 +39,6 @@ class ViewPanel extends JPanel implements Observer {
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
-		this.graphics = this.getGraphics();
 	}
 
 	/**
@@ -102,13 +105,13 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawString("SCORE : "+this.viewFrame.getModel().getScore(), 50, 600);
 		
 		if(this.viewFrame.getModel().getTheEnd()) {
-			this.viewFrame.printMessage("FINISH");
-			this.viewFrame.getModel().setStateThreadFinish();
+			graphics.setColor(Color.WHITE);
+			graphics.drawString("FINISH !", 600, 600);
 			//this.closeWindow();
 		}
 		else if(this.viewFrame.getModel().getDeath()) {
-			this.viewFrame.printMessage("YOU DIED");
-			this.viewFrame.getModel().setStateThreadFinish();
+			graphics.setColor(Color.RED);
+			graphics.drawString("YOU DIED", 600, 600);
 			//this.closeWindow();
 		}
 	}

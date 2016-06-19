@@ -30,7 +30,7 @@ public interface IModel {
 	public void launchFireball();
 	
 	public void startThreadsMobiles();
-	public Thread getTheadFireball();
+	public Thread getThreadFireball();
 	public void setStateThreadFinish();
 	
 	public void setMobileHasChanged();

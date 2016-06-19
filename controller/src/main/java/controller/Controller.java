@@ -92,11 +92,11 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
-		if(this.model.getTheadFireball().getState() == Thread.State.NEW) {
+		if(this.model.getThreadFireball().getState() == Thread.State.NEW) {
 			this.model.startThreadsMobiles();
 		}
-		if((this.model.getTheadFireball().getState() == Thread.State.RUNNABLE) ||
-		(this.model.getTheadFireball().getState() == Thread.State.TIMED_WAITING)) {
+		if((this.model.getThreadFireball().getState() == Thread.State.RUNNABLE) ||
+		(this.model.getThreadFireball().getState() == Thread.State.TIMED_WAITING)) {
 			switch (controllerOrder) {
 				case UP:
 					this.model.moveUp();

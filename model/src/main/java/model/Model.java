@@ -34,6 +34,7 @@ public class Model extends Observable implements IModel {
 	private int width;
 	private int	height;
 	private Map map;
+	private Score score;
 	
 	private ArrayList<Thread> threadsMobiles;
 	private Thread threadFireball;
@@ -171,7 +172,7 @@ public class Model extends Observable implements IModel {
 		return this.sizeMaxMonsters;
 	}
 	
-	public int getScore() {
+	public int getPointsPurse() {
 		return Purse.points;
 	}
 	
@@ -180,6 +181,7 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void setDeath(boolean dead) {
+		this.setScore(this.getScore());
 		this.dead = dead;
 		for(int i = 0; i < this.mobiles.size(); i++) {
 			if(this.mobiles.get(i) instanceof Lorann) {
@@ -194,6 +196,7 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public void setTheEnd(boolean finish) {
+		this.setScore(this.getScore());
 		this.finish = finish;
 	}
 	
@@ -274,7 +277,32 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	public int getScore() {
+		return this.score.getScore()+this.getPointsPurse();
+	}
+	
+	public void setScore(final int point_score) {
+		this.score.setScore(point_score);
+		try {
+			final DAOScore score = new DAOScore(DBConnection.getInstance().getConnection());
+			score.update(this.score);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadScore() {
+		final DAOScore score;
+		try {
+			score = new DAOScore(DBConnection.getInstance().getConnection());
+			this.score = score.find(0);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void loadMap(final int id) {
+		this.loadScore();
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());
 			map = Map.find(id);

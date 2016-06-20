@@ -99,32 +99,37 @@ public class ModelTest {
 
 	@Test
 	public void testGetElements() {
-		fail("Not yet implemented");
+		try {
+			this.model.getElements(0, 0);
+		}
+		catch(final Exception e) {
+			Assert.assertEquals("Out of range", e.getMessage());
+		}
 	}
 
 	@Test
 	public void testGetArrayElement() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(this.model.getArrayElement());
 	}
 
 	@Test
 	public void testGetMobiles() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testOpenTheDoor() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(this.model.getMobiles());
 	}
 
 	@Test
 	public void testGetLorann() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(this.model.getLorann());
 	}
 
 	@Test
 	public void testGetPurse() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(this.model.getPurse());
+	}
+
+	@Test
+	public void testGetGate() {
+		Assert.assertNotNull(this.model);
 	}
 
 	@Test

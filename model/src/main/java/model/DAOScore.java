@@ -51,8 +51,6 @@ class DAOScore extends DAOEntity<Score> {
 	 */
 	@Override
 	public boolean update(final Score entity) {
-		Score score = new Score();
-		
 		try {
 			final String sql = "{call setScore(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);

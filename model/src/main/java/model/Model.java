@@ -190,9 +190,9 @@ public class Model extends Observable implements IModel {
 		return this.height;
 	}
 	
-	public MotionlessElement getElements(final int x, final int y) {
+	public MotionlessElement getElements(final int x, final int y) throws Exception {
 		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
-			return null;
+			throw new Exception("Out of range");
 		}
 		return this.elements[x][y];
 	}

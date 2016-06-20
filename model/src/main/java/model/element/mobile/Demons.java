@@ -39,15 +39,19 @@ public class Demons extends Mobile implements IActionOnLorann {
 			temp = false;
 			while(!temp) {
 				Point positionDemons = this.behavior.movement(this.getModel().getLorann(), new Point(this.getPosition()));
-				if(this.getModel().getElements(positionDemons.x, positionDemons.y) instanceof Land) {
-					this.setPosition(positionDemons);
-					temp = true;
-				} else if(this.getModel().getElements(positionDemons.x, this.getPosition().y) instanceof Land) {
-					this.position.x = positionDemons.x;
-					temp = true;
-				} else if(this.getModel().getElements(this.getPosition().x, positionDemons.y) instanceof Land) {
-					this.position.y = positionDemons.y;
-					temp = true;
+				try {
+					if(this.getModel().getElements(positionDemons.x, positionDemons.y) instanceof Land) {
+						this.setPosition(positionDemons);
+						temp = true;
+					} else if(this.getModel().getElements(positionDemons.x, this.getPosition().y) instanceof Land) {
+						this.position.x = positionDemons.x;
+						temp = true;
+					} else if(this.getModel().getElements(this.getPosition().x, positionDemons.y) instanceof Land) {
+						this.position.y = positionDemons.y;
+						temp = true;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 			this.getMobilesAnswer();

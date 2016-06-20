@@ -50,7 +50,7 @@ public interface IModel {
 	public boolean getTheEnd();
 	
 	public void openTheDoor();
-	public IMotionLess getElements(final int x, final int y);
+	public IMotionLess getElements(final int x, final int y) throws Exception;
 	public ILorann getLorann();
 	
 	public int getWidth();

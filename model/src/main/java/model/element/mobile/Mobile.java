@@ -73,82 +73,114 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 		this.position = position;
 	}
 
-	protected boolean isMovePossible(final int x, final int y) {
+	protected boolean isMovePossible(final int x, final int y) throws Exception {
 		return (this.getModel().getElements(x, y).getPermeability() == Permeability.PENETRABLE);
 	}
 
 	public boolean moveUp() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX(), this.getY() - 1)) {
-			this.setY(this.getY() - 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX(), this.getY() - 1)) {
+				this.setY(this.getY() - 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
 
 	public boolean moveLeft() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() - 1, this.getY())) {
-			this.setX(this.getX() - 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() - 1, this.getY())) {
+				this.setX(this.getX() - 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
 
 	public boolean moveDown() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX(), this.getY() + 1)) {
-			this.setY(this.getY() + 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX(), this.getY() + 1)) {
+				this.setY(this.getY() + 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
 
 	public boolean moveRight() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() + 1, this.getY())) {
-			this.setX(this.getX() + 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() + 1, this.getY())) {
+				this.setX(this.getX() + 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
 
 	public boolean moveUpLeft() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() - 1, this.getY() - 1)) {
-			this.setX(this.getX() - 1);
-			this.setY(this.getY() - 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() - 1, this.getY() - 1)) {
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() - 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
 
 	public boolean moveUpRight() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() + 1, this.getY() - 1)) {
-			this.setX(this.getX() + 1);
-			this.setY(this.getY() - 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() + 1, this.getY() - 1)) {
+				this.setX(this.getX() + 1);
+				this.setY(this.getY() - 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
 
 	public boolean moveDownLeft() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() - 1, this.getY() + 1)) {
-			this.setX(this.getX() - 1);
-			this.setY(this.getY() + 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() - 1, this.getY() + 1)) {
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() + 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
 
 	public boolean moveDownRight() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() + 1, this.getY() + 1)) {
-			this.setX(this.getX() + 1);
-			this.setY(this.getY() + 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() + 1, this.getY() + 1)) {
+				this.setX(this.getX() + 1);
+				this.setY(this.getY() + 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}

@@ -88,25 +88,33 @@ public class Fireball extends Mobile implements IFireball {
 				if(this.direction.x != 0 && this.direction.y == 0) {
 					switch(this.direction.x) {
 					case -1:
-						if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
-							bool = this.moveLeft();
-							if(!bool) {
+						try {
+							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
+								bool = this.moveLeft();
+								if(!bool) {
+									this.direction.x = 1;
+								}
+							}
+							else {
 								this.direction.x = 1;
 							}
-						}
-						else {
-							this.direction.x = 1;
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
 						break;
 					case 1:
-						if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
-							bool = this.moveRight();
-							if(!bool) {
+						try {
+							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
+								bool = this.moveRight();
+								if(!bool) {
+									this.direction.x = -1;
+								}
+							}
+							else {
 								this.direction.x = -1;
 							}
-						}
-						else {
-							this.direction.x = -1;
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
 						break;
 					}
@@ -114,25 +122,33 @@ public class Fireball extends Mobile implements IFireball {
 				else if(this.direction.x == 0 && this.direction.y != 0) {
 					switch(this.direction.y) {
 					case -1:
-						if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
-							bool = this.moveUp();
-							if(!bool) {
+						try {
+							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
+								bool = this.moveUp();
+								if(!bool) {
+									this.direction.y = 1;
+								}
+							}
+							else {
 								this.direction.y = 1;
 							}
-						}
-						else {
-							this.direction.y = 1;
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
 						break;
 					case 1:
-						if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
-							bool = this.moveDown();
-							if(!bool) {
+						try {
+							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
+								bool = this.moveDown();
+								if(!bool) {
+									this.direction.y = -1;
+								}
+							}
+							else {
 								this.direction.y = -1;
 							}
-						}
-						else {
-							this.direction.y = -1;
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
 						break;
 					}
@@ -142,29 +158,37 @@ public class Fireball extends Mobile implements IFireball {
 					case -1:
 						switch(this.direction.y) {
 						case -1:
-							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
-								bool = this.moveUpLeft();
-								if(!bool) {
+							try {
+								if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
+									bool = this.moveUpLeft();
+									if(!bool) {
+										this.direction.x = 1;
+										this.direction.y = 1;
+									}
+								}
+								else {
 									this.direction.x = 1;
 									this.direction.y = 1;
 								}
-							}
-							else {
-								this.direction.x = 1;
-								this.direction.y = 1;
+							} catch (Exception e) {
+								e.printStackTrace();
 							}
 							break;
 						case 1:
-							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
-								bool = this.moveDownLeft();
-								if(!bool) {
+							try {
+								if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
+									bool = this.moveDownLeft();
+									if(!bool) {
+										this.direction.x = 1;
+										this.direction.y = -1;
+									}
+								}
+								else {
 									this.direction.x = 1;
 									this.direction.y = -1;
 								}
-							}
-							else {
-								this.direction.x = 1;
-								this.direction.y = -1;
+							} catch (Exception e) {
+								e.printStackTrace();
 							}
 							break;
 						}
@@ -172,29 +196,37 @@ public class Fireball extends Mobile implements IFireball {
 					case 1:
 						switch(this.direction.y) {
 						case -1:
-							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
-								bool = this.moveUpRight();
-								if(!bool) {
+							try {
+								if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
+									bool = this.moveUpRight();
+									if(!bool) {
+										this.direction.x = -1;
+										this.direction.y = 1;
+									}
+								}
+								else {
 									this.direction.x = -1;
 									this.direction.y = 1;
 								}
-							}
-							else {
-								this.direction.x = -1;
-								this.direction.y = 1;
+							} catch (Exception e) {
+								e.printStackTrace();
 							}
 							break;
 						case 1:
-							if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
-								bool = this.moveDownRight();
-								if(!bool) {
+							try {
+								if(!(this.getModel().getElements(this.getX()+direction.x, this.getY()+direction.y) instanceof Gate)) {
+									bool = this.moveDownRight();
+									if(!bool) {
+										this.direction.x = -1;
+										this.direction.y = -1;
+									}
+								}
+								else {
 									this.direction.x = -1;
 									this.direction.y = -1;
 								}
-							}
-							else {
-								this.direction.x = -1;
-								this.direction.y = -1;
+							} catch (Exception e) {
+								e.printStackTrace();
 							}
 							break;
 						}

@@ -368,6 +368,13 @@ public class Model extends Observable implements IModel {
 	}
 	
 	/**
+	 * close Gate
+	 */
+	public void closeGate() {
+		this.getGate().close();
+	}
+	
+	/**
 	 * add mobile
 	 * @param mobile
 	 * 			the mobile

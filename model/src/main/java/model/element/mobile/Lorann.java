@@ -44,8 +44,16 @@ public class Lorann extends Mobile implements ILorann {
 		this.sprites.add("lorann_r.png");
 		this.sprites.add("lorann_br.png");
 		this.setThreadActive(true);
-		this.setX(x);
-		this.setY(y);
+		try {
+			this.setX(x);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			this.setY(y);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

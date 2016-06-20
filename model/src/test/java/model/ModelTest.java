@@ -1,7 +1,5 @@
 package model;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -9,6 +7,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import model.element.mobile.Demons;
+import model.element.mobile.MonsterOne;
 import model.element.motionless.MotionlessElements;
 
 public class ModelTest {
@@ -49,13 +49,18 @@ public class ModelTest {
 	}
 
 	@Test
-	public void testAddElement() {
-		this.model.addElement(MotionlessElements.LAND, 0, 0);
-		Assert.assertEquals(MotionlessElements.LAND, this.model.getElements(0, 0));
+	public void testAddElement() throws Exception {
+		try {
+			this.model.addElement(MotionlessElements.LAND, 0, 0);
+			Assert.assertEquals(MotionlessElements.LAND, this.model.getElements(0, 0));
+		}
+		catch(final Exception e) {
+			Assert.assertEquals("Out of range", e.getMessage());
+		}
 	}
 
 	@Test
-	public void testReplaceLand() {
+	public void testReplaceLand() throws Exception {
 		this.model.replaceLand(0, 0);
 		Assert.assertEquals(MotionlessElements.LAND, this.model.getElements(0, 0));
 	}
@@ -100,7 +105,7 @@ public class ModelTest {
 	@Test
 	public void testGetElements() {
 		try {
-			this.model.getElements(0, 0);
+			this.model.getElements(-1, 0);
 		}
 		catch(final Exception e) {
 			Assert.assertEquals("Out of range", e.getMessage());
@@ -128,43 +133,35 @@ public class ModelTest {
 	}
 
 	@Test
-	public void testGetGate() {
-		Assert.assertNotNull(this.model);
-	}
-
-	@Test
 	public void testAddMobile() {
-		fail("Not yet implemented");
+		int taille = this.model.getMobiles().size();
+		this.model.addMobile(new Demons(new MonsterOne(), 0, 0, this.model));
+		Assert.assertEquals(taille+1, this.model.getMobiles().size());
 	}
 
 	@Test
 	public void testGetScore() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetScore() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(this.model.getScore());
 	}
 
 	@Test
 	public void testLoadScore() {
-		fail("Not yet implemented");
+		this.model.loadScore();
+		Assert.assertNotNull(this.model.getScore());
 	}
 
 	@Test
-	public void testLoadMap() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetMobileHasChanged() {
-		fail("Not yet implemented");
+	public void testLoadMap() throws Exception {
+		for(int y = 0; y < this.model.getHeight(); y++) {
+			for(int x = 0; x < this.model.getWidth(); x++) {
+				Assert.assertNotNull(this.model.getElements(x, y));
+			}
+		}
 	}
 
 	@Test
 	public void testGetObservable() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(this.model.getObservable());
 	}
 
 }

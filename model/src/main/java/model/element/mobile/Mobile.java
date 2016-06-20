@@ -53,22 +53,30 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	/**
 	 * set position X
 	 * @param x
+	 * @throws Exception
 	 */
-	protected void setX(final int x) {
+	protected void setX(final int x) throws Exception {
 		if ((x >= 0) && (x < this.getModel().getWidth())) {
 			this.position.x = x;
 			this.getModel().setMobileHasChanged();
+		}
+		else {
+			throw new Exception("Out of range");
 		}
 	}
 
 	/**
 	 * set position Y
 	 * @param y
+	 * @throws Exception
 	 */
-	protected void setY(final int y) {
+	protected void setY(final int y) throws Exception {
 		if ((y >= 0) && (y < this.getModel().getHeight())) {
 			this.position.y = y;
 			this.getModel().setMobileHasChanged();
+		}
+		else {
+			throw new Exception("Out of range");
 		}
 	}
 	
@@ -139,8 +147,9 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 * @param x
 	 * @param y
 	 * @return boolean
+	 * @throws Exception
 	 */
-	protected boolean isMovePossible(final int x, final int y) {
+	protected boolean isMovePossible(final int x, final int y) throws Exception {
 		return (this.getModel().getElements(x, y).getPermeability() == Permeability.PENETRABLE);
 	}
 
@@ -150,9 +159,13 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 */
 	public boolean moveUp() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX(), this.getY() - 1)) {
-			this.setY(this.getY() - 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX(), this.getY() - 1)) {
+				this.setY(this.getY() - 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
@@ -163,9 +176,13 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 */
 	public boolean moveLeft() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() - 1, this.getY())) {
-			this.setX(this.getX() - 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() - 1, this.getY())) {
+				this.setX(this.getX() - 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
@@ -176,9 +193,13 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 */
 	public boolean moveDown() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX(), this.getY() + 1)) {
-			this.setY(this.getY() + 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX(), this.getY() + 1)) {
+				this.setY(this.getY() + 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
@@ -189,9 +210,13 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 */
 	public boolean moveRight() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() + 1, this.getY())) {
-			this.setX(this.getX() + 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() + 1, this.getY())) {
+				this.setX(this.getX() + 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
@@ -202,10 +227,14 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 */
 	public boolean moveUpLeft() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() - 1, this.getY() - 1)) {
-			this.setX(this.getX() - 1);
-			this.setY(this.getY() - 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() - 1, this.getY() - 1)) {
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() - 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
@@ -216,10 +245,14 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 */
 	public boolean moveUpRight() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() + 1, this.getY() - 1)) {
-			this.setX(this.getX() + 1);
-			this.setY(this.getY() - 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() + 1, this.getY() - 1)) {
+				this.setX(this.getX() + 1);
+				this.setY(this.getY() - 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
@@ -230,10 +263,14 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 */
 	public boolean moveDownLeft() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() - 1, this.getY() + 1)) {
-			this.setX(this.getX() - 1);
-			this.setY(this.getY() + 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() - 1, this.getY() + 1)) {
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() + 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}
@@ -244,10 +281,14 @@ public abstract class Mobile extends Element implements IMobile, Runnable {
 	 */
 	public boolean moveDownRight() {
 		boolean bool = false;
-		if (this.isMovePossible(this.getX() + 1, this.getY() + 1)) {
-			this.setX(this.getX() + 1);
-			this.setY(this.getY() + 1);
-			bool = true;
+		try {
+			if (this.isMovePossible(this.getX() + 1, this.getY() + 1)) {
+				this.setX(this.getX() + 1);
+				this.setY(this.getY() + 1);
+				bool = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return bool;
 	}

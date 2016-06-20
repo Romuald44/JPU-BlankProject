@@ -15,8 +15,9 @@ public interface IModel {
 	 *
 	 * @param key
 	 *          the key
+	 * @throws Exception
 	 */
-	void loadMap(int id);
+	void loadMap(int id) throws Exception;
 	
 	/**
 	 * Move Up
@@ -148,8 +149,9 @@ public interface IModel {
 	 * 			x
 	 * 	@param int
 	 * 			y
+	 * @throws Exception
 	 */
-	public IMotionLess getElements(final int x, final int y);
+	public IMotionLess getElements(final int x, final int y) throws Exception;
 	
 	/**
 	 * get Lorann

@@ -201,16 +201,22 @@ public class Model extends Observable implements IModel {
 	 * 
 	 * @param y
 	 * 			the y
+	 * @throws Exception
 	 *
 	 */
-	public void addElement(final IMotionLess element, final int x, final int y) {
-		this.elements[x][y] = (MotionlessElement) element;
-		if (element != null) {
-			((Element) element).setModel(this);
+	public void addElement(final IMotionLess element, final int x, final int y) throws Exception {
+		if(x < 0 || y < 0 || x >= this.width || y >= this.height) {
+			throw new Exception("Out of range");
 		}
-		if(x == 19 && y == 11) {
-			this.setChanged();
-			this.notifyObservers(this.elements);
+		else {
+			this.elements[x][y] = (MotionlessElement) element;
+			if (element != null) {
+				((Element) element).setModel(this);
+			}
+			if(x == 19 && y == 11) {
+				this.setChanged();
+				this.notifyObservers(this.elements);
+			}
 		}
 	}
 	
@@ -291,10 +297,11 @@ public class Model extends Observable implements IModel {
 	 * 			x
 	 * 	@param int
 	 * 			y
+	 * @throws Exception
 	 */
-	public MotionlessElement getElements(final int x, final int y) {
-		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
-			return null;
+	public MotionlessElement getElements(final int x, final int y) throws Exception {
+		if ((x < 0) || (y < 0) || (x > this.getWidth()) || (y > this.getHeight())) {
+			throw new Exception("Out of range");
 		}
 		return this.elements[x][y];
 	}
@@ -412,8 +419,9 @@ public class Model extends Observable implements IModel {
 	
 	/**
 	 * load map from database
+	 * @throws Exception
 	 */
-	public void loadMap(final int id) {
+	public void loadMap(final int id) throws Exception {
 		this.loadScore();
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());

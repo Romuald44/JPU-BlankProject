@@ -26,8 +26,9 @@ public class Controller implements IController {
 	 *          the view
 	 * @param model
 	 *          the model
+	 * @throws Exception
 	 */
-	public Controller(final IView view, final IModel model) {
+	public Controller(final IView view, final IModel model) throws Exception {
 		this.setView(view);
 		this.setModel(model);
 		this.control();
@@ -47,8 +48,9 @@ public class Controller implements IController {
 	 *
 	 * @param ControllerOrder
 	 *          controllerOrder
+	 * @throws Exception
 	 */
-	public void selectLevel(final ControllerOrder controllerOrder) {
+	public void selectLevel(final ControllerOrder controllerOrder) throws Exception {
 		this.model.setDeath(false);
 		this.model.setTheEnd(false);
 		this.model.getMobiles().clear();
@@ -98,8 +100,9 @@ public class Controller implements IController {
 	 *
 	 * @param ControllerOrder
 	 *          controllerOrder
+	 * @throws Exception
 	 */
-	public void orderPerform(final ControllerOrder controllerOrder) {
+	public void orderPerform(final ControllerOrder controllerOrder) throws Exception {
 		if(this.model.getThreadFireball().getState() == Thread.State.NEW) {
 			this.model.startThreadsMobiles();//Start all threads
 		}
@@ -131,8 +134,9 @@ public class Controller implements IController {
 	
 	/**
 	 * Get element on map.
+	 * @throws Exception
 	 */
-	private void getElementAnswer() {
+	private void getElementAnswer() throws Exception {
 		final IActionOnLorann element = (IActionOnLorann) this.model.getElements(this.model.getLorann().getX(), this.model.getLorann().getY());
 		if(this.model.getLorann() != null) {
 			switch (element.getActionOnLorann()) {

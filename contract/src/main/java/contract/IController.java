@@ -17,13 +17,15 @@ public interface IController {
 	 *
 	 * @param controllerOrder
 	 *          the controller order
+	 * @throws Exception
 	 */
-	public void orderPerform(ControllerOrder controllerOrder);
+	public void orderPerform(ControllerOrder controllerOrder) throws Exception;
 	/**
 	 * select level.
 	 *
 	 * @param ControllerOrder
 	 *          controllerOrder
+	 * @throws Exception
 	 */
-	public void selectLevel(ControllerOrder controllerOrder);
+	public void selectLevel(ControllerOrder controllerOrder) throws Exception;
 }

@@ -19,4 +19,11 @@ public interface IController {
 	 *          the controller order
 	 */
 	public void orderPerform(ControllerOrder controllerOrder);
+	/**
+	 * select level.
+	 *
+	 * @param ControllerOrder
+	 *          controllerOrder
+	 */
+	public void selectLevel(ControllerOrder controllerOrder);
 }

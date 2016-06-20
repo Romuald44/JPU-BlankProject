@@ -32,38 +32,47 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		this.selectLevel();
+		this.control();
+		this.model.loadMap(1);
 		this.view.Swing();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see contract.IController#control()
+	/**
+	 * Message select level.
 	 */
 	public void control() {
-		//this.view.printMessage("Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue de votre choix.");
+		this.view.printMessage("Please press touch between 1 and 5");
 	}
 	
-	public void selectLevel() {
-		int level = 0;
-		do
-		{
-			Scanner scanner = new Scanner(System.in);
-			System.out.println("Please select a level (1-5) :");
-			int str = scanner.nextInt();
-			
-			if(str >= 1 && str <= 5) {
-				System.out.println("Loading level " + str);
-				this.model.loadMap(str);
-				level = 1;
-			}
-			else {
-				System.out.println("Error loading");
-			}
-			scanner.close();
-			
-		}while (level == 0);
+	/**
+	 * select level.
+	 *
+	 * @param ControllerOrder
+	 *          controllerOrder
+	 */
+	public void selectLevel(final ControllerOrder controllerOrder) {
+		this.model.setDeath(false);
+		this.model.setTheEnd(false);
+		this.model.getMobiles().clear();
+		switch (controllerOrder) {
+			case ONE:
+				this.model.loadMap(1);
+				break;
+			case TWO:
+				this.model.loadMap(2);
+				break;
+			case THREE:
+				this.model.loadMap(3);
+				break;
+			case FOUR:
+				this.model.loadMap(4);
+				break;
+			case FIVE:
+				this.model.loadMap(5);
+				break;
+			default:
+				break;
+		}
 	}
 
 	/**
@@ -86,63 +95,67 @@ public class Controller implements IController {
 		this.model = model;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Move Lorann.
 	 *
-	 * @see contract.IController#orderPerform(contract.ControllerOrder)
+	 * @param ControllerOrder
+	 *          controllerOrder
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		if(this.model.getThreadFireball().getState() == Thread.State.NEW) {
-			this.model.startThreadsMobiles();
+			this.model.startThreadsMobiles();//Start all threads
 		}
 		if((this.model.getThreadFireball().getState() == Thread.State.RUNNABLE) ||
 		(this.model.getThreadFireball().getState() == Thread.State.TIMED_WAITING)) {
 			switch (controllerOrder) {
 				case UP:
-					this.model.moveUp();
+					this.model.moveUp();// Lorann MoveUp
 					break;
 				case DOWN:
-					this.model.moveDown();
+					this.model.moveDown();// Lorann MoveDown
 					break;
 				case LEFT:
-					this.model.moveLeft();
+					this.model.moveLeft();// Lorann MoveLeft
 					break;
 				case RIGHT:
-					this.model.moveRight();
+					this.model.moveRight();// Lorann MoveRight
 					break;
 				case SPACE:
-					this.model.launchFireball();
+					this.model.launchFireball();// Touch Space launch Fireball
 					break;
 				default:
 					break;
 			}
-			this.getElementAnswer();
-			this.getMobilesAnswer();
+			this.getElementAnswer();// Check element on map
+			this.getMobilesAnswer();// Check mobiles on map
 		}
 	}
 	
+	/**
+	 * Get element on map.
+	 */
 	private void getElementAnswer() {
 		final IActionOnLorann element = (IActionOnLorann) this.model.getElements(this.model.getLorann().getX(), this.model.getLorann().getY());
 		if(this.model.getLorann() != null) {
 			switch (element.getActionOnLorann()) {
 				case RECOVERABLE:
-					this.model.setPointsPurse();
+					this.model.setPointsPurse();//Set Points in Score
 					this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
 					System.out.println("Recuperer Purse");
 					break;
 				case OPEN_GATE:
-					this.model.openTheDoor();
+					this.model.openTheDoor();//Open the door
 					this.model.replaceLand(this.model.getLorann().getX(), this.model.getLorann().getY());
 					System.out.println("Open the door");
 					break;
 				case KILL:
 					this.model.setStateThreadFinish();
-					this.model.setDeath(true);
+					this.model.setDeath(true);//Lorann dead
 					System.out.println("You died");
 					break;
 				case FINISH:
 					this.model.setStateThreadFinish();
-					this.model.setTheEnd(true);
+					this.model.setTheEnd(true);//Finish the game
 					System.out.println("Finish");
 					break;
 				case NOP:
@@ -153,6 +166,9 @@ public class Controller implements IController {
 		
 	}
 	
+	/**
+	 * Get mobiles on map.
+	 */
 	private void getMobilesAnswer() {
 		if(this.model.getLorann() != null) {
 			ArrayList<IMobile> mobiles = this.model.getMobiles();

@@ -11,6 +11,6 @@ public interface IView {
 
 	
 	public JFrame getViewFrame();
-	
+	public void printMessage(String message);
 	public void Swing();
 }

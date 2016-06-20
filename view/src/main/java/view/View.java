@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import contract.ControllerOrder;
@@ -36,6 +37,10 @@ public class View implements IView, Runnable {
 	public ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
+	
+	public void printMessage(final String message) {
+		this.viewFrame.printMessage(message);
+	}
 
 	/**
 	 * Key code to controller order.
@@ -56,6 +61,16 @@ public class View implements IView, Runnable {
 				return ControllerOrder.RIGHT;
 			case KeyEvent.VK_SPACE:
 				return ControllerOrder.SPACE;
+			case KeyEvent.VK_NUMPAD1:
+				return ControllerOrder.ONE;
+			case KeyEvent.VK_NUMPAD2:
+				return ControllerOrder.TWO;
+			case KeyEvent.VK_NUMPAD3:
+				return ControllerOrder.THREE;
+			case KeyEvent.VK_NUMPAD4:
+				return ControllerOrder.FOUR;
+			case KeyEvent.VK_NUMPAD5:
+				return ControllerOrder.FIVE;
 			default:
 				return ControllerOrder.NOP;
 		}

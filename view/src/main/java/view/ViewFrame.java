@@ -4,6 +4,8 @@ import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import contract.IController;
 import contract.IModel;
 
@@ -117,6 +119,10 @@ class ViewFrame extends JFrame implements KeyListener {
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
+	
+	public void printMessage(final String message) {
+		JOptionPane.showMessageDialog(null, message);
+	}
 
 	/**
 	 * Builds the view frame.
@@ -149,7 +155,10 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public synchronized void keyPressed(final KeyEvent e) {
-		if(this.model.getLorann().getThreadActive()) {
+		if(e.getKeyCode() >= 97 && e.getKeyCode() <= 101) {
+			this.getController().selectLevel(View.keyCodeToControllerOrder(e.getKeyCode()));
+		}
+		else if(this.model.getLorann().getThreadActive()) {
 			this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 		}
 	}

@@ -36,8 +36,6 @@ public class Model extends Observable implements IModel {
 	private Map map;
 	private Score score;
 	
-	private int sizeMaxMonsters = 0;
-	
 	private boolean finish = false;
 	private boolean dead = false;
 	
@@ -156,10 +154,6 @@ public class Model extends Observable implements IModel {
 		this.elements[x][y] = MotionlessElements.LAND;
 		this.setChanged();
 		this.notifyObservers(this.elements);
-	}
-	
-	public int getSizeMaxMonsters() {
-		return this.sizeMaxMonsters;
 	}
 	
 	public int getPointsPurse() {
@@ -323,7 +317,6 @@ public class Model extends Observable implements IModel {
 				numLine+=20;
 				System.out.println("");
 			}
-			this.sizeMaxMonsters = this.mobiles.size();
 			
 		} catch (final SQLException e) {
 			e.printStackTrace();

@@ -40,6 +40,7 @@ public interface IModel {
 	
 	public void replaceLand(final int x, final int y);
 	public int getScore();
+	public int getPointsPurse();
 	public void setPointsPurse();
 	
 	public void setDeath(boolean dead);

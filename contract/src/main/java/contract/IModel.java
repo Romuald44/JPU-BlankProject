@@ -169,6 +169,11 @@ public interface IModel {
 	public int getHeight();
 	
 	/**
+	 * close Gate
+	 */
+	public void closeGate();
+	
+	/**
 	 * Gets the observable.
 	 *
 	 * @return the observable

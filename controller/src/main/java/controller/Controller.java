@@ -54,6 +54,7 @@ public class Controller implements IController {
 		this.model.setDeath(false);
 		this.model.setTheEnd(false);
 		this.model.getMobiles().clear();
+		this.model.closeGate();
 		switch (controllerOrder) {
 			case ONE:
 				this.model.loadMap(1);

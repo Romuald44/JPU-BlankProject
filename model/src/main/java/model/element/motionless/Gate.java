@@ -32,11 +32,21 @@ public class Gate extends MotionlessElement {
 	 * open the door
 	 */
 	public void open() {
-		if(!open) {
+		if(!this.open) {
 			this.setSprite(new Sprite("gate_open.png"));
-			this.setPermeability(Permeability.PENETRABLE);
 			this.action = ActionOnLorann.FINISH;
 			this.open = true;
+		}
+	}
+	
+	/**
+	 * close the door
+	 */
+	public void close() {
+		if(this.open) {
+			this.setSprite(new Sprite("gate_closed.png"));
+			this.action = ActionOnLorann.KILL;
+			this.open = false;
 		}
 	}
 	

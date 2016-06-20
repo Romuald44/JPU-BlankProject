@@ -24,19 +24,31 @@ import model.element.motionless.Purse;
 
 /**
  * The Class Model.
- *
- * @author Jean-Aymeric Diet
  */
 public class Model extends Observable implements IModel {
 	
+	/** Array MotionlessElement elements */
 	public MotionlessElement elements[][];
+	
+	/** Array IMobile mobiles */
 	public final ArrayList<IMobile> mobiles;
+	
+	/** the width */
 	private int width;
+	
+	/** the height */
 	private int	height;
+	
+	/** the map */
 	private Map map;
+	
+	/** the score */
 	private Score score;
 	
+	/** the finish */
 	private boolean finish = false;
+	
+	/** the dead */
 	private boolean dead = false;
 	
 	/**
@@ -46,6 +58,9 @@ public class Model extends Observable implements IModel {
 		this.mobiles = new ArrayList<IMobile>();
 	}
 	
+	/** 
+	 * start Threads Mobiles
+	 */
 	public void startThreadsMobiles() {
 		for(int i = 0; i < this.mobiles.size(); i++) {
 			this.mobiles.get(i).startThread();
@@ -53,10 +68,16 @@ public class Model extends Observable implements IModel {
 		this.getLorann().getFireball().startThread();
 	}
 	
+	/** 
+	 * get Threads Fireball
+	 */
 	public Thread getThreadFireball() {
 		return this.getLorann().getFireball().getThread();
 	}
 	
+	/** 
+	 * set State Threads to Finish
+	 */
 	public void setStateThreadFinish() {
 		for(int i = 0; i < this.mobiles.size(); i++) {
 			this.mobiles.get(i).setThreadActive(false);
@@ -64,6 +85,9 @@ public class Model extends Observable implements IModel {
 		this.getLorann().getFireball().setThreadActive(false);
 	}
 	
+	/** 
+	 * Move Up
+	 */
 	public void moveUp() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();
@@ -72,6 +96,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/** 
+	 * Move Down
+	 */
 	public void moveDown() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();
@@ -80,6 +107,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/** 
+	 * Move Left
+	 */
 	public void moveLeft() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();
@@ -88,6 +118,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/** 
+	 * Move Right
+	 */
 	public void moveRight() {
 		int x = this.getLorann().getX();
 		int y = this.getLorann().getY();
@@ -96,6 +129,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/** 
+	 * Move Up Left
+	 */
 	public void moveUpLeft() {
 		Point lastPosition = this.getLorann().getPosition();
 		if(this.getLorann().moveUpLeft()) {
@@ -103,6 +139,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/** 
+	 * Move Up Right
+	 */
 	public void moveUpRight() {
 		Point lastPosition = this.getLorann().getPosition();
 		if(this.getLorann().moveUpRight()) {
@@ -110,6 +149,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/** 
+	 * Move Down Left
+	 */
 	public void moveDownLeft() {
 		Point lastPosition = this.getLorann().getPosition();
 		if(this.getLorann().moveDownLeft()) {
@@ -117,6 +159,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/** 
+	 * Move Down Right
+	 */
 	public void moveDownRight() {
 		Point lastPosition = this.getLorann().getPosition();
 		if(this.getLorann().moveDownRight()) {
@@ -124,6 +169,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/** 
+	 * Launch Fireball
+	 */
 	public void launchFireball() {
 		if(!this.getLorann().getFireball().getActive()) {
 			this.getLorann().launchFireball();
@@ -135,10 +183,26 @@ public class Model extends Observable implements IModel {
 		this.notifyObservers();
 	}
 	
+	/** 
+	 * get Map
+	 */
 	public Map getMap() {
 		return this.map;
 	}
 	
+	/** 
+	 * add Element
+	 * 
+	 * @param element
+	 * 			the element
+	 * 
+	 * @param x
+	 * 			the x
+	 * 
+	 * @param y
+	 * 			the y
+	 *
+	 */
 	public void addElement(final IMotionLess element, final int x, final int y) {
 		this.elements[x][y] = (MotionlessElement) element;
 		if (element != null) {
@@ -150,46 +214,84 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/**
+	 * Replace position x, y to land
+	 */
 	public void replaceLand(final int x, final int y) {
 		this.elements[x][y] = MotionlessElements.LAND;
 		this.setChanged();
 		this.notifyObservers(this.elements);
 	}
 	
+	/**
+	 * get Points Purse
+	 */
 	public int getPointsPurse() {
 		return Purse.points;
 	}
 	
+	/**
+	 * set Points Purse
+	 */
 	public void setPointsPurse() {
 		this.getPurse().setPoints();
 	}
 	
+	/**
+	 * set Death
+	 * 	@param boolean
+	 * 			dead
+	 */
 	public void setDeath(boolean dead) {
 		this.setScore(this.getScore());
 		this.dead = dead;
 	}
 	
+	/**
+	 * get death
+	 */
 	public boolean getDeath() {
 		return this.dead;
 	}
 	
+	/**
+	 * set the end of game
+	 * 	@param boolean
+	 * 			finish
+	 */
 	public void setTheEnd(boolean finish) {
 		this.setScore(this.getScore());
 		this.finish = finish;
 	}
 	
+	/**
+	 * get the end
+	 */
 	public boolean getTheEnd() {
 		return this.finish;
 	}
 	
+	/**
+	 * get Width
+	 */
 	public int getWidth() {
 		return this.width;
 	}
 	
+	/**
+	 * get Height
+	 */
 	public int getHeight() {
 		return this.height;
 	}
 	
+	/**
+	 * get Element at position x, y
+	 * 	@param int
+	 * 			x
+	 * 	@param int
+	 * 			y
+	 */
 	public MotionlessElement getElements(final int x, final int y) {
 		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
 			return null;
@@ -197,18 +299,30 @@ public class Model extends Observable implements IModel {
 		return this.elements[x][y];
 	}
 	
+	/**
+	 * get Array Element
+	 */
 	public MotionlessElement[][] getArrayElement() {
 		return this.elements;
 	}
 	
+	/**
+	 * get Array Mobiles
+	 */
 	public ArrayList<IMobile> getMobiles() {
 		return this.mobiles;
 	}
 	
+	/**
+	 * open the door
+	 */
 	public void openTheDoor() {
 		this.getGate().open();	
 	}
 	
+	/**
+	 * get Lorann
+	 */
 	public Lorann getLorann() {
 		for(IMobile lorann : mobiles) {
 			if(lorann instanceof Lorann) {
@@ -218,6 +332,9 @@ public class Model extends Observable implements IModel {
 		return null;
 	}
 	
+	/**
+	 * get Purse
+	 */
 	public Purse getPurse() {
 		for(int x = 0; x < this.getWidth(); x++) {
 			for(int y = 0; y < this.getHeight(); y++) {
@@ -229,6 +346,9 @@ public class Model extends Observable implements IModel {
 		return null;
 	}
 	
+	/**
+	 * get Gate
+	 */
 	private Gate getGate() {
 		for(int x = 0; x < this.getWidth(); x++) {
 			for(int y = 0; y < this.getHeight(); y++) {
@@ -240,6 +360,11 @@ public class Model extends Observable implements IModel {
 		return null;
 	}
 	
+	/**
+	 * add mobile
+	 * @param mobile
+	 * 			the mobile
+	 */
 	public void addMobile(final Mobile mobile) {
 		mobile.setThread(mobile);
 		this.mobiles.add(mobile);
@@ -250,10 +375,18 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/**
+	 * get Score
+	 */
 	public int getScore() {
 		return this.score.getScore()+this.getPointsPurse();
 	}
 	
+	/**
+	 * set Score
+	 * @param point_score
+	 * 			the new score
+	 */
 	public void setScore(final int point_score) {
 		this.score.setScore(point_score);
 		try {
@@ -264,6 +397,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/**
+	 * load Score from database
+	 */
 	public void loadScore() {
 		final DAOScore score;
 		try {
@@ -274,6 +410,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/**
+	 * load map from database
+	 */
 	public void loadMap(final int id) {
 		this.loadScore();
 		try {
@@ -323,6 +462,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 	
+	/**
+	 * set changed observer
+	 */
 	public void setMobileHasChanged() {
 		this.setChanged();
 		this.notifyObservers();

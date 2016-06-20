@@ -3,7 +3,14 @@ package contract;
 import java.awt.Image;
 
 public interface IMotionLess {
+	
+	/**
+	 * get Symbol
+	 */
 	public char getSymbol();
-	//IPermeability getPermeability();
+
+	/**
+	 * get Image
+	 */
     public Image getImage();
 }

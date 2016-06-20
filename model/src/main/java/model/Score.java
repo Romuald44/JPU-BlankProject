@@ -8,7 +8,7 @@ public class Score extends Entity {
 	/**
 	 * Instantiates a new Score.
 	 *
-	 * @param message
+	 * @param score
 	 *          the Score
 	 */
 	public Score(final int score) {
@@ -16,7 +16,7 @@ public class Score extends Entity {
 	}
 
 	/**
-	 * Instantiates a new hello world.
+	 * Instantiates a new score.
 	 */
 	public Score() {
 		this(0);
@@ -34,7 +34,7 @@ public class Score extends Entity {
 	/**
 	 * Sets the Score.
 	 *
-	 * @param key
+	 * @param score
 	 *          the new Score
 	 */
 	public void setScore(final int score) {

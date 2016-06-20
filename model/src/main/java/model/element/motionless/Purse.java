@@ -7,8 +7,14 @@ import model.element.Sprite;
 
 public class Purse extends MotionlessElement implements IPurse {
 
+	/**
+	 * int Points
+	 */
 	public static int points = 0;
 	
+	/**
+	 * Instantiate Purse
+	 */
 	public Purse() {
 		super(new Sprite("purse.png"), Permeability.PENETRABLE, 'p');
 	}
@@ -18,6 +24,9 @@ public class Purse extends MotionlessElement implements IPurse {
 		return ActionOnLorann.RECOVERABLE;
 	}
 
+	/**
+	 * set Points
+	 */
 	public void setPoints() {
 		int cpt = 0;
 		for(int i = 0; i < this.getModel().getMobiles().size(); i++) {

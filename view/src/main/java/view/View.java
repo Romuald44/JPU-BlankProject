@@ -12,8 +12,6 @@ import contract.IView;
 
 /**
  * The Class View.
- *
- * @author Jean-Aymeric Diet
  */
 public class View implements IView, Runnable {
 
@@ -30,14 +28,24 @@ public class View implements IView, Runnable {
 		this.viewFrame = new ViewFrame(model);
 	}
 
+	/**
+	 * Show window
+	 */
 	public void Swing() {
 		SwingUtilities.invokeLater(this);
 	}
 	
+	/**
+	 * get ViewFrame
+	 * @return ViewFrame
+	 */
 	public ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
 	
+	/**
+	 * print message
+	 */
 	public void printMessage(final String message) {
 		this.viewFrame.printMessage(message);
 	}
@@ -76,10 +84,8 @@ public class View implements IView, Runnable {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.lang.Runnable#run()
+	/**
+	 * set Visible the window
 	 */
 	public void run() {
 		this.viewFrame.setVisible(true);

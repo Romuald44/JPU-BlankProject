@@ -7,8 +7,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Sprite {
+	/**
+	 * Image picture
+	 */
 	private Image picture;
 
+	/**
+	 * Instantiate Sprite
+	 * @param picture
+	 */
 	public Sprite(final String picture) {
 		try {
 			this.picture = ImageIO.read(new File("../view/src/main/resources/" + picture));
@@ -17,6 +24,10 @@ public class Sprite {
 		}
 	}
 
+	/**
+	 * get Image
+	 * @return Image
+	 */
 	public Image getImage() {
 		return this.picture;
 	}

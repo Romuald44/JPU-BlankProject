@@ -11,14 +11,9 @@ import contract.IModel;
 
 /**
  * The Class ViewFrame.
- *
- * @author Jean-Aymeric Diet
  */
 class ViewFrame extends JFrame implements KeyListener {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -3517599904808967841L;
 
 	/** The model. */
@@ -110,7 +105,7 @@ class ViewFrame extends JFrame implements KeyListener {
 		return this.model;
 	}
 
-	/**bui
+	/**
 	 * Sets the model.
 	 *
 	 * @param model
@@ -120,6 +115,10 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.model = model;
 	}
 	
+	/**
+	 * Print Message
+	 * @param message
+	 */
 	public void printMessage(final String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
@@ -149,10 +148,9 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	/**
+	 * get key pressed
+	 * @param KeyEvent
 	 */
 	public synchronized void keyPressed(final KeyEvent e) {
 		if(e.getKeyCode() >= 97 && e.getKeyCode() <= 101) {
@@ -169,6 +167,5 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(final KeyEvent e) {
-		//pressed.remove(e);
 	}
 }

@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/romua/git/JPU-BlankProject/contract/target/classes;C:/Users/romua/git/JPU-BlankProject/view/target/classes;C:/Users/romua/git/JPU-BlankProject/model/target/classes;C:/Users/romua/git/JPU-BlankProject/controller/target/classes;C:/Users/romua/git/JPU-BlankProject/main/target/classes;C:/Users/romua/git/JPU-BlankProject/controller/target/classes;C:/Users/romua/.m2/repository/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar;C:/Users/romua/git/JPU-BlankProject/view/target/classes;C:/Users/romua/git/JPU-BlankProject/model/target/classes;C:/Users/romua/git/JPU-BlankProject/contract/target/classes'
+-encoding
+'UTF-8'
+-private
+-sourcepath
+'C:/Users/romua/git/JPU-BlankProject/contract/src/main/java;C:/Users/romua/git/JPU-BlankProject/view/src/main/java;C:/Users/romua/git/JPU-BlankProject/model/src/main/java;C:/Users/romua/git/JPU-BlankProject/controller/src/main/java;C:/Users/romua/git/JPU-BlankProject/main/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2016. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/romua/git/JPU-BlankProject/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Master POM 0.0.1-SNAPSHOT API'
+-linkoffline
+'http://docs.oracle.com/javase/8/docs/api' 'C:/Users/romua/git/JPU-BlankProject/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'Master POM 0.0.1-SNAPSHOT API'

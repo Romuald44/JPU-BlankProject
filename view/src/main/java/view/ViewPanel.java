@@ -14,22 +14,24 @@ import contract.IMotionLess;
 
 /**
  * The Class ViewPanel.
- *
- * @author Jean-Aymeric Diet
  */
 class ViewPanel extends JPanel implements Observer {
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7138488664502639606L;
 
 	/** The view frame. */
 	private ViewFrame viewFrame;
 	
+	/**
+	 * Array IMotionLess
+	 */
 	private IMotionLess[][] element;
+	
+	/**
+	 * Array IMobile
+	 */
 	private ArrayList<IMobile> mobile = new ArrayList<IMobile>();
+	
 	/**
 	 * Instantiates a new view panel.
 	 *

@@ -7,8 +7,6 @@ import java.sql.SQLException;
 
 /**
  * The Class DAOHelloWorld.
- *
- * @author Jean-Aymeric Diet
  */
 class DAOMap extends DAOEntity<Map> {
 

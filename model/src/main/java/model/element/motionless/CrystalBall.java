@@ -6,6 +6,9 @@ import model.element.Sprite;
 
 public class CrystalBall extends MotionlessElement {
 
+	/**
+	 * Instantiate Crystall Ball
+	 */
 	public CrystalBall() {
 		super(new Sprite("crystal_ball.png"), Permeability.PENETRABLE, 'c');
 	}

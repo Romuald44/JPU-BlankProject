@@ -8,8 +8,18 @@ import model.element.motionless.Land;
 
 public class Demons extends Mobile implements IActionOnLorann {
 
+	/**
+	 * IBehavior behavior
+	 */
 	private IBehavior behavior;
 
+	/**
+	 * Instantiate Demons
+	 * @param behavior
+	 * @param x
+	 * @param y
+	 * @param model
+	 */
 	public Demons(IBehavior behavior, int x, int y, Model model) {
 		super(behavior.getSprite());
 		this.setModel(model);
@@ -19,10 +29,17 @@ public class Demons extends Mobile implements IActionOnLorann {
 		this.setY(y);
 	}
 
+	/**
+	 * get ActionOnLorann
+	 * @return ActionOnLorann
+	 */
 	public ActionOnLorann getActionOnLorann() {
 		return ActionOnLorann.KILL;
 	}
 	
+	/**
+	 * get Mobiles Answer
+	 */
 	private void getMobilesAnswer() {
 		if(this.getModel().getLorann() != null) {
 			if((this.getX() == this.getModel().getLorann().getX()) &&
@@ -33,6 +50,9 @@ public class Demons extends Mobile implements IActionOnLorann {
 		}
 	}
 
+	/**
+	 * loop run
+	 */
 	public void run() {
 		boolean temp;
 		while(this.getThreadActive()) {

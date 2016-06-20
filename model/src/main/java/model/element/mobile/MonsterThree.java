@@ -6,13 +6,24 @@ import model.element.Sprite;
 
 public class MonsterThree implements IBehavior {
 	
+	/**
+	 * Sprite sprite
+	 */
 	private Sprite sprite;
 
-	/* No dodge */
+	/**
+	 * Instantiate Monster Three
+	 */
 	public MonsterThree() {
-		this.sprite = new Sprite("monster_3.png");
+		this.sprite = new Sprite("monster_3.png");/* No dodge */
 	}
 
+	/**
+	 * movement
+	 * @param lorann
+	 * @param demons
+	 * @return Point
+	 */
 	public Point movement(Lorann lorann, Point demons) {
 		if(lorann.getPosition().x != 0 || lorann.getPosition().y != 0) {
 			Point diff = new Point(lorann.getPosition().x-demons.x, lorann.getPosition().y-demons.y);
@@ -30,6 +41,10 @@ public class MonsterThree implements IBehavior {
 		return demons;
 	}
 	
+	/**
+	 * get Sprite
+	 * @return Sprite
+	 */
 	public Sprite getSprite() {
 		return sprite;
 	}

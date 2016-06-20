@@ -2,8 +2,6 @@ package model;
 
 /**
  * The Class HelloWorld.
- *
- * @author Jean-Aymeric Diet
  */
 class Map extends Entity {
 
@@ -13,18 +11,18 @@ class Map extends Entity {
 	/** The Height. */
 	private int height;
 	
-	/** The Height. */
+	/** The map. */
 	private String map;
 
 	/**
-	 * Instantiates a new hello world.
+	 * Instantiates a new Map.
 	 *
-	 * @param id
-	 *          the id
-	 * @param key
-	 *          the key
-	 * @param message
-	 *          the message
+	 * @param width
+	 *          the width
+	 * @param height
+	 *          the height
+	 * @param map
+	 *          the map
 	 */
 	public Map(final int width, final int height, final String map) {
 		this.setWidth(width);
@@ -33,64 +31,64 @@ class Map extends Entity {
 	}
 
 	/**
-	 * Instantiates a new hello world.
+	 * Instantiates a new Map.
 	 */
 	public Map() {
 		this(0, 0, "");
 	}
 
 	/**
-	 * Gets the id.
+	 * Gets the width.
 	 *
-	 * @return the id
+	 * @return the width
 	 */
 	public int getWidth() {
 		return this.width;
 	}
 
 	/**
-	 * Sets the id.
+	 * Sets the width.
 	 *
-	 * @param id
-	 *          the new id
+	 * @param width
+	 *          the new width
 	 */
 	public void setWidth(final int width) {
 		this.width = width;
 	}
 
 	/**
-	 * Gets the key.
+	 * Gets the height.
 	 *
-	 * @return the key
+	 * @return the height
 	 */
 	public int getHeight() {
 		return this.height;
 	}
 
 	/**
-	 * Sets the key.
+	 * Sets the height.
 	 *
-	 * @param key
-	 *          the new key
+	 * @param height
+	 *          the new height
 	 */
 	public void setHeight(final int height) {
 		this.height = height;
 	}
 	
 	/**
-	 * Gets the key.
+	 * Gets the map.
 	 *
-	 * @return the key
+	 * @return the map
 	 */
 	public String getMap() {
 		return this.map;
 	}
 
 	/**
-	 * Sets the key.
+	 * Sets the map.
 	 *
-	 * @param key
-	 *          the new key
+	 * @param map
+	 *          the new map
 	 */
 	public void setMap(final String map) {
 		this.map = map;

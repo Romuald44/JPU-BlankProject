@@ -6,13 +6,24 @@ import model.element.Sprite;
 
 public class MonsterTwo implements IBehavior {
 	
+	/**
+	 * Sprite sprite
+	 */
 	private Sprite sprite;
 
-	/* Random movement */
+	/**
+	 * Instantiate Monster Two
+	 */
 	public MonsterTwo() {
-		this.sprite = new Sprite("monster_2.png");
+		this.sprite = new Sprite("monster_2.png");/* Random movement */
 	}
 
+	/**
+	 * movement
+	 * @param lorann
+	 * @param demons
+	 * @return Point
+	 */
 	public Point movement(Lorann lorann, Point demons) {
 		int rand = (int)(Math.random() * 8) + 1; 
 		switch(rand) {
@@ -49,6 +60,10 @@ public class MonsterTwo implements IBehavior {
 		}
 	}
 
+	/**
+	 * get Sprite
+	 * @return Sprite
+	 */
 	public Sprite getSprite() {
 		return sprite;
 	}

@@ -10,11 +10,31 @@ import model.element.motionless.Gate;
 
 public class Fireball extends Mobile implements IFireball {
 
+	/**
+	 * Point direction
+	 */
 	private Point direction;
+	
+	/**
+	 * boolean active
+	 */
 	private boolean active;
+	
+	/**
+	 * Lorann lorann
+	 */
 	private Lorann lorann;
+	
+	/**
+	 * ArrayList sprites
+	 */
 	private ArrayList<String> sprites;
 
+	/**
+	 * Instantiate Fireball
+	 * @param lorann
+	 * @param model
+	 */
 	public Fireball(Lorann lorann, Model model) {
 		super(new Sprite("fireball_1.png"));
 		this.setModel(model);
@@ -30,14 +50,25 @@ public class Fireball extends Mobile implements IFireball {
 		this.setThreadActive(true);
 	}
 
+	/**
+	 * get Active
+	 * @return active
+	 */
 	public boolean getActive() {
 		return this.active;
 	}
 	
+	/**
+	 * get Direction
+	 * @return direction
+	 */
 	public Point getDirection() {
 		return this.direction;
 	}
 
+	/**
+	 * re active fireball
+	 */
 	public void reactivate() {
 		this.active = true;
 		this.setX(this.lorann.getX());
@@ -46,10 +77,16 @@ public class Fireball extends Mobile implements IFireball {
 		this.direction.y = lorann.getLastPosition().y - lorann.getPosition().y;
 	}
 
+	/**
+	 * de activate fireball
+	 */
 	public void deactivate() {
 		this.active = false;
 	}
 
+	/**
+	 * change direction fireball
+	 */
 	public void deviate() {
 		if(this.active == true) {
 			if(this.lorann.getPosition().x < this.getPosition().x) {
@@ -74,6 +111,9 @@ public class Fireball extends Mobile implements IFireball {
 		}
 	}
 
+	/**
+	 * loop run
+	 */
 	public void run() {
 		int indice = 0;
 		boolean bool = false;

@@ -49,13 +49,18 @@ public class ModelTest {
 	}
 
 	@Test
-	public void testAddElement() {
-		this.model.addElement(MotionlessElements.LAND, 0, 0);
-		Assert.assertEquals(MotionlessElements.LAND, this.model.getElements(0, 0));
+	public void testAddElement() throws Exception {
+		try {
+			this.model.addElement(MotionlessElements.LAND, 0, 0);
+			Assert.assertEquals(MotionlessElements.LAND, this.model.getElements(0, 0));
+		}
+		catch(final Exception e) {
+			Assert.assertEquals("Out of range", e.getMessage());
+		}
 	}
 
 	@Test
-	public void testReplaceLand() {
+	public void testReplaceLand() throws Exception {
 		this.model.replaceLand(0, 0);
 		Assert.assertEquals(MotionlessElements.LAND, this.model.getElements(0, 0));
 	}
@@ -100,7 +105,7 @@ public class ModelTest {
 	@Test
 	public void testGetElements() {
 		try {
-			this.model.getElements(0, 0);
+			this.model.getElements(-1, 0);
 		}
 		catch(final Exception e) {
 			Assert.assertEquals("Out of range", e.getMessage());
@@ -146,7 +151,7 @@ public class ModelTest {
 	}
 
 	@Test
-	public void testLoadMap() {
+	public void testLoadMap() throws Exception {
 		for(int y = 0; y < this.model.getHeight(); y++) {
 			for(int x = 0; x < this.model.getWidth(); x++) {
 				Assert.assertNotNull(this.model.getElements(x, y));

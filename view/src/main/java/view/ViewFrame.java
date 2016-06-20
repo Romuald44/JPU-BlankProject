@@ -1,4 +1,5 @@
 package view;
+
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -154,10 +155,18 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	public synchronized void keyPressed(final KeyEvent e) {
 		if(e.getKeyCode() >= 97 && e.getKeyCode() <= 101) {
-			this.getController().selectLevel(View.keyCodeToControllerOrder(e.getKeyCode()));
+			try {
+				this.getController().selectLevel(View.keyCodeToControllerOrder(e.getKeyCode()));
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		}
 		else if(this.model.getLorann().getThreadActive()) {
-			this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+			try {
+				this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 

@@ -1,7 +1,5 @@
 package model;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -9,6 +7,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import model.element.mobile.Demons;
+import model.element.mobile.MonsterOne;
 import model.element.motionless.MotionlessElements;
 
 public class ModelTest {
@@ -128,43 +128,35 @@ public class ModelTest {
 	}
 
 	@Test
-	public void testGetGate() {
-		Assert.assertNotNull(this.model);
-	}
-
-	@Test
 	public void testAddMobile() {
-		fail("Not yet implemented");
+		int taille = this.model.getMobiles().size();
+		this.model.addMobile(new Demons(new MonsterOne(), 0, 0, this.model));
+		Assert.assertEquals(taille+1, this.model.getMobiles().size());
 	}
 
 	@Test
 	public void testGetScore() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetScore() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(this.model.getScore());
 	}
 
 	@Test
 	public void testLoadScore() {
-		fail("Not yet implemented");
+		this.model.loadScore();
+		Assert.assertNotNull(this.model.getScore());
 	}
 
 	@Test
 	public void testLoadMap() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetMobileHasChanged() {
-		fail("Not yet implemented");
+		for(int y = 0; y < this.model.getHeight(); y++) {
+			for(int x = 0; x < this.model.getWidth(); x++) {
+				Assert.assertNotNull(this.model.getElements(x, y));
+			}
+		}
 	}
 
 	@Test
 	public void testGetObservable() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(this.model.getObservable());
 	}
 
 }

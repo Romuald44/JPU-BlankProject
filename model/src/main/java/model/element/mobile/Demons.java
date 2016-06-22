@@ -68,15 +68,46 @@ public class Demons extends Mobile implements IActionOnLorann {
 			while(!temp) {
 				Point positionDemons = this.behavior.movement(this.getModel().getLorann(), new Point(this.getPosition()));
 				try {
+					boolean temp2 = false;
 					if(this.getModel().getElements(positionDemons.x, positionDemons.y) instanceof Land) {
-						this.setPosition(positionDemons);
-						temp = true;
+						for(int i = 0; i < this.getModel().getMobiles().size(); i++) {
+							if(positionDemons.x == this.getModel().getMobiles().get(i).getX() &&
+									positionDemons.y == this.getModel().getMobiles().get(i).getY() &&
+									this.getModel().getMobiles().get(i) instanceof Demons &&
+									this.getModel().getMobiles().get(i).getThreadActive()) {
+								temp2 = true;
+							}
+						}
+						if(!temp2) {
+							this.setPosition(positionDemons);
+							temp = true;
+						}
 					} else if(this.getModel().getElements(positionDemons.x, this.getPosition().y) instanceof Land) {
-						this.position.x = positionDemons.x;
-						temp = true;
+						for(int i = 0; i < this.getModel().getMobiles().size(); i++) {
+							if(positionDemons.x == this.getModel().getMobiles().get(i).getX() &&
+									this.getPosition().y == this.getModel().getMobiles().get(i).getY() &&
+									this.getModel().getMobiles().get(i) instanceof Demons &&
+									this.getModel().getMobiles().get(i).getThreadActive()) {
+								temp2 = true;
+							}
+						}
+						if(!temp2) {
+							this.position.x = positionDemons.x;
+							temp = true;
+						}
 					} else if(this.getModel().getElements(this.getPosition().x, positionDemons.y) instanceof Land) {
-						this.position.y = positionDemons.y;
-						temp = true;
+						for(int i = 0; i < this.getModel().getMobiles().size(); i++) {
+							if(this.getPosition().x == this.getModel().getMobiles().get(i).getX() &&
+									positionDemons.y == this.getModel().getMobiles().get(i).getY() &&
+									this.getModel().getMobiles().get(i) instanceof Demons &&
+									this.getModel().getMobiles().get(i).getThreadActive()) {
+								temp2 = true;
+							}
+						}
+						if(!temp2) {
+							this.position.y = positionDemons.y;
+							temp = true;
+						}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

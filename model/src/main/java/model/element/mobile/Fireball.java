@@ -291,7 +291,8 @@ public class Fireball extends Mobile implements IFireball {
 					if(this.getModel().getMobiles().get(i).getX() == this.getX() &&
 							this.getModel().getMobiles().get(i).getY() == this.getY() &&
 							this.getModel().getMobiles().get(i).getThreadActive() &&
-							this.getModel().getMobiles().get(i) instanceof Demons) {
+							this.getModel().getMobiles().get(i) instanceof Demons &&
+							this.getActive()) {
 						this.deactivate();
 						this.getModel().getMobiles().get(i).setThreadActive(false);
 						this.getModel().setMobileHasChanged();

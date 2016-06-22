@@ -115,6 +115,11 @@ public interface IModel {
 	public void setPointsPurse();
 	
 	/**
+	 * set Points Purse zero
+	 */
+	public void setPointsPurseZero();
+	
+	/**
 	 * set Death
 	 * 	@param boolean
 	 * 			dead

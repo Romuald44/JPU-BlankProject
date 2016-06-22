@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Point;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -50,6 +49,9 @@ public class Model extends Observable implements IModel {
 	
 	/** the dead */
 	private boolean dead = false;
+	
+	/** score loaded */
+	private boolean scoreLoaded = false;
 	
 	/**
 	 * Instantiates a new model.
@@ -133,9 +135,10 @@ public class Model extends Observable implements IModel {
 	 * Move Up Left
 	 */
 	public void moveUpLeft() {
-		Point lastPosition = this.getLorann().getPosition();
+		int x = this.getLorann().getX();
+		int y = this.getLorann().getY();
 		if(this.getLorann().moveUpLeft()) {
-			this.getLorann().setLastPosition(lastPosition);
+			this.getLorann().setLastPosition(x, y);
 		}
 	}
 	
@@ -143,9 +146,10 @@ public class Model extends Observable implements IModel {
 	 * Move Up Right
 	 */
 	public void moveUpRight() {
-		Point lastPosition = this.getLorann().getPosition();
+		int x = this.getLorann().getX();
+		int y = this.getLorann().getY();
 		if(this.getLorann().moveUpRight()) {
-			this.getLorann().setLastPosition(lastPosition);
+			this.getLorann().setLastPosition(x, y);
 		}
 	}
 	
@@ -153,9 +157,10 @@ public class Model extends Observable implements IModel {
 	 * Move Down Left
 	 */
 	public void moveDownLeft() {
-		Point lastPosition = this.getLorann().getPosition();
+		int x = this.getLorann().getX();
+		int y = this.getLorann().getY();
 		if(this.getLorann().moveDownLeft()) {
-			this.getLorann().setLastPosition(lastPosition);
+			this.getLorann().setLastPosition(x, y);
 		}
 	}
 	
@@ -163,9 +168,10 @@ public class Model extends Observable implements IModel {
 	 * Move Down Right
 	 */
 	public void moveDownRight() {
-		Point lastPosition = this.getLorann().getPosition();
+		int x = this.getLorann().getX();
+		int y = this.getLorann().getY();
 		if(this.getLorann().moveDownRight()) {
-			this.getLorann().setLastPosition(lastPosition);
+			this.getLorann().setLastPosition(x, y);
 		}
 	}
 	
@@ -243,13 +249,23 @@ public class Model extends Observable implements IModel {
 		this.getPurse().setPoints();
 	}
 	
+	
+	/**
+	 * set Points Purse zero
+	 */
+	public void setPointsPurseZero() {
+		Purse.points = 0;
+	}
+	
 	/**
 	 * set Death
 	 * 	@param boolean
 	 * 			dead
 	 */
 	public void setDeath(boolean dead) {
-		this.setScore(this.getScore());
+		if(dead) {
+			this.setScore(this.getScore());
+		}
 		this.dead = dead;
 	}
 	
@@ -266,7 +282,9 @@ public class Model extends Observable implements IModel {
 	 * 			finish
 	 */
 	public void setTheEnd(boolean finish) {
-		this.setScore(this.getScore());
+		if(finish) {
+			this.setScore(this.getScore());
+		}
 		this.finish = finish;
 	}
 	
@@ -429,7 +447,10 @@ public class Model extends Observable implements IModel {
 	 * @throws Exception
 	 */
 	public void loadMap(final int id) throws Exception {
-		this.loadScore();
+		if(!this.scoreLoaded) {
+			this.loadScore();
+			this.scoreLoaded = true;
+		}
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());
 			map = Map.find(id);

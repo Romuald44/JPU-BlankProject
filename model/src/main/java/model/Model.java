@@ -50,9 +50,6 @@ public class Model extends Observable implements IModel {
 	/** the dead */
 	private boolean dead = false;
 	
-	/** score loaded */
-	private boolean scoreLoaded = false;
-	
 	/**
 	 * Instantiates a new model.
 	 */
@@ -263,9 +260,6 @@ public class Model extends Observable implements IModel {
 	 * 			dead
 	 */
 	public void setDeath(boolean dead) {
-		if(dead) {
-			this.setScore(this.getScore());
-		}
 		this.dead = dead;
 	}
 	
@@ -447,10 +441,7 @@ public class Model extends Observable implements IModel {
 	 * @throws Exception
 	 */
 	public void loadMap(final int id) throws Exception {
-		if(!this.scoreLoaded) {
-			this.loadScore();
-			this.scoreLoaded = true;
-		}
+		this.loadScore();
 		try {
 			final DAOMap Map = new DAOMap(DBConnection.getInstance().getConnection());
 			map = Map.find(id);

@@ -154,7 +154,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @param KeyEvent
 	 */
 	public synchronized void keyPressed(final KeyEvent e) {
-		if(e.getKeyCode() >= 97 && e.getKeyCode() <= 101) {
+		if(e.getKeyCode() >= 97 && e.getKeyCode() <= 101 && !this.model.getThreadFireball().isAlive()) {
 			try {
 				this.getController().selectLevel(View.keyCodeToControllerOrder(e.getKeyCode()));
 			} catch (Exception e1) {
@@ -176,5 +176,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(final KeyEvent e) {
+		this.getController().removeKey(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
 }

@@ -21,6 +21,13 @@ public interface IController {
 	 */
 	public void orderPerform(ControllerOrder controllerOrder) throws Exception;
 	/**
+	 * Remove key.
+	 *
+	 * @param controllerOrder
+	 *          the controller order
+	 */
+	public void removeKey(final ControllerOrder controllerOrder);
+	/**
 	 * select level.
 	 *
 	 * @param ControllerOrder
